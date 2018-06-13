@@ -13,6 +13,7 @@ export default class NavMenu extends Component {
         return (
             <aside className='nav'>
                 <NavButton>Home</NavButton>
+                <NavButton>New post</NavButton>
             </aside>    
         )
     }
