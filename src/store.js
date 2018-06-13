@@ -2,7 +2,7 @@
 import thunk from 'redux-thunk';
 
 //add reducer
-//import { } from 
+import reducer from './recuders/index';
 
 const enhancers = [];
 enhancers.push(window.devToolsExtension ? window.devToolsExtension() : f => f);
@@ -15,8 +15,6 @@ const composedEnhancers = compose(
     applyMiddleware(...middleware),
     ...enhancers
 )
-
-const reducer = combineReducers({});
 
 export default createStore(
     reducer,
