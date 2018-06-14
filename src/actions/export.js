@@ -1,4 +1,4 @@
-﻿import * as navAction from './nav-action';
+﻿import * as navAction from './nav';
 
 export {
     navAction

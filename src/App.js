@@ -5,8 +5,9 @@ import Nav from './components/nav/index';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import actions from './actions/export';
+import Router from './Router';
 
-class App extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
     }
@@ -17,9 +18,10 @@ class App extends Component {
     return (
         <div className="App">
             <div className="Wrapper">
-                <Nav state={state} {...rest}/>
+                <Nav />
+                <Router />
             </div>
-      </div>
+        </div>
     );
   }
 }
@@ -42,7 +44,7 @@ function mapDispatchToProps(dispatch) {
     return objectsMap(actions, actionName => bindActionCreators(actions[actionName], dispatch));
 }
 
-export default connect(
-    mapStateToProps, 
-    mapDispatchToProps
-)(App);
+//export default connect(
+//    mapStateToProps, 
+//    mapDispatchToProps
+//)(App);

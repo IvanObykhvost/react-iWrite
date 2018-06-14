@@ -1,11 +1,12 @@
 ﻿import React, { Component } from 'react';
-import NavButton from './nav-button';
+import NavButton from './NavButton';
 
-//import { bindActionCreators } from 'redux';
-//import { connect } from 'react-redux';
-//import actions from '../../actions/export';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../../actions/nav';
 
-export default class NavMenu extends Component {
+
+class NavMenu extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -14,21 +15,20 @@ export default class NavMenu extends Component {
     }
 
     render() {
-        let { navAction } = this.props;
         return (
             <aside className='nav'>
                 <NavButton
-                    onClick={event => navAction.home()}
+                    onClick={this.props.home}
                 >Home</NavButton>
                 <NavButton
-                    onClick={event => navAction.newPost()}
+                    onClick={this.props.newPost}
                 >New post</NavButton>
             </aside>    
         )
     }
 }
 
-//export default connect(
-//    null,
-//    dispatch => bindActionCreators(actions, dispatch)
-//)(NavMenu)
+export default connect(
+    null,
+    dispatch => bindActionCreators(actions, dispatch)
+)(NavMenu)

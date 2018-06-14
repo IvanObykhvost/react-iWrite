@@ -19,9 +19,7 @@ export default class NavButton extends Component {
     render() {
         let { props } = this;
         return (
-            <div className="button"
-
-            >
+            <div className="button">
                 {props.children}
             </div>    
         )

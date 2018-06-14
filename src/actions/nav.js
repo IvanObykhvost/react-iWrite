@@ -6,8 +6,3 @@ export function home() {
     }
 }
 
-export function newPost() {
-    return {
-        type: PAGE.PAGE_NEW_POST
-    }
-}
