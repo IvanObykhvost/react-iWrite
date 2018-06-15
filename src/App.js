@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import './main.css';
-import Nav from './components/nav/index';
-//import { newPost } from './actions/nav-action';
-import PostNew from './containers/post/PostNew';
 
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import actions from './actions/export';
+//import { bindActionCreators } from 'redux';
+//import { connect } from 'react-redux';
+//import actions from './actions/export';
 import Router from './Router';
 
 export default class App extends Component {
@@ -19,33 +16,29 @@ export default class App extends Component {
     let { state, ...rest } = this.props;
     return (
         <div className="App">
-            <div className="Wrapper">
-                <Nav />
-                <Router />
-                <PostNew />
-            </div>
+            <Router/> 
         </div>
     );
   }
 }
 
-function mapStateToProps(stateProps) {
-    return {
-        state: stateProps
-    };
-}
+//function mapStateToProps(stateProps) {
+//    return {
+//        state: stateProps
+//    };
+//}
 
-function objectsMap(object, func) {
-    let mappedObject = {};
-    for (let key in object) {
-        mappedObject[key] = func(key, mappedObject[key]);
-    }
-    return mappedObject;
-}
+//function objectsMap(object, func) {
+//    let mappedObject = {};
+//    for (let key in object) {
+//        mappedObject[key] = func(key, mappedObject[key]);
+//    }
+//    return mappedObject;
+//}
 
-function mapDispatchToProps(dispatch) {
-    return objectsMap(actions, actionName => bindActionCreators(actions[actionName], dispatch));
-}
+//function mapDispatchToProps(dispatch) {
+//    return objectsMap(actions, actionName => bindActionCreators(actions[actionName], dispatch));
+//}
 
 //export default connect(
 //    mapStateToProps, 

@@ -3,7 +3,7 @@
     height: 100%;
 }
 
-#app-root {
+.App {
     text-align: center;
     background-color: rgba(0, 0, 0, 0.05);
 }
@@ -16,26 +16,46 @@
     position: relative;
 }
 
-.nav {
-    background-color: rgba(0, 0, 0, 0.05);
-    padding: 10px;
-    height: 100%;
-    float: left;
-    width: 200px;
+.header {
+    background-color: rgba(60, 106, 179, 1);
+    height: 40px;
+    position: relative;
+    width: 100%;
 }
 
-.nav .button{
+.header-nav .button-nav {
     height: 40px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     margin-bottom: 5px;
     font-size: 17px;
     position: relative;
     cursor: pointer;
+    text-decoration: none;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-.nav .button:hover{
-    background-color: rgb(0, 0, 0, 0.2);
+.header-nav .button-nav:hover{
+    background-color: #447dd2;
     transition: all 450ms cubic-bezier(0.23, 1, 0.32, 0.7) 0ms;
     border-radius: 5px;
 }
+
+.container {
+    margin-top: 10px;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container>.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+

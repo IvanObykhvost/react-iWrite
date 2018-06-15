@@ -1,7 +1,7 @@
 ﻿import { POST } from '../constant/constant';
 
 const initialState = {
-    post: []
+    posts: []
 }
 
 export default function (state = initialState, action) {
@@ -10,7 +10,7 @@ export default function (state = initialState, action) {
         case POST.POST_NEW:
             return {
                 ...state,
-                post: action.post
+                posts: [...state.posts, action.post]
             }
        
         default:
