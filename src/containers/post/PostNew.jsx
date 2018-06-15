@@ -2,35 +2,47 @@
 import { connect } from 'react-redux'
 import { postNew } from '../../actions/post'
 
-export function PostNew ({ dispatch }){
-    let input = {
+//export function PostNew ({ dispatch }){
+export default class PostName extends React.Component {
+    state = {
         title: '',
         topic: '',
         message: '',
         tags: ''
     }
 
-    return (
-        <div>
-            <form onSubmit={e => {
-                e.preventDefault()
-                if (!input.title.value.trim() || !input.topic.value.trim() || !input.message.value.trim() || !input.tags.value.trim()) {
-                    console.log("one of the field is empty")
-                    return
-                }
-                console.log("success")
-                dispatch(postNew(input))
-            }}>
-                <input ref={node => input.title = node} /><br />
-                <input ref={node => input.topic = node} /><br />
-                <input ref={node => input.message = node} /><br />
-                <input ref={node => input.tags = node} /><br />
-                <button type="submit">
-                    Publish Article
-                </button>
-            </form>
-        </div>
-    )
+    change = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+    submit = e => {
+        e.preventDefault();
+        console.log(this.state);
+        /*if (!state.title.value.trim() || !state.topic.value.trim() || !state.message.value.trim() || !state.tags.value.trim()) {
+                        console.log("one of the field is empty")
+                        return
+                    
+          dispatch(postNew(this.state))
+          */
+    }
+
+    render() {
+        return (
+            <div>
+                <form onSubmit={e => this.submit(e)}>
+                    <input name="title" placeholder="Title" value={this.state.title} onChange={e => this.change(e)} /><br />
+                    <input name="topic" placeholder="Topic" value={this.state.topic} onChange={e => this.change(e)} /><br />
+                    <input name="message" placeholder="Message" value={this.state.message} onChange={e => this.change(e)} /><br />
+                    <input name="tags" placeholder="Tags" value={this.state.tags} onChange={e => this.change(e)} /><br />
+                    <button type="submit">
+                        Publish Article
+                    </button>
+                </form>
+            </div>
+        )
+    }
 }
 
-export default connect()(PostNew)
+//export default connect()(PostNew)
