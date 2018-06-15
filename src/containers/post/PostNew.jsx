@@ -2,6 +2,7 @@
 import { connect } from 'react-redux';
 import { postNew } from '../../actions/post';
 import Header from '../../components/Header/Header';
+import { bindActionCreators } from 'redux';
 
 //export function PostNew ({ dispatch }){
 class PostNew extends React.Component {

@@ -7,3 +7,10 @@ export function postNew(post) {
         post
     }
 }
+
+export function postDelete(post) {
+    return {
+        type: POST.POST_NEW,
+        post
+    }
+}
