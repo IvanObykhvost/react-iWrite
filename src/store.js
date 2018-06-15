@@ -7,7 +7,7 @@ const enhancers = [];
 enhancers.push(window.devToolsExtension ? window.devToolsExtension() : f => f);
 
 const middleware = [
-    thunk
+    thunk,
 ]
 
 const composedEnhancers = compose(
@@ -15,14 +15,8 @@ const composedEnhancers = compose(
     ...enhancers
 )
 
-const initialState = {
-    page: PAGE.PAGE_HOME,
-    posts: [],
-    tags: []
-}
-
 export default createStore(
     reducer,
-    initialState,
+    {},
     composedEnhancers
 )

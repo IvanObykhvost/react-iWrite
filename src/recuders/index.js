@@ -1,8 +1,10 @@
-﻿import * as navReducer from './nav-reducer';
-import * as post from './post';
+﻿import * as post from './post';
+import navReducer from './nav-reducer';
 import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux'
 
 export default combineReducers({
     navReducer,
-    post
+    post,
+    routing: routerReducer    
 });
