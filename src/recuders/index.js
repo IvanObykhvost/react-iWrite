@@ -1,4 +1,4 @@
-﻿import posts from './post';
+﻿import posts from './posts';
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux'
 
