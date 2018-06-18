@@ -1,5 +1,7 @@
-﻿export const POST_NEW = "POST_NEW"
+﻿export const POST_ADD = "POST_ADD"
+export const POST_UPDATE = "POST_UPDATE"
 
-export const POST = {
-    POST_NEW
+export const EDITOR = {
+    POST_ADD,
+    POST_UPDATE
 }
