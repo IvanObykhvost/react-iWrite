@@ -2,13 +2,13 @@
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import { compose } from 'redux';
 import HomePage from './scenes/Home/HomePage';
-import PostNew from './containers/Post/PostNew';
+import EditorPage from './scenes/Editor/EditorPage';
 
 export default function Router() {
     return <BrowserRouter>
         <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/PostNew" component={PostNew} />
+            <Route exact path="/" component={HomePage} />           
+            <Route path="/editor/:id?" component={EditorPage}/> 
         </Switch>
     </BrowserRouter>;
 }
