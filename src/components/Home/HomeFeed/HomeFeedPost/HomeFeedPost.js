@@ -10,9 +10,8 @@ export default function HomeFeedPost({ post }) {
                 <p>{post.topic}</p>
                     <span>Read more</span>
                 <ul className='tag-list'>
-                    {post.tags.map((tag, ind) => <li key={ind}>tag</li>)}
+                    {post.tags.map((tag, ind) => <li key={ind}>{tag}</li>)}
                 </ul>
-                
             </a>
         </div>    
     )
