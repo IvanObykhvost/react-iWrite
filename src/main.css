@@ -3,9 +3,9 @@
     height: 100%;
 }
 
-.App {
+#App {
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.05);
+    /*background-color: rgba(0, 0, 0, 0.05);*/
 }
 
 .Wrapper {
@@ -50,12 +50,32 @@
     margin-right: auto;
     padding-left: 15px;
     padding-right: 15px;
+    height: 500px;
 }
 
-.container>.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -15px;
-    margin-right: -15px;
+.nav-tabs > li {
+    padding: 10px 15px 5px;
 }
 
+.nav-tabs > li > a {
+    text-decoration: none;
+}
+.nav-tabs > li.active{
+    border-bottom: 2px solid #5CB85C;
+}
+
+.nav-tabs > li.active > a {
+    cursor: default;
+    color: #aaa;
+    text-decoration: none;
+}
+
+.sidebar {
+    padding: 5px 10px 10px 10px;
+    background: #f3f3f3;
+    border-radius: 4px;
+}
+
+div.fade.in {
+    opacity: 1;
+}
