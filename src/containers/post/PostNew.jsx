@@ -11,10 +11,10 @@ class PostNew extends React.Component {
     }
 
     state = {
-        title: '2',
-        topic: '2',
-        message: '2',
-        tags: '2'
+        title: 'How to train your hand',
+        topic: 'Ever wonder how?',
+        message: 'with two dragons.',
+        tags: ['dragons']
     }
 
     change = e => {
@@ -25,7 +25,6 @@ class PostNew extends React.Component {
 
     submit = e => {
         e.preventDefault();
-        console.log(this.state);
         /*if (!state.title.value.trim() || !state.topic.value.trim() || !state.message.value.trim() || !state.tags.value.trim()) {
                         console.log("one of the field is empty")
                         return
