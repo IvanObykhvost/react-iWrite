@@ -7,7 +7,7 @@ export default function HeaderNav() {
         <div className='header-nav' >
             <ButtonNav link={'/'}>Home</ButtonNav>
             <ButtonNav link={'/editor'}>New post</ButtonNav>
-            <ButtonNav link={'/editor/1'}>Edit post</ButtonNav>
+            {/*<ButtonNav link={'/editor/1'}>Edit post</ButtonNav>*/}
         </div >
     )
 }
