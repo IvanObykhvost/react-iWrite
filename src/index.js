@@ -4,25 +4,16 @@ import { Provider } from 'react-redux';
 
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
-import Router from './Router';
 
 import './index.css';
 import './main.css';
 import 'bootstrap/dist/css/bootstrap.css'; 
+import App from './components/App/App';
 
-
-
-function Root({ children }) {
-    return <div id="App">
-        {children}
-    </div>;
-}
 
 ReactDOM.render(
     <Provider store={store}>
-        <Root>
-            <Router />
-        </Root>
+       <App />
     </Provider>
     ,document.getElementById('root'));
 registerServiceWorker();

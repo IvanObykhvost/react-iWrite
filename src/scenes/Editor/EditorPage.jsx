@@ -11,7 +11,6 @@ export default class EditorPage extends Component {
     render() {
         return (
             <div className="postNew">
-                <Header />               
                 <EditorContainer postId = { this.props.match.params.id }/>               
             </div>
         )

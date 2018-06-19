@@ -5,10 +5,10 @@ import HomePage from './scenes/Home/HomePage';
 import EditorPage from './scenes/Editor/EditorPage';
 
 export default function Router() {
-    return <BrowserRouter>
-        <Switch>
-            <Route exact path="/" component={HomePage} />           
-            <Route path="/editor/:id?" component={EditorPage}/> 
-        </Switch>
-    </BrowserRouter>;
+    return (<Switch>
+                <Route exact path="/" component={HomePage} />           
+                <Route path="/editor/:id?" component={EditorPage}/> 
+            </Switch>
+    )
+    
 }
