@@ -2,14 +2,28 @@
 import { BrowserRouter} from 'react-router-dom';
 import Router from '../../Router';
 import Header from '../Header/Header';
+import { connect } from 'react-redux';
 
-export default function App() {
-    return (
-        <BrowserRouter>
-            <div className='App'>
-                <Header />
-                <Router />
-            </div>
-        </BrowserRouter>
-    )
+const mapStateToProps = state => {
+    return {
+        currentUser: state.common.currentUser,
+    }
+};
+
+class App extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <BrowserRouter>
+                <div className='App'>
+                    <Header currentUser={this.props.currentUser} />
+                    <Router />
+                </div>
+            </BrowserRouter>)
+    }
 }
+
+export default connect(mapStateToProps, null)(App);

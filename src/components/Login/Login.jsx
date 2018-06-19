@@ -33,13 +33,13 @@ class Login extends React.Component {
             <div>
                 <h1>Sign In</h1>
                 <p>
-                    <Link to="/register">
+                    <Link to="/register/">
                         Register
                     </Link>
                 </p>
                 <form onSubmit={e => this.submit(e)}>
-                    <input name="email" placeholder="Title" value={this.state.title} onChange={e => this.change(e)} /><br />
-                    <input name="password" placeholder="Topic" value={this.state.topic} onChange={e => this.change(e)} /><br />               
+                    <input name="email" placeholder="Email" value={this.state.title} onChange={e => this.change(e)} /><br />
+                    <input name="password" placeholder="Password" value={this.state.topic} onChange={e => this.change(e)} /><br />               
                     <button type="submit">
                         Login
                     </button>
