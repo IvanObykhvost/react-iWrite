@@ -9,9 +9,13 @@ export default function ButtonNav({ link, children, icon }) {
         <Link to={link}
             className='button-nav'
         >
-            <MuiThemeProvider>
-                {icon}
-            </MuiThemeProvider>
+            {
+                icon ?
+                <MuiThemeProvider>
+                    {icon}
+                </MuiThemeProvider>
+                : null
+            }
             {children}
         </Link>
  
