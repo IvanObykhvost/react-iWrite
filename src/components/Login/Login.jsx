@@ -1,15 +1,11 @@
-﻿import { Link } from 'react-router-dom';
-//import ListErrors from './ListErrors';
+﻿import { Link,Redirect } from 'react-router-dom';
 import React from 'react';
 import { connect } from 'react-redux';
-/*import {
-    LOGIN
-} from '../constants/actionTypes';*/
-
-
+import { login } from '../../actions/auth';
+import PropTypes from 'prop-types';
 class Login extends React.Component {
-    constructor() {
-        super();   
+    constructor(props) {
+        super(props);   
         this.state = {
             email: '',
             password: ''
@@ -24,11 +20,17 @@ class Login extends React.Component {
 
     submit = e => {
         e.preventDefault();
-        //this.props.onSubmit(this.state);
+        this.props.onSubmit(this.state);
     }
     
 
-    render() {        
+    render() {
+        
+        const { currentUser } = this.props.common;
+        if (currentUser) {
+            return <Redirect to='/' />;
+        }
+
         return (
             <div>
                 <h1>Sign In</h1>
@@ -37,10 +39,18 @@ class Login extends React.Component {
                         Register
                     </Link>
                 </p>
+                {
+                    this.props.error ?
+                    <p>
+                            {this.props.auth.error}
+                    </p>
+                    : null
+                }
                 <form onSubmit={e => this.submit(e)}>
                     <input name="email" placeholder="Email" value={this.state.title} onChange={e => this.change(e)} /><br />
                     <input name="password" placeholder="Password" value={this.state.topic} onChange={e => this.change(e)} /><br />               
-                    <button type="submit">
+                    <button type="submit"
+                        disabled={this.props.auth.inProgress}>                    
                         Login
                     </button>
                 </form>
@@ -49,4 +59,19 @@ class Login extends React.Component {
     }
 }
 
-export default connect()(Login);
+const mapStateToProps = ({ auth, common }) => ({
+    auth,
+    common
+});
+
+const mapDispatchToProps = dispatch => ({
+    onSubmit: ({ email, password }) =>
+        dispatch(login(email, password)),
+});
+
+Login.propTypes = {
+    auth: PropTypes.object.isRequired,
+    common: PropTypes.object.isRequired
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

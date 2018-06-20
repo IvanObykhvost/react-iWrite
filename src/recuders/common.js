@@ -1,13 +1,30 @@
-﻿//import { EDITOR } from '../constant/constant';
+﻿import { AUTH,APP } from '../constant/constant';
 
 const initialState = {
-    currentUser: null
-   // currentUser: {email: "kolyatri@gmail.com"}
+    currentUser: null,
+    inProgress: true
 }
 
 export default function (state = initialState, action) {
     
-    switch (action.type) {        
+    switch (action.type) {
+        case APP.APP_LOAD_REQUEST:
+            return {
+                ...state,
+            }
+
+        case APP.APP_LOAD_RESPONSE:
+            return {
+                ...state,
+                inProgress: false,
+                currentUser: action.response.user ? action.response.user  :  null
+            }
+
+        case AUTH.LOGIN_RESPONSE:    
+            return {
+                ...state,
+                currentUser: action.response.error ? null : action.response.user
+            }
 
         default:
             return state;
