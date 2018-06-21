@@ -19,8 +19,9 @@ export default function HeaderNav({ currentUser }) {
         return (
             <div className='header-nav' >
                 <ButtonNav link={'/'} icon={<HomeIcon/>}>Home</ButtonNav>
-                <ButtonNav link={'/editor'} icon={<QueueIcon/>}>New post</ButtonNav>
+                <ButtonNav link={'/editor/'} icon={<QueueIcon/>}>New post</ButtonNav>
                 {/*<ButtonNav link={'/editor/1'}>Edit post</ButtonNav>*/}
+                <ButtonNav link={'/settings/'} icon={<SettingIcon />}>Settings</ButtonNav>
             </div >
         )
     }

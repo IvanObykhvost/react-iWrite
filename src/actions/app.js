@@ -27,12 +27,16 @@ function asyncAppLoadRequest(token) {
         setTimeout(() => {            
             resolve(
                 {
-                    /*user: {
-                        token: "sdfsdf",
-                        name: "",
-                        bio: "",
-                        date: ""
-                    }*/
+                    user: {
+                        id: 20,
+                        email: "kolyatri@gmail.com",
+                        createdAt: "20180-6-21",
+                        updatedAt: "20180-6-21",
+                        token: "sdfsdfsdfasdfabsdfgsdfgbsd",
+                        name: "kolyatri",
+                        bio: "the happiest boy in the world",
+                        image: ""
+                    }
                 })
         }, 2000);
     })

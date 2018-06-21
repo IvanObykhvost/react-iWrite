@@ -1,4 +1,4 @@
-﻿import { AUTH,APP } from '../constant/constant';
+﻿import { APP, AUTH, SETTINGS } from '../constant/constant';
 
 const initialState = {
     currentUser: null,
@@ -20,7 +20,8 @@ export default function (state = initialState, action) {
                 currentUser: action.response.user ? action.response.user  :  null
             }
  
-        case AUTH.AUTH_RESPONSE:    
+        case AUTH.AUTH_RESPONSE:
+        case SETTINGS.SETTINGS_RESPONSE:
             return {
                 ...state,
                 currentUser: action.response.error ? null : action.response.user

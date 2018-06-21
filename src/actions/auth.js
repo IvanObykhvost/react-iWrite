@@ -1,4 +1,4 @@
-﻿import { AUTH, LOGIN_REQUEST } from '../constant/constant';
+﻿import { AUTH } from '../constant/constant';
 
 export function authRequest() {    
     return {
@@ -29,23 +29,33 @@ function asyncAuth(/*email, password*/data) {
                 //register
                 resolve(
                 {
-                    user: {
-                        token: "sdfsdf",
-                        name: "",
-                        bio: "",
-                        date: ""
-                    },                      
+                        user: {
+                            id: 20,
+                            email: "kolyatri@gmail.com",
+                            createdAt: "20180-6-21",
+                            updatedAt: "20180-6-21",
+                            token: "sdfsdfsdfasdfabsdfgsdfgbsd",                    
+                            name: "kolyatri",
+                            bio: "the happiest boy in the world",
+                            image: ""                
+                    },         
+                    //error: "register error"
                 })
                 :
                 //login
                 resolve(
                     {
                         user: {
-                            token: "sdfsdf",
-                            name: "",
-                            bio: "",
-                            date: ""
-                        },                    
+                            id: 20,
+                            email: "kolyatri@gmail.com",
+                            createdAt: "20180-6-21",
+                            updatedAt: "20180-6-21",
+                            token: "sdfsdfsdfasdfabsdfgsdfgbsd",
+                            name: "kolyatri",
+                            bio: "the happiest boy in the world",
+                            image: ""       
+                        },       
+                        //error: "login error"
                     })
 
         }, 2000);
