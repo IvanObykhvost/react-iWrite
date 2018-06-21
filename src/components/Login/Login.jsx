@@ -1,11 +1,14 @@
 ﻿import { Link,Redirect } from 'react-router-dom';
 import React from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions/auth';
+import { auth } from '../../actions/auth';
 import PropTypes from 'prop-types';
-class Login extends React.Component {
-    constructor(props) {
+
+class Login extends React.Component {   
+    constructor(props) {       
+        //super(error, currentUser, inProgress, onSubmit);   
         super(props);   
+
         this.state = {
             email: '',
             password: ''
@@ -19,14 +22,15 @@ class Login extends React.Component {
     }
 
     submit = e => {
-        e.preventDefault();
+        e.preventDefault();       
         this.props.onSubmit(this.state);
-    }
-    
+    }    
 
-    render() {
-        
-        const { currentUser } = this.props.common;
+    render() {                
+        const currentUser = this.props.currentUser;
+        const error = this.props.error;
+        const inProgress = this.props.inProgress;
+
         if (currentUser) {
             return <Redirect to='/' />;
         }
@@ -39,18 +43,18 @@ class Login extends React.Component {
                         Register
                     </Link>
                 </p>
-                {
-                    this.props.error ?
+                {                   
+                    error ?
                     <p>
-                            {this.props.auth.error}
+                            {error}
                     </p>
                     : null
                 }
                 <form onSubmit={e => this.submit(e)}>
-                    <input name="email" placeholder="Email" value={this.state.title} onChange={e => this.change(e)} /><br />
-                    <input name="password" placeholder="Password" value={this.state.topic} onChange={e => this.change(e)} /><br />               
+                    <input name="email" placeholder="Email" value={this.state.email} onChange={e => this.change(e)} /><br />
+                    <input name="password" placeholder="Password" value={this.state.password} onChange={e => this.change(e)} /><br />               
                     <button type="submit"
-                        disabled={this.props.auth.inProgress}>                    
+                        disabled={inProgress}>                    
                         Login
                     </button>
                 </form>
@@ -59,19 +63,22 @@ class Login extends React.Component {
     }
 }
 
-const mapStateToProps = ({ auth, common }) => ({
-    auth,
-    common
+const mapStateToProps = ({ auth: { error, inProgress }, common: { currentUser } }) => ({
+    error,
+    currentUser,
+    inProgress
 });
 
 const mapDispatchToProps = dispatch => ({
-    onSubmit: ({ email, password }) =>
-        dispatch(login(email, password)),
+    onSubmit: (state) =>
+        dispatch(auth(state)),
 });
 
 Login.propTypes = {
-    auth: PropTypes.object.isRequired,
-    common: PropTypes.object.isRequired
+    error: PropTypes.string,
+    currentUser: PropTypes.object,
+    inProgress: PropTypes.bool,
+    onSubmit: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

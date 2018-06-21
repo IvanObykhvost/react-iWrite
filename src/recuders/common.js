@@ -19,8 +19,8 @@ export default function (state = initialState, action) {
                 inProgress: false,
                 currentUser: action.response.user ? action.response.user  :  null
             }
-
-        case AUTH.LOGIN_RESPONSE:    
+ 
+        case AUTH.AUTH_RESPONSE:    
             return {
                 ...state,
                 currentUser: action.response.error ? null : action.response.user

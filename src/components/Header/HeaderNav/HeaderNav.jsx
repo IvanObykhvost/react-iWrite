@@ -4,9 +4,8 @@ import HomeIcon from 'material-ui/svg-icons/action/home';
 import QueueIcon from 'material-ui/svg-icons/av/queue';
 import SettingIcon from 'material-ui/svg-icons/action/settings';
 
-export default function HeaderNav(props) {
-    console.log(props.currentUser);
-    if (!props.currentUser) {
+export default function HeaderNav({ currentUser }) {    
+    if (!currentUser) {
         return (
             <div className='header-nav' >
                 <ButtonNav link={'/'} icon={<HomeIcon/>}>Home</ButtonNav>

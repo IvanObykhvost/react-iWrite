@@ -1,46 +1,53 @@
-﻿import { AUTH } from '../constant/constant';
+﻿import { AUTH, LOGIN_REQUEST } from '../constant/constant';
 
-export function loginRequest() {
+export function authRequest() {    
     return {
-        type: AUTH.LOGIN_REQUEST        
+        type: AUTH.AUTH_REQUEST, 
     }
 }
 
-export function loginResponse(response) {
+export function authResponse(response) {
     return {
-        type: AUTH.LOGIN_RESPONSE,
-        response
+        type: AUTH.AUTH_RESPONSE,
+        response,
     }
 }
 
-export function login(email,password) {
+export function auth(data) {
     return dispatch => {
-        dispatch(loginRequest())
-        return asyncLoginRequest(email, password)
+        dispatch(authRequest())
+        return asyncAuth(data)
             .then(response => setTokenInCookie(response))
-            .then(response => dispatch(loginResponse(response)))
+            .then(response => dispatch(authResponse(response)))
     }
 }
 
-export function register(auth) {
-    return {
-        type: AUTH.REGISTER
-    }
-}
-
-function asyncLoginRequest(login,password) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(() => {            
-            resolve(
+function asyncAuth(/*email, password*/data) {
+    return new Promise(function(resolve, reject) {
+        setTimeout(() => {
+            data.username ?     
+                //register
+                resolve(
                 {
                     user: {
                         token: "sdfsdf",
                         name: "",
                         bio: "",
                         date: ""
-                    }
-                    //error: "invalid email or password"
+                    },                      
                 })
+                :
+                //login
+                resolve(
+                    {
+                        user: {
+                            token: "sdfsdf",
+                            name: "",
+                            bio: "",
+                            date: ""
+                        },                    
+                    })
+
         }, 2000);
     })
 }
