@@ -26,7 +26,7 @@ function asyncSettings(data) {
         setTimeout(() => {          
                 resolve(
                     {
-                        /*user: {
+                        user: {
                             id: 20,
                             email: "kolyatri@gmail.com",
                             createdAt: "20180-6-21",
@@ -35,8 +35,8 @@ function asyncSettings(data) {
                             name: "kolyatri",
                             bio: "the happiest BOY in the world",
                             image: ""
-                        },*/
-                        error: "email already taken"
+                        },
+                        //error: "email already taken"
                     })          
         }, 2000);
     })

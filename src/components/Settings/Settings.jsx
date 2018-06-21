@@ -25,36 +25,41 @@ class Settings extends React.Component {
     render() {
         const { error, success, inProgress, currentUser } = this.props;
 
-        return (
-            <div>
-                <h1>Your settings</h1>               
-                {
-                    error ?
-                        <p style={{ 'color': 'red' }}>
-                            {error}
-                        </p>
-                        : null
-                }
-                {
-                    success ?
-                        <p style={{ 'color': 'green' }}>
-                            {success}
-                        </p>
-                        : null
-                }
-                <form onSubmit={e => this.submit(e)}>
-                    <input name="image" placeholder="Image Url" value={this.state.image} onChange={e => this.change(e)} /><br />
-                    <input name="name" placeholder="Username" value={this.state.name} onChange={e => this.change(e)} /><br />
-                    <input name="email" placeholder="Email" value={this.state.email} onChange={e => this.change(e)} /><br />
-                    <input name="bio" placeholder="Biography " value={this.state.bio} onChange={e => this.change(e)} /><br />
-                    <input name="password" placeholder="New password" value={this.state.password} onChange={e => this.change(e)} /><br />
-                    <button type="submit"
-                        disabled={inProgress}>
-                        Update Settings
+        if (!currentUser) {
+            return <Redirect to='/' />;
+        }
+        else {
+            return (
+                <div>
+                    <h1>Your settings</h1>
+                    {
+                        error ?
+                            <p style={{ 'color': 'red' }}>
+                                {error}
+                            </p>
+                            : null
+                    }
+                    {
+                        success ?
+                            <p style={{ 'color': 'green' }}>
+                                {success}
+                            </p>
+                            : null
+                    }
+                    <form onSubmit={e => this.submit(e)}>
+                        <input name="image" placeholder="Image Url" value={this.state.image} onChange={e => this.change(e)} /><br />
+                        <input name="name" placeholder="Username" value={this.state.name} onChange={e => this.change(e)} /><br />
+                        <input name="email" placeholder="Email" value={this.state.email} onChange={e => this.change(e)} /><br />
+                        <input name="bio" placeholder="Biography " value={this.state.bio} onChange={e => this.change(e)} /><br />
+                        <input name="password" placeholder="New password" value={this.state.password} onChange={e => this.change(e)} /><br />
+                        <button type="submit"
+                            disabled={inProgress}>
+                            Update Settings
                     </button>
-                </form>
-            </div>
-        );
+                    </form>
+                </div>
+            );
+        }
     }
 }
 
