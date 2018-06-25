@@ -1,4 +1,4 @@
-﻿import { EDITOR } from '../constant/constant';
+﻿import { POSTS } from '../constant/constant';
 
 const initialState = [
     {
@@ -9,26 +9,17 @@ const initialState = [
     },
     {
         id: 3, title: 'Title 3', topic: 'Topic 3', tags: ['Tag 3'], message: 'Message 3'
-    },
-
+    },    
 ]
 
-export default function (state = initialState, action) {
-    console.log(action);
+export default function(state = initialState, action) {
+    //console.log(action);
     switch (action.type) {
-        case EDITOR.POST_ADD:
+        case POSTS.POSTS_REQUEST:
             return [
                 ...state,
                 action.post
             ]
-
-        case EDITOR.POST_UPDATE:
-            return state.map(post =>
-                (post.id === action.post.id)
-                    ? action.post
-                    : post
-            )
-
         default:
             return state;
     }

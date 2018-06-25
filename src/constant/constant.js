@@ -10,6 +10,11 @@ export const AUTH_RESPONSE = "AUTH_RESPONSE"
 export const SETTINGS_REQUEST = "SETTINGS_REQUEST"
 export const SETTINGS_RESPONSE = "SETTINGS_RESPONSE"
 
+export const PROFILE_REQUEST = "PROFILE_REQUEST"
+export const PROFILE_RESPONSE = "PROFILE_RESPONSE"
+
+export const POSTS_REQUEST = "POSTS_REQUEST"
+export const POSTS_RESPONSE = "POSTS_RESPONSE"
 
 export const EDITOR = {
     POST_ADD,
@@ -29,4 +34,14 @@ export const APP = {
 export const SETTINGS = {
     SETTINGS_REQUEST,
     SETTINGS_RESPONSE
+}
+
+export const PROFILE = {
+    PROFILE_REQUEST,
+    PROFILE_RESPONSE
+}
+
+export const POSTS = {
+    POSTS_REQUEST,
+    POSTS_RESPONSE
 }
