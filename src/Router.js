@@ -5,6 +5,7 @@ import HomePage from './scenes/Home/HomePage';
 import EditorPage from './scenes/Editor/EditorPage';
 import LoginPage from './scenes/Login/LoginPage';
 import RegisterPage from './scenes/Register/RegisterPage';
+import SettingsPage from './scenes/Settings/SettingsPage';
 
 export default function Router() {
     return (<Switch>
@@ -12,6 +13,7 @@ export default function Router() {
                 <Route path="/editor/:id?" component={EditorPage}/> 
                 <Route path="/login/" component={LoginPage} /> 
                 <Route path="/register/" component={RegisterPage} /> 
+                <Route path="/settings/" component={SettingsPage} /> 
             </Switch>
     )
     

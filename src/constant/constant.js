@@ -7,6 +7,8 @@ export const APP_LOAD_RESPONSE = "APP_LOAD_RESPONSE"
 export const AUTH_REQUEST = "AUTH_REQUEST"
 export const AUTH_RESPONSE = "AUTH_RESPONSE"
 
+export const SETTINGS_REQUEST = "SETTINGS_REQUEST"
+export const SETTINGS_RESPONSE = "SETTINGS_RESPONSE"
 
 
 export const EDITOR = {
@@ -22,4 +24,9 @@ export const AUTH = {
 export const APP = {
     APP_LOAD_REQUEST,
     APP_LOAD_RESPONSE
+}
+
+export const SETTINGS = {
+    SETTINGS_REQUEST,
+    SETTINGS_RESPONSE
 }
