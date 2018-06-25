@@ -1,4 +1,5 @@
 ﻿import { AUTH, LOGIN_REQUEST } from '../constant/constant';
+import api from "../api";
 
 export function authRequest() {    
     return {
@@ -15,41 +16,12 @@ export function authResponse(response) {
 
 export function auth(data) {
     return dispatch => {
-        dispatch(authRequest())
-        return asyncAuth(data)
+        dispatch(authRequest());
+
+        return api.Auth.login(data.email, data.password)
             .then(response => setTokenInCookie(response))
             .then(response => dispatch(authResponse(response)))
     }
-}
-
-function asyncAuth(/*email, password*/data) {
-    return new Promise(function(resolve, reject) {
-        setTimeout(() => {
-            data.username ?     
-                //register
-                resolve(
-                {
-                    user: {
-                        token: "sdfsdf",
-                        name: "",
-                        bio: "",
-                        date: ""
-                    },                      
-                })
-                :
-                //login
-                resolve(
-                    {
-                        user: {
-                            token: "sdfsdf",
-                            name: "",
-                            bio: "",
-                            date: ""
-                        },                    
-                    })
-
-        }, 2000);
-    })
 }
 
 function setTokenInCookie(response) {
