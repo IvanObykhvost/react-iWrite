@@ -1,38 +1,49 @@
 ﻿import axios from 'axios';
+import qs from 'qs';
 
-const api = axios.create({
-    baseURL: 'http://localhost:52755/api'
+let api = axios.create({
+    baseURL: 'http://127.0.0.1:4081/api'
 });
+
+
+
+const encode = encodeURIComponent;
+const responseBody = res => res.body;
+const responseData = res => res.data;
 
 let token = null;
 const tokenPlugin = req => {
-    if (token) {
-        req.set('authorization', `Token ${token}`);
-    }
+  if (token) {
+    req.set('authorization', `Token ${token}`);
+  }
 }
 
+var config = {
+    headers: {'authorization': window.localStorage.getItem('jwt')}
+};
+
 const requests = {
-    del: url =>
-        superagent.del(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
+    // del: url =>
+    //   superagent.del(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
     get: url =>
-        superagent.get(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
+        api.get(url, config).then(responseData),
     put: (url, body) =>
-        superagent.put(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
+        api.put(url, body).then(responseData),
     post: (url, body) =>
-        superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody)
-};
-
-const Auth = {
+        api.post(url, qs.stringify(body)).then(responseData)
+  };
+  
+  const Auth = {
     current: () =>
-        requests.get('/user'),
-    login: (email, password) =>
-        requests.post('/users/login', { user: { email, password } }),
-    register: (username, email, password) =>
-        requests.post('/users', { user: { username, email, password } }),
+      requests.get('/user'),
+    login: (email, password) => 
+        requests.post('/login', { email, password }),
+    register: (name, email, password) =>
+        requests.post('/register', { name, email, password }),
     save: user =>
-        requests.put('/user', { user })
-};
+      requests.put('/user', { user })
+  };
 
-
-
-export default api;
+export default {
+    Auth 
+}
