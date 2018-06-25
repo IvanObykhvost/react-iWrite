@@ -1,4 +1,5 @@
 ﻿import { APP } from '../constant/constant';
+import api from "../api";
 
 export function appLoadRequest() {
     return {
@@ -16,6 +17,7 @@ export function appLoadResponse(response) {
 export function appLoad(token) {
     return dispatch => {
         dispatch(appLoadRequest())
+        //return api.Auth.current()
         return asyncAppLoadRequest(token)
             .then( response => setTokenInCookie(response))
             .then( response => dispatch(appLoadResponse(response)))            
@@ -27,16 +29,16 @@ function asyncAppLoadRequest(token) {
         setTimeout(() => {            
             resolve(
                 {
-                    user: {
-                        id: 20,
-                        email: "kolyatri@gmail.com",
-                        createdAt: "20180-6-21",
-                        updatedAt: "20180-6-21",
-                        token: "sdfsdfsdfasdfabsdfgsdfgbsd",
-                        name: "kolyatri",
-                        bio: "the happiest boy in the world",
-                        image: ""
-                    }
+                    // user: {
+                    //     id: 20,
+                    //     email: "kolyatri@gmail.com",
+                    //     createdAt: "20180-6-21",
+                    //     updatedAt: "20180-6-21",
+                    //     token: "sdfsdfsdfasdfabsdfgsdfgbsd",
+                    //     name: "kolyatri",
+                    //     bio: "the happiest boy in the world",
+                    //     image: ""
+                    // }
                 })
         }, 2000);
     })

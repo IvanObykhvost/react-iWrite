@@ -18,13 +18,17 @@ const tokenPlugin = req => {
   }
 }
 
+var config = {
+    headers: {'authorization': window.localStorage.getItem('jwt')}
+};
+
 const requests = {
     // del: url =>
     //   superagent.del(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
     get: url =>
-        api.get(url).then(responseBody),
-    // put: (url, body) =>
-    //   superagent.put(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
+        api.get(url, config).then(responseData),
+    put: (url, body) =>
+        api.put(url, body).then(responseData),
     post: (url, body) =>
         api.post(url, qs.stringify(body)).then(responseData)
   };
@@ -34,10 +38,10 @@ const requests = {
       requests.get('/user'),
     login: (email, password) => 
         requests.post('/login', { email, password }),
-    register: (username, email, password) =>
-        requests.post('/register', { username, email, password }),
-    // save: user =>
-    //   requests.put('/user', { user })
+    register: (name, email, password) =>
+        requests.post('/register', { name, email, password }),
+    save: user =>
+      requests.put('/user', { user })
   };
 
 export default {
