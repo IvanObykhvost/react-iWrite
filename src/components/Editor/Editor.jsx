@@ -19,6 +19,10 @@ export default class Editor extends React.Component {
         this.props.onSubmit(this.state);
     }
 
+    //componentWillMount(){
+    //    this.props.onLoad();
+    //}
+
     render() {
         if (this.props.post === undefined) {
             return <Redirect to='/error' />

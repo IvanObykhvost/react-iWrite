@@ -21,17 +21,19 @@ const mapStateToProps = (state, ownProps) => ({
     post: getPost(state.posts, ownProps.postId), 
 })
 
-const mapDispatchToProps = function (dispath, ownProps) {
+const mapDispatchToProps = function (dispatch, ownProps) {
     //add
     if (typeof ownProps.postId == "undefined") {
         return {
-            onSubmit: post => dispath(postAdd(post))
+            onSubmit: post => dispatch(postAdd(post)),
+            //onLoad: () => { }
         }
     }
     //update
     else {
         return {
-            onSubmit: post => dispath(postUpdate(post))
+            onSubmit: post => dispatch(postUpdate(post)),
+            //onLoad: () => dispatch(postLoad(ownProps.postId))
         }
     }
 } 

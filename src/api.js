@@ -1,5 +1,6 @@
 ﻿import axios from 'axios';
 import qs from 'qs';
+import { auth } from './actions/auth';
 
 let api = axios.create({
     baseURL: 'http://127.0.0.1:4081/api'
@@ -18,8 +19,10 @@ const tokenPlugin = req => {
   }
 }
 
-var config = {
-    headers: {'authorization': window.localStorage.getItem('jwt')}
+const config =  {
+    headers: {
+        'authorization': window.localStorage.getItem('jwt')
+    }
 };
 
 const requests = {
@@ -28,9 +31,9 @@ const requests = {
     get: url =>
         api.get(url, config).then(responseData),
     put: (url, body) =>
-        api.put(url, body).then(responseData),
+        api.put(url, body, config).then(responseData),
     post: (url, body) =>
-        api.post(url, qs.stringify(body)).then(responseData)
+        api.post(url, qs.stringify(body), config).then(responseData)
   };
   
 const Auth = {
@@ -46,7 +49,18 @@ const Auth = {
 
 const Posts = {
     create: post => 
-        requests.post('/post', post)
+        requests.post('/post', post),
+    get: id => 
+        requests.get(`/post/${id}`),
+    all: () => 
+        requests.get('/posts'),
+    byAuthor: (username) =>
+        requests.get(`/api/post/${username}`)
+}
+
+const Profile = {
+    get: username => 
+        requests.get(`/profile/${username}`)
 }
 
 export default {
