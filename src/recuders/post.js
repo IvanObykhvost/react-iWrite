@@ -1,23 +1,26 @@
-﻿import { EDITOR } from '../constant/constant';
+﻿import { POST } from '../constant/constant';
 
-const initialState = {}  
-
+const initialState = {
+    inProgress: false,
+    error: null
+}
 
 export default function (state = initialState, action) {
     console.log(action);
     switch (action.type) {
-        case EDITOR.POST_ADD:
-            return [
+        case POST.POST_REQUEST:
+            return {
                 ...state,
-                action.post
-            ]
+                inProgress: true,
+                error: null
+            }
 
-        case EDITOR.POST_UPDATE:
-            return state.map(post =>
-                (post.id === action.post.id)
-                    ? action.post
-                    : post
-            )
+        case POST.POST_RESPONSE:
+            return {
+                ...state,
+                inProgress: false,
+                error: action.response.error ? action.response.error : null
+            }
 
         default:
             return state;

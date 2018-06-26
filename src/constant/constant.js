@@ -3,6 +3,9 @@ export const EDITOR_RESPONSE = "EDITOR_RESPONSE"
 export const POST_ADD = "POST_ADD"
 export const POST_UPDATE = "POST_UPDATE"
 
+export const POST_REQUEST = "POST_REQUEST"
+export const POST_RESPONSE = "POST_RESPONSE"
+
 export const APP_LOAD_REQUEST = "APP_LOAD_REQUEST"
 export const APP_LOAD_RESPONSE = "APP_LOAD_RESPONSE"
 
@@ -17,6 +20,11 @@ export const PROFILE_RESPONSE = "PROFILE_RESPONSE"
 
 export const POSTS_REQUEST = "POSTS_REQUEST"
 export const POSTS_RESPONSE = "POSTS_RESPONSE"
+
+export const POST = {
+    POST_REQUEST,
+    POST_RESPONSE
+}
 
 
 export const EDITOR = {
