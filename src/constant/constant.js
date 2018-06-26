@@ -16,6 +16,18 @@ export const PROFILE_RESPONSE = "PROFILE_RESPONSE"
 export const POSTS_REQUEST = "POSTS_REQUEST"
 export const POSTS_RESPONSE = "POSTS_RESPONSE"
 
+//POSTS ASYNCH  REQUEST TYPES:
+export const ALL = "ALL"
+export const FOLLOW = "FOLLOW"
+export const FAVOURITE = "FAVOURITE"
+
+//POSTS ASYNCH REQUEST TYPES:
+export const POSTS_REQUEST_TYPES = {
+    ALL,
+    FOLLOW,
+    FAVOURITE
+}
+
 export const EDITOR = {
     POST_ADD,
     POST_UPDATE
