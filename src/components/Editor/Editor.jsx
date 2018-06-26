@@ -1,12 +1,7 @@
 ﻿import React from 'react';
-import { connect } from 'react-redux';
-import { postAdd, postUpdate } from '../../actions/editor';
-import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom'
 
-
-
-//export function PostNew ({ dispatch }){
 export default class Editor extends React.Component {
     constructor(props) {
         super(props);      
@@ -25,15 +20,14 @@ export default class Editor extends React.Component {
     }
 
     render() {
-        if (typeof this.props.post == "undefined") {
-            return (
-                <div>DID NOT FIND SUCH POST</div>
-            );
+        if (this.props.post === undefined) {
+            return <Redirect to='/error' />
         }
-
         else {
             return (
                 <div>
+                    {
+                    }
                     <form onSubmit={e => this.submit(e)}>
                         <input name="title" placeholder="Title" value={this.state.title} onChange={e => this.change(e)}/><br />
                         <input name="topic" placeholder="Topic" value={this.state.topic} onChange={e => this.change(e)} /><br />

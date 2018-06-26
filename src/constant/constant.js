@@ -1,4 +1,6 @@
-﻿export const POST_ADD = "POST_ADD"
+﻿export const EDITOR_REQUEST = "EDITOR_REQUEST"
+export const EDITOR_RESPONSE = "EDITOR_RESPONSE"
+export const POST_ADD = "POST_ADD"
 export const POST_UPDATE = "POST_UPDATE"
 
 export const APP_LOAD_REQUEST = "APP_LOAD_REQUEST"
@@ -16,14 +18,17 @@ export const PROFILE_RESPONSE = "PROFILE_RESPONSE"
 export const POSTS_REQUEST = "POSTS_REQUEST"
 export const POSTS_RESPONSE = "POSTS_RESPONSE"
 
+
 export const EDITOR = {
     POST_ADD,
-    POST_UPDATE
+    POST_UPDATE,
+    EDITOR_REQUEST,
+    EDITOR_RESPONSE
 }
 
 export const AUTH = {
     AUTH_REQUEST,
-    AUTH_RESPONSE,
+    AUTH_RESPONSE
 }
 
 export const APP = {

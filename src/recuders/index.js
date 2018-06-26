@@ -6,6 +6,7 @@ import common from './common';
 import auth from './auth';
 import settings from './settings';
 import profile from './profile';
+import editor from './editor';
 
 export default combineReducers({
     post, 
@@ -14,5 +15,6 @@ export default combineReducers({
     common,
     auth,
     settings,
-    profile
+    profile,
+    editor
 });
