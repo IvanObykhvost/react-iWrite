@@ -29,16 +29,16 @@ function asyncAppLoadRequest(token) {
         setTimeout(() => {            
             resolve(
                 {
-                    // user: {
-                    //     id: 20,
-                    //     email: "kolyatri@gmail.com",
-                    //     createdAt: "20180-6-21",
-                    //     updatedAt: "20180-6-21",
-                    //     token: "sdfsdfsdfasdfabsdfgsdfgbsd",
-                    //     name: "kolyatri",
-                    //     bio: "the happiest boy in the world",
-                    //     image: "https://www.google.com.ua/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjb87j3sufbAhXE1qQKHWzwCWsQjRx6BAgBEAU&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fcat%2F&psig=AOvVaw3TJP40sVhL9XqfZhuz_wxS&ust=1529761263794345"
-                    // }
+                    user: {
+                        id: 20,
+                        email: "kolyatri@gmail.com",
+                        createdAt: "20180-6-21",
+                        updatedAt: "20180-6-21",
+                        token: "sdfsdfsdfasdfabsdfgsdfgbsd",
+                        name: "kolyatri",
+                        bio: "the happiest boy in the world",
+                        image: "https://www.google.com.ua/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjb87j3sufbAhXE1qQKHWzwCWsQjRx6BAgBEAU&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fcat%2F&psig=AOvVaw3TJP40sVhL9XqfZhuz_wxS&ust=1529761263794345"
+                    }
                 })
         }, 2000);
     })

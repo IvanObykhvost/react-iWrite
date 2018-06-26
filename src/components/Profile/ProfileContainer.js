@@ -1,22 +1,8 @@
 ﻿import { connect } from 'react-redux';
 import { profileLoad } from '../../actions/profile';
-import { postsLoad  } from '../../actions/posts';
+import { postsGetByUsername  } from '../../actions/posts';
 import Profile from './Profile';
-
-
-/*const getPost = (posts, postId) => {
-    if (typeof postId == "undefined") {
-        return {
-            id: posts.length + 1,
-            title: '',
-            topic: '',
-            message: '',
-            tags: ''
-        }
-    } else {
-        return posts.find(post => post.id == postId)
-    }
-}*/
+import { POSTS_REQUEST_TYPES } from '../../constant/constant';
 
 const mapStateToProps = (state, props) => ({
     currentUser: state.common.currentUser,
@@ -25,21 +11,23 @@ const mapStateToProps = (state, props) => ({
     tabList: [
         { id: 0, title: "My Articles",  active: true},
         { id: 1, title: "Favorited Articles", active: false },
-    ]
+    ],
+    posts: state.posts
 })
 
 const mapDispatchToProps = (dispatch, props)  => ({
     onLoad: () => {        
         dispatch(profileLoad({ username: props.username }));
-        //dispatch(postsLoad({ username: props.username }));
+        dispatch(postsGetByUsername(props.username, POSTS_REQUEST_TYPES.ALL));
     },
     onTabClick: (id) => {
         //My Articles
         if (id == 0) {
-            dispatch(postsLoad({ username: props.username }));
+            dispatch(postsGetByUsername(props.username, POSTS_REQUEST_TYPES.ALL));
         }
+        //Favourite Atricles
         else {
-            dispatch(postsLoad({ username: props.username }));
+            dispatch(postsGetByUsername(props.username, POSTS_REQUEST_TYPES.FAVOURITE));
         }
     }
     //onUnload: () => dispatch(profilePageUnload())

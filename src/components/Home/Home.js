@@ -1,22 +1,44 @@
 ﻿import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import HomeSidebar from './HomeSidebar/HomeSidebar';
-import HomeFeed from './HomeFeed/HomeFeed';
+import TabList from '../common/TabList';
+import PostList from '../common/PostList';
+import Sidebar from '../common/Sidebar';
+import PropTypes from 'prop-types';
 
-export default function Home({ posts }) {
-    return (
-        <div className="homePage">
-            <div className='container'>
-                <Row className='show-grid'>                    
-                        <Col md={9}>
-                        <HomeFeed posts={posts} />
-                    </Col>
-                        <Col md={3}>
-                            <HomeSidebar tags={[]} />
-                        </Col>                    
-                </Row>
+export default class Home extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentWillMount() {
+        this.props.onLoad();
+    }
+
+    render() {
+        const tabList = this.props.tabList;
+        const posts = this.props.posts;
+        const onTabClick = this.props.onTabClick;
+
+        return (
+            <div className="container page">
+                <div className="row">
+                    <div className="col-md-9">
+                        <div className="feed-toggle">
+                            <TabList tabList={tabList} onTabClick={onTabClick} />                            
+                        </div>
+                        <PostList posts={posts} />
+                    </div>
+                    <Sidebar/>
+               </div>
             </div>
-        </div>
-    );
+        );
+    }
+}
+
+Home.propTypes = {   
+    tabList: PropTypes.object.isRequired,
+    posts: PropTypes.object.isRequired,
+    onLoad: PropTypes.func.isRequired,
+    onTabClick: PropTypes.func.isRequired,
 }
 

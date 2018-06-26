@@ -24,6 +24,7 @@ export function auth(data) {
             response = api.Auth.register(data.username, data.email, data.password);
         else 
             response = api.Auth.login(data.email, data.password);
+
         response
             .then(response => setTokenInCookie(response))
             .then(response => dispatch(authResponse(response)))

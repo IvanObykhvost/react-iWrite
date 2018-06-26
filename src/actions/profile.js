@@ -27,7 +27,7 @@ function asyncProfile(data) {
         setTimeout(() => {
             resolve(
                 {
-                    profile: {
+                    user: {
                         id: 20,
                         email: "kolyatri@gmail.com",
                         createdAt: "20180-6-21",
@@ -35,7 +35,7 @@ function asyncProfile(data) {
                         token: "sdfsdfsdfasdfabsdfgsdfgbsd",
                         name: "kolyatri",
                         bio: "the happiest BOY in the world",
-                        image: ""
+                        image: "https://visualhunt.com/photos/2/portrait-of-beautiful-cat-with-blue-eyes.jpg?s=l"
                     },
                     //error: "no user with such email"
                 })

@@ -1,7 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
-//import HomeSidebar from './HomeSidebar/HomeSidebar';
-//import HomeFeed from './HomeFeed/HomeFeed';
+import PropTypes from 'prop-types';
 
 export default class TabList extends React.Component {
     constructor(props) {
@@ -10,10 +9,7 @@ export default class TabList extends React.Component {
         this.state = {
             tabList: [ ...props.tabList ]
         }
-    }
-
-   
-
+    }   
     handleTabClick = id => {
         const updatedState = this.state.tabList.map(function (tab, index) {
             if (index == id) {
@@ -41,14 +37,16 @@ export default class TabList extends React.Component {
         })        
 
         return (
-            <div class="container">
+            <div>
                 <ul className="nav nav-tabs">
                     {tabList}
                 </ul>
             </div>
         );
     }
+}
 
-    
-    
+TabList.propTypes = {
+    tabList: PropTypes.object.isRequired,
+    onTabClick: PropTypes.func.isRequired
 }
