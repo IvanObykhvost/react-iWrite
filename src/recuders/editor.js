@@ -1,4 +1,4 @@
-﻿import { POST } from '../constant/constant';
+import { EDITOR } from '../constant/constant';
 
 const initialState = {
     inProgress: false,
@@ -6,16 +6,15 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
-    console.log(action);
     switch (action.type) {
-        case POST.POST_REQUEST:
+        case EDITOR.EDITOR_REQUEST:
             return {
                 ...state,
                 inProgress: true,
                 error: null
             }
 
-        case POST.POST_RESPONSE:
+        case EDITOR.EDITOR_RESPONSE:
             return {
                 ...state,
                 inProgress: false,

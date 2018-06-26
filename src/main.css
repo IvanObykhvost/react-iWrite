@@ -97,10 +97,9 @@ div.fade.in {
 
 .tag-list {
     list-style: none;
-    display: inline-block;
+    display: block;
     padding-left: 0px;
     float: right;
-    vertical-align: top;
 }
 
 .tag-list > li {
@@ -110,4 +109,21 @@ div.fade.in {
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 0px 10px;
+}
+
+.banner {
+    height: 150px;
+    background-color: #444;
+    padding: 2rem 0 2rem 0;
+}
+
+.banner-container,
+.post-container {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.banner-container>h2 {
+    color: white;
 }

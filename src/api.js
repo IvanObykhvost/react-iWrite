@@ -33,7 +33,7 @@ const requests = {
         api.post(url, qs.stringify(body)).then(responseData)
   };
   
-  const Auth = {
+const Auth = {
     current: () =>
       requests.get('/user'),
     login: (email, password) => 
@@ -44,6 +44,12 @@ const requests = {
       requests.put('/user', { user })
   };
 
+const Posts = {
+    create: post => 
+        requests.post('/post', post)
+}
+
 export default {
-    Auth 
+    Auth,
+    Posts 
 }

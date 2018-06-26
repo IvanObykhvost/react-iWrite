@@ -7,7 +7,6 @@ import PropTypes from 'prop-types'
 const getPost = (posts, postId) => {
     if (typeof postId == "undefined") {      
         return {
-            id: posts.length + 1,
             title: '',
             topic: '',
             message: '',

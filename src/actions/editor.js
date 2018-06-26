@@ -1,15 +1,31 @@
 ﻿import { EDITOR } from '../constant/constant';
+import api from "../api";
+
+export function editorRequest() {
+    return {
+        type: EDITOR.EDITOR_REQUEST,
+    }
+}
+
+export function editorResponse(response) {
+    return {
+        type: EDITOR.EDITOR_RESPONSE,
+        response
+    }
+}
 
 export function postAdd(post) {
-    return {
-        type: EDITOR.POST_ADD,
-        post
+    return dispatch => {
+        dispatch(editorRequest());
+        return api.Posts.create(post)
+            .then(response => dispatch(editorResponse(response)))
     }
 }
 
 export function postUpdate(post) {
-    return {
-        type: EDITOR.POST_UPDATE,
-        post
+    return dispatch => {
+        dispatch(editorRequest());
+        return api.Posts.create(post)
+            .then(response => dispatch(editorResponse(response)))
     }
 }
