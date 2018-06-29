@@ -1,5 +1,5 @@
 ﻿import { connect } from 'react-redux';
-import { editorPost, editor, editorEmptyPostInitialize, editorPostChange } from '../../actions/editor';
+import { editorPost, editorEmptyPostInitialize, editorPostChange, editor, editorUnload } from '../../actions/editor';
 import Editor from './Editor';
 import { EDITOR_REQUEST_TYPES } from '../../constant/constant';
 
@@ -17,7 +17,7 @@ const mapDispatchToProps = function (dispatch, props) {
         result = {
            // onChange: (key, value) => dispatch(editorPostChange(key,value)),
             onSubmit: post => dispatch(editor(post, EDITOR_REQUEST_TYPES.UPDATE)),
-            onLoad: () => dispatch(editorPost(props.postId))
+            onLoad: () => dispatch(editorPost(props.postId)),            
         }
     }
     //add
@@ -29,7 +29,11 @@ const mapDispatchToProps = function (dispatch, props) {
         }
     }  
 
-    return result = { ...result, onChange: (key, value) => dispatch(editorPostChange(key, value)) }
+    return result = {
+        ...result,
+        onChange: (key, value) => dispatch(editorPostChange(key, value)),
+        onUnload: () => dispatch(editorUnload())
+    }
 } 
 
 export default connect(

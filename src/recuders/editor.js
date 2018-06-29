@@ -62,6 +62,16 @@ export default function (state = initialState, action) {
                 editorSuccess: action.response.error ? false : true
             }
 
+        case EDITOR.EDITOR_UNLOAD:
+            return {
+                post: null,
+                postError: null,
+
+                editorInProgress: false,
+                editorError: null,
+                editorSuccess: false
+            }
+
         default:
             return state;
     }

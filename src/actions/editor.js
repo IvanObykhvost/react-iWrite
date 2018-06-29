@@ -131,3 +131,9 @@ function asyncEdit(post) {
         }, 2000);
     })
 }
+
+export function editorUnload() {
+    return {
+        type: EDITOR.EDITOR_UNLOAD
+    }
+}

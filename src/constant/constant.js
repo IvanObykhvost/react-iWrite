@@ -1,10 +1,12 @@
-﻿export const EDITOR_REQUEST = "EDITOR_REQUEST"
-export const EDITOR_RESPONSE = "EDITOR_RESPONSE"
+﻿export const EMPTY_POST_INITIALIZE = "EMPTY_POST_INITIALIZE"
 export const EDITOR_POST_REQUEST = "EDITOR_POST_REQUEST"
 export const EDITOR_POST_RESPONSE = "EDITOR_POST_RESPONSE"
-
-export const EMPTY_POST_INITIALIZE = "EMPTY_POST_INITIALIZE"
 export const EDITOR_POST_CHANGE = "EDITOR_POST_CHANGE"
+export const EDITOR_REQUEST = "EDITOR_REQUEST"
+export const EDITOR_RESPONSE = "EDITOR_RESPONSE"
+export const EDITOR_UNLOAD = "EDITOR_UNLOAD"
+
+
 
 export const POST_REQUEST = "POST_REQUEST"
 export const POST_RESPONSE = "POST_RESPONSE"
@@ -42,8 +44,12 @@ export const EDITOR = {
     //use it when post field is updated on form 
     EDITOR_POST_CHANGE,
 
+    //use when press form submit
     EDITOR_REQUEST,
-    EDITOR_RESPONSE,   
+    EDITOR_RESPONSE,
+
+    //use when leave the editor page
+    EDITOR_UNLOAD
 }
 
 //EDITOR ASYNCH  REQUEST TYPES:

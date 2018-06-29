@@ -20,6 +20,10 @@ export default class Editor extends React.Component {
         this.props.onLoad();
     }
 
+    componentWillUnmount() {
+        this.props.onUnload();
+    }
+
     render() {
         const postId = this.props.postId;
         const { post, postError, editorInProgress, editorError, editorSuccess } = this.props.editor;       
@@ -70,5 +74,6 @@ Editor.propTypes = {
     editor: PropTypes.object,
     onLoad: PropTypes.func,
     onChange: PropTypes.func,
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
+    onUnload: PropTypes.func
 }
