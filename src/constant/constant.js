@@ -1,7 +1,10 @@
 ﻿export const EDITOR_REQUEST = "EDITOR_REQUEST"
 export const EDITOR_RESPONSE = "EDITOR_RESPONSE"
-export const POST_ADD = "POST_ADD"
-export const POST_UPDATE = "POST_UPDATE"
+export const EDITOR_POST_REQUEST = "EDITOR_POST_REQUEST"
+export const EDITOR_POST_RESPONSE = "EDITOR_POST_RESPONSE"
+
+export const EMPTY_POST_INITIALIZE = "EMPTY_POST_INITIALIZE"
+export const EDITOR_POST_CHANGE = "EDITOR_POST_CHANGE"
 
 export const POST_REQUEST = "POST_REQUEST"
 export const POST_RESPONSE = "POST_RESPONSE"
@@ -26,24 +29,33 @@ export const POST = {
     POST_RESPONSE
 }
 
-//POSTS ASYNCH  REQUEST TYPES:
-export const ALL = "ALL"
-export const FOLLOW = "FOLLOW"
-export const FAVOURITE = "FAVOURITE"
-
-//POSTS ASYNCH REQUEST TYPES:
-export const POSTS_REQUEST_TYPES = {
-    ALL,
-    FOLLOW,
-    FAVOURITE
-}
+/*--------------------------EDITOR---------*/
 
 export const EDITOR = {
-    POST_ADD,
-    POST_UPDATE,
+    //need it when post ADD
+    EMPTY_POST_INITIALIZE,   
+
+    //use them when post UPDATE
+    EDITOR_POST_REQUEST,
+    EDITOR_POST_RESPONSE,
+
+    //use it when post field is updated on form 
+    EDITOR_POST_CHANGE,
+
     EDITOR_REQUEST,
-    EDITOR_RESPONSE
+    EDITOR_RESPONSE,   
 }
+
+//EDITOR ASYNCH  REQUEST TYPES:
+export const ADD = "ADD"
+export const UPDATE = "UPDATE"
+
+//EDITOR ASYNCH REQUEST TYPES:
+export const EDITOR_REQUEST_TYPES = {
+    ADD,
+    UPDATE
+}
+
 
 export const AUTH = {
     AUTH_REQUEST,
@@ -65,7 +77,23 @@ export const PROFILE = {
     PROFILE_RESPONSE
 }
 
+//--------------------------POSTS---------------------------------
+
 export const POSTS = {
     POSTS_REQUEST,
     POSTS_RESPONSE
 }
+
+//POSTS ASYNCH  REQUEST TYPES:
+export const ALL = "ALL"
+export const FOLLOW = "FOLLOW"
+export const FAVOURITE = "FAVOURITE"
+
+//POSTS ASYNCH REQUEST TYPES:
+export const POSTS_REQUEST_TYPES = {
+    ALL,
+    FOLLOW,
+    FAVOURITE
+}
+
+
