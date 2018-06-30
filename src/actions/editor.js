@@ -68,7 +68,7 @@ function asyncEditorPost(id) {
 
 
 
-
+//is used when form is submitted 
 export function editorRequest() {
     return {
         type: EDITOR.EDITOR_REQUEST,
