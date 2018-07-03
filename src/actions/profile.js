@@ -33,7 +33,8 @@ function asyncProfile(data) {
                         createdAt: "20180-6-21",
                         updatedAt: "20180-6-21",
                         token: "sdfsdfsdfasdfabsdfgsdfgbsd",
-                        name: "kolyatri",
+                        name: "ivan_obyhvost",
+                        //name: "kolyatri",
                         bio: "the happiest BOY in the world",
                         image: "https://visualhunt.com/photos/2/portrait-of-beautiful-cat-with-blue-eyes.jpg?s=l"
                     },

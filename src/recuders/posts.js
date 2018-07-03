@@ -32,7 +32,7 @@ export default function(state = initialState, action) {
                 ...state,
                 //inProgress: false,
                 error: action.response.error ? action.response.error : null,
-                posts: action.response.error ? null : action.response.posts,
+                posts: action.response.error ? null : action.response,
             }
         default:
             return state;

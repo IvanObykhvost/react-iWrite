@@ -16,6 +16,7 @@ export function settingsResponse(response) {
 export function settings(data) {
     return dispatch => {
         dispatch(settingsRequest())
+        
         return asyncSettings(data)
             .then(response => dispatch(settingsResponse(response)))
     }

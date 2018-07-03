@@ -9,7 +9,6 @@ let api = axios.create({
 
 
 const encode = encodeURIComponent;
-const responseBody = res => res.body;
 const responseData = res => res.data;
 
 let token = null;
@@ -55,7 +54,7 @@ const Posts = {
     all: () => 
         requests.get('/posts'),
     byAuthor: (username) =>
-        requests.get(`/api/post/${username}`)
+        requests.get(`/posts?author=${encode(username)}`)
 }
 
 const Profile = {

@@ -1,4 +1,5 @@
 ﻿import { POSTS, POSTS_REQUEST_TYPES } from '../constant/constant';
+import api from "../api";
 
 export function postsRequest() {
     return {
@@ -16,7 +17,7 @@ export function postsResponse(response) {
 export function postsGetAll() {
     return dispatch => {
         dispatch(postsRequest())
-        return asyncPosts({})
+        return api.Posts.all()
             .then(response => dispatch(postsResponse(response)))
     }
 }
@@ -30,13 +31,17 @@ export function postsGetByUsername(username, type) {
 
         switch (type) {
             case POSTS_REQUEST_TYPES.ALL:
-                response = asyncPosts(username)
+                // response = asyncPosts(username)
+                response = api.Posts.byAuthor(username);
+                break;
 
             case POSTS_REQUEST_TYPES.FOLLOW:
                 response = asyncPosts(username)
+                break;
 
             case POSTS_REQUEST_TYPES.FAVOURITE:
                 response = asyncPosts(username)
+                break;
 
             default:
                 response = asyncPosts(username)
@@ -86,8 +91,9 @@ export function postsGetFavouriteByUsername(username) {
 function asyncPosts(username) {
     return new Promise(function(resolve, reject) {
         setTimeout(() => {
-            resolve({
-                    posts: [
+            resolve(
+                    //posts: 
+                    [
                         {
                             id: 1, title: 'Title 1', topic: 'Topic 1', tags: ['Tag 1'], message: 'Message 1'
                         },
@@ -98,7 +104,7 @@ function asyncPosts(username) {
                             id: 3, title: 'Title 3', topic: 'Topic 3', tags: ['Tag 3'], message: 'Message 3'
                         },
                     ]
-                }
+                
                 //{ error: "Server error, sorry" }
             )
         }, 2000);
