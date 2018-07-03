@@ -13,8 +13,9 @@ import LogoutPage from './scenes/Logout/LogoutPage';
 
 export default function Router() {
     return (<Switch>
-                <Route exact path="/" component={HomePage} />           
-                <Route path="/editor/:id?" component={EditorPage}/> 
+                <Route exact path="/" component={HomePage} />      
+                <Route path="/editor/:id?" component={EditorPage} /> 
+                <Route path="/editor" component={EditorPage} />               
                 <Route path="/post/:id?" component={PostPage}/> 
                 <Route path="/login/" component={LoginPage} /> 
                 <Route path="/register/" component={RegisterPage} /> 
