@@ -10,30 +10,39 @@ export default class TabList extends React.Component {
             tabList: [ ...props.tabList ]
         }
     }   
+
     handleTabClick = id => {
-        const updatedState = this.state.tabList.map(function (tab, index) {
-            if (index == id) {
-                tab.active = true;
-            }
-            else {
-                tab.active = false;
-            }
+        //is clicked tab already selected?
+        const selectedTab = this.state.tabList.find(function (tab) { return tab.id === id; });
+        if (selectedTab.active) {
+            return
+        }
+        //is clicked tab NOT selected
+        else {
+            const updatedState = this.state.tabList.map(function (tab, index) {
+                if (index == id) {
+                    tab.active = true;
+                }
+                else {
+                    tab.active = false;
+                }
 
-            return tab;
-        })
+                return tab;
+            })
 
-        this.setState({
-            tabList: updatedState
-        })
+            this.setState({
+                tabList: updatedState
+            })
 
-        this.props.onTabClick(id);
+            this.props.onTabClick(id);
+        }
     }
 
 
     render() {     
         let _this = this;
         const tabList = this.state.tabList.map( tab => {
-            return <li onClick={e => _this.handleTabClick(tab.id)} class={tab.active? "active" : null}>{tab.title}</li>;
+            return <li key={tab.id} onClick={e => _this.handleTabClick(tab.id)} className={tab.active? "active" : null}>{tab.title}</li>;
         })        
 
         return (
@@ -47,6 +56,6 @@ export default class TabList extends React.Component {
 }
 
 TabList.propTypes = {
-    tabList: PropTypes.object.isRequired,
+    tabList: PropTypes.array.isRequired,
     onTabClick: PropTypes.func.isRequired
 }

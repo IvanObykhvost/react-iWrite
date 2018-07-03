@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 class Login extends React.Component {   
     constructor(props) {       
-        //super(error, currentUser, inProgress, onSubmit);   
         super(props);   
 
         this.state = {

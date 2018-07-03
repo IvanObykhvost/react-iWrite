@@ -33,7 +33,7 @@ export default class PostList extends React.Component {
             }
             else {
                 const postList = posts.map(post => {                  
-                    return <Post post={post}/>
+                    return <Post key={post.id} post={post}/>
                 })              
 
                 return (

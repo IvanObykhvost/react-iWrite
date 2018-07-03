@@ -4,21 +4,22 @@ import TabList from '../common/TabList';
 import PostList from '../common/PostList';
 import Sidebar from '../common/Sidebar';
 import PropTypes from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
 
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
     }
-
-    componentWillMount() {
+    
+    componentDidMount() {    
         this.props.onLoad();
-    }
+    }          
 
     render() {
         const tabList = this.props.tabList;
         const posts = this.props.posts;
-        const onTabClick = this.props.onTabClick;
-
+        const onTabClick = this.props.onTabClick;        
+        
         return (
             <div className="container page">
                 <div className="row">
@@ -36,7 +37,7 @@ export default class Home extends React.Component {
 }
 
 Home.propTypes = {   
-    tabList: PropTypes.object.isRequired,
+    tabList: PropTypes.array.isRequired,
     posts: PropTypes.object.isRequired,
     onLoad: PropTypes.func.isRequired,
     onTabClick: PropTypes.func.isRequired,

@@ -21,6 +21,7 @@ export default function (state = initialState, action) {
                 inProgress: false,
                 error: action.response.error ? action.response.error : null
             }
+
         default:
             return state;
     }

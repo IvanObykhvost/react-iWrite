@@ -27,6 +27,12 @@ export default function (state = initialState, action) {
                 currentUser: action.response.error ? null : action.response.user
             }
 
+        case "LOGOUT":
+            return {
+                ...state,
+                currentUser: null
+            }
+
         default:
             return state;
     }

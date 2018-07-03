@@ -1,5 +1,4 @@
 ﻿import React, { Component } from 'react';
-import Header from '../../components/Header/Header';
 //import Editor from '../../components/Editor/Editor';
 import EditorContainer from '../../components/Editor/EditorContainer';
 

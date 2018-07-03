@@ -4,7 +4,9 @@ import Router from '../../Router';
 import Header from '../Header/Header';
 import { connect } from 'react-redux';
 import { appLoad } from '../../actions/app';
+import { logout } from '../../actions/auth';
 import PropTypes from 'prop-types';
+
 class App extends React.Component{
     constructor(props) {
         super(props);
@@ -15,7 +17,7 @@ class App extends React.Component{
         this.props.onLoad(token ?  token : null);
     }
 
-    render() {
+    render() {        
         if (this.props.inProgress == true) {
             return <div>Приложение загружается, подождите пожалуйста</div>;                                
         }
@@ -23,7 +25,7 @@ class App extends React.Component{
             return (
                 <BrowserRouter>
                     <div className='App'>                               
-                        <Header currentUser={this.props.currentUser} />
+                        <Header currentUser={this.props.currentUser} onLogout={this.props.onLogout}/>
                         <Router />
                     </div>
                 </BrowserRouter>)
@@ -40,12 +42,18 @@ const mapStateToProps = ({ common: { currentUser, inProgress }}) => {
 
 const mapDispatchToProps = dispatch => ({
     onLoad: (token) =>
-         dispatch(appLoad(token)),
+        dispatch(appLoad(token)),
+    onLogout: () => {
+        window.localStorage.removeItem('jwt')
+        dispatch(logout());
+    }
 });
 
 App.propTypes = {
     currentUser: PropTypes.object,   
     inProgress: PropTypes.bool.isRequired,   
+    onLoad: PropTypes.func.isRequired,   
+    onLogout: PropTypes.func.isRequired,   
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

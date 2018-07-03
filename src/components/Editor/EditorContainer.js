@@ -1,40 +1,38 @@
-﻿import { connect } from 'react-redux'
-import { postAdd, postUpdate } from '../../actions/editor'
-import Editor from './Editor'
-import PropTypes from 'prop-types'
+﻿import { connect } from 'react-redux';
+import { editorPost, editorEmptyPostInitialize, editorPostChange, editor, editorUnload } from '../../actions/editor';
+import Editor from './Editor';
+import { EDITOR_REQUEST_TYPES } from '../../constant/constant';
 
 
-const getPost = (posts, postId) => {
-    if (typeof postId == "undefined") {      
-        return {
-            title: '',
-            topic: '',
-            message: '',
-            tags: ''
-        }
-    } else {              
-        return posts.find( post => post.id == postId)
-    }
-}
-
-const mapStateToProps = (state, ownProps) => ({
-    post: getPost(state.posts, ownProps.postId), 
+const mapStateToProps = (state, props) => ({
+    postId: props.postId,
+    editor: state.editor, 
 })
 
-const mapDispatchToProps = function (dispatch, ownProps) {
-    //add
-    if (typeof ownProps.postId == "undefined") {
-        return {
-            onSubmit: post => dispatch(postAdd(post)),
-            //onLoad: () => { }
+const mapDispatchToProps = function (dispatch, props) {
+    let result = {};
+
+    //update
+    if (props.postId) {
+        result = {
+           // onChange: (key, value) => dispatch(editorPostChange(key,value)),
+            onSubmit: post => dispatch(editor(post, EDITOR_REQUEST_TYPES.UPDATE)),
+            onLoad: () => dispatch(editorPost(props.postId)),            
         }
     }
-    //update
-    else {
-        return {
-            onSubmit: post => dispatch(postUpdate(post)),
-            //onLoad: () => dispatch(postLoad(ownProps.postId))
+    //add
+    else  {
+        result = {
+            //onChange: (key, value) => dispatch(editorPostChange(key, value)),
+            onSubmit: post => dispatch(editor(post, EDITOR_REQUEST_TYPES.ADD)),
+            onLoad: () => dispatch(editorEmptyPostInitialize())
         }
+    }  
+
+    return result = {
+        ...result,
+        onChange: (key, value) => dispatch(editorPostChange(key, value)),
+        onUnload: () => dispatch(editorUnload())
     }
 } 
 

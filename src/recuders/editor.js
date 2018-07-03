@@ -1,8 +1,12 @@
 import { EDITOR } from '../constant/constant';
 
-const initialState = {
-    inProgress: false,
-    error: null
+const initialState = {   
+    post: null,   
+    postError: null,
+
+    editorInProgress: false,
+    editorError: null,
+    editorSuccess: false
 }
 
 export default function (state = initialState, action) {
@@ -45,15 +49,26 @@ export default function (state = initialState, action) {
         case EDITOR.EDITOR_REQUEST:
             return {
                 ...state,
-                inProgress: true,
-                error: null
+                editorInProgress: true,
+                editorError: null
             }
 
         case EDITOR.EDITOR_RESPONSE:
             return {
                 ...state,
-                inProgress: false,
-                error: action.response.error ? action.response.error : null
+                editorInProgress: false,
+                editorError: action.response.error ? action.response.error : null,
+                editorSuccess: action.response.error ? false : true
+            }
+
+        case EDITOR.EDITOR_UNLOAD:
+            return {
+                post: null,
+                postError: null,
+
+                editorInProgress: false,
+                editorError: null,
+                editorSuccess: false
             }
 
         default:
