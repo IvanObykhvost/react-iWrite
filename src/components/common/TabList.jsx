@@ -41,7 +41,7 @@ export default class TabList extends React.Component {
     render() {     
         let _this = this;
         const tabList = this.state.tabList.map( tab => {
-            return <li onClick={e => _this.handleTabClick(tab.id)} class={tab.active? "active" : null}>{tab.title}</li>;
+            return <li key={tab.id} onClick={e => _this.handleTabClick(tab.id)} className={tab.active? "active" : null}>{tab.title}</li>;
         })        
 
         return (
@@ -55,6 +55,6 @@ export default class TabList extends React.Component {
 }
 
 TabList.propTypes = {
-    tabList: PropTypes.object.isRequired,
+    tabList: PropTypes.array.isRequired,
     onTabClick: PropTypes.func.isRequired
 }

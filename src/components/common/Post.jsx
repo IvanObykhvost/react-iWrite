@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function Post({ post }) {
     return (
-        <div className='feed-post-preview'>
+        <div  className='feed-post-preview'>
             <Link to={'/editor/' + post.id}>
                 <h5>{post.title}</h5>
                 <p>{post.topic}</p>

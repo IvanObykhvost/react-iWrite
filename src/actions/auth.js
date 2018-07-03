@@ -14,6 +14,12 @@ export function authResponse(response) {
     }
 }
 
+export function logout() {
+    return {
+        type: AUTH.LOGOUT
+    }
+}
+
 export function auth(data) {
     return dispatch => {
         dispatch(authRequest());

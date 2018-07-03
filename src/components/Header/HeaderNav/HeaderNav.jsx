@@ -4,8 +4,9 @@ import HomeIcon from 'material-ui/svg-icons/action/home';
 import QueueIcon from 'material-ui/svg-icons/av/queue';
 import SettingIcon from 'material-ui/svg-icons/action/settings';
 import ProfileIcon from 'material-ui/svg-icons/action/account-box';
+import PropTypes from 'prop-types';
 
-export default function HeaderNav({ currentUser }) {    
+export default function HeaderNav({ currentUser, onLogout }) {    
     if (!currentUser) {
         return (
             <div className='header-nav' >
@@ -24,7 +25,13 @@ export default function HeaderNav({ currentUser }) {
                 {/*<ButtonNav link={'/editor/1'}>Edit post</ButtonNav>*/}
                 <ButtonNav link={'/settings/'} icon={<SettingIcon />}>Settings</ButtonNav>
                 <ButtonNav link={'/@' + currentUser.name} icon={<ProfileIcon />}>{currentUser.name}</ButtonNav>
+                <ButtonNav link={'/logout/'} onLogout={onLogout}>Logout</ButtonNav>                
             </div>
         )
     }
+}
+
+HeaderNav.propTypes = {
+    currentUser: PropTypes.object,
+    onLogout: PropTypes.func.isRequired
 }

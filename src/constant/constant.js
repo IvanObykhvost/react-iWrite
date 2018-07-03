@@ -15,6 +15,7 @@ export const APP_LOAD_RESPONSE = "APP_LOAD_RESPONSE"
 
 export const AUTH_REQUEST = "AUTH_REQUEST"
 export const AUTH_RESPONSE = "AUTH_RESPONSE"
+export const LOGOUT = "LOGOUT"
 
 export const SETTINGS_REQUEST = "SETTINGS_REQUEST"
 export const SETTINGS_RESPONSE = "SETTINGS_RESPONSE"
@@ -72,7 +73,8 @@ export const EDITOR_REQUEST_TYPES = {
 
 export const AUTH = {
     AUTH_REQUEST,
-    AUTH_RESPONSE
+    AUTH_RESPONSE,
+    LOGOUT
 }
 
 export const APP = {
