@@ -13,7 +13,8 @@ export default class TabList extends React.Component {
 
     handleTabClick = id => {
         //is clicked tab already selected?
-        if (this.state.tabList[id].active) {
+        const selectedTab = this.state.tabList.find(function (tab) { return tab.id === id; });
+        if (selectedTab.active) {
             return
         }
         //is clicked tab NOT selected
