@@ -3,8 +3,8 @@ import qs from 'qs';
 import { auth } from './actions/auth';
 
 let api = axios.create({
-    baseURL: 'http://10.10.1.220:4082/api'
-    // baseURL: 'http://10.10.1.220:4081/api'
+    //baseURL: 'http://10.10.1.220:4082/api'
+    baseURL: 'http://10.10.1.220:4081/api'
 });
 
 
@@ -26,8 +26,8 @@ const config =  {
 };
 
 const requests = {
-    // del: url =>
-    //   superagent.del(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
+    del: url =>
+        api.delete(url, config).then(responseData),
     get: url =>
         api.get(url, config).then(responseData),
     put: (url, body) =>
@@ -62,7 +62,11 @@ const Posts = {
 
 const Profile = {
     get: username => 
-        requests.get(`/profile/${username}`)
+        requests.get(`/profile/${username}`),
+    follow: username => 
+        requests.post(`/profile/${username}/follow`),
+    unfollow: username => 
+        requests.del(`/profile/${username}/unfollow`)
 }
 
 export default {

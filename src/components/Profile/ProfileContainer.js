@@ -36,14 +36,14 @@ const mapDispatchToProps = (dispatch, props)  => ({
         }
     },
     //onUnload: () => dispatch(profilePageUnload())
-    onFollowUser: (currentUser, user) => {       
+    onFollowUser: (user) => {       
         //trying to unfollow
         if (user.following) {
-            dispatch(followUser(currentUser.token, user, FOLLOW_USER.UNFOLLOW));
+            dispatch(followUser(user, FOLLOW_USER.UNFOLLOW));
         }
         //trying to follow
         else {
-            dispatch(followUser(currentUser.token, user, FOLLOW_USER.FOLLOW));
+            dispatch(followUser(user, FOLLOW_USER.FOLLOW));
         }
     },    
 })

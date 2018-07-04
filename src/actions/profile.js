@@ -23,31 +23,6 @@ export function profileLoad(username) {
     }
 }
 
-
-function asyncProfile(data) {
-    return new Promise(function(resolve, reject) {
-        setTimeout(() => {
-            resolve(
-                {
-                    user: {
-                        id: 20,
-                        email: "ivanobyhvost@gmail.com",
-                        createdAt: "20180-6-21",
-                        updatedAt: "20180-6-21",
-                        token: "sdfsdfsdfasdfabsdfgsdfgbsd",
-                        name: "ivan_obyhvost",
-                        //name: "kolyatri",
-                        bio: "the happiest BOY in the world",
-                        image: "https://visualhunt.com/photos/2/portrait-of-beautiful-cat-with-blue-eyes.jpg?s=l",
-                        following: false
-                    },
-                    //error: "no user with such email"
-                })
-        }, 2000);
-    })
-}
-
-
 //------------------------------------FOLLOW AND UNFOLLOW USER----------------------------------------
 
 export function followUserRequest() {
@@ -64,7 +39,7 @@ export function followUserResponse(response) {
 }
 
 //can be unfollow , depends on "type" param
-export function followUser(token, user, type) {
+export function followUser(user, type) {
     return dispatch => {
         dispatch(followUserRequest());
         let response = null;
@@ -72,25 +47,19 @@ export function followUser(token, user, type) {
         switch (type) {
             case FOLLOW_USER.FOLLOW:
                 //here should be asynch FOLLOW
-                //response = api.Posts.create(post)
-
-
-                response = asyncFollow(token, user)
+                response = api.Profile.follow(user.name);
+                break;
 
             case FOLLOW_USER.UNFOLLOW:
                 //here should be asynch update
                 //response = api.Posts.update(post)
-
-
-
-                response = asyncFollow(token, user)
+                response = api.Profile.unfollow(user.name);
+                break;
 
             default:
                 //here should be asynch add
                 //response = api.Posts.create(post)
-
-
-                response = asyncFollow(token, user)
+                response = asyncFollow(user)
         }
 
         response

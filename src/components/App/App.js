@@ -18,7 +18,7 @@ class App extends React.Component{
     }
 
     render() {        
-        if (this.props.inProgress == true) {
+        if (this.props.inProgress === true) {
             return <div>Приложение загружается, подождите пожалуйста</div>;                                
         }
         else {

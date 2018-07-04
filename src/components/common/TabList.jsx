@@ -1,5 +1,5 @@
-﻿import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+﻿import React from 'react';
+// import { Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 export default class TabList extends React.Component {
@@ -20,7 +20,7 @@ export default class TabList extends React.Component {
         //is clicked tab NOT selected
         else {
             const updatedState = this.state.tabList.map(function (tab, index) {
-                if (index == id) {
+                if (index === id) {
                     tab.active = true;
                 }
                 else {

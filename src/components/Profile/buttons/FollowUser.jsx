@@ -17,7 +17,7 @@ export default class FollowUser extends React.Component {
         return (
                 <button
                     className={classes}
-                    onClick={() => this.props.onFollowUser(currentUser, user) }
+                    onClick={() => this.props.onFollowUser(user) }
                 >
 
                     <i className="ion-plus-round"></i>
