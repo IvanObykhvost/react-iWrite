@@ -59,7 +59,7 @@ export default class Profile extends React.Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-xs-12 col-md-10 offset-md-1">
-                                    {/*<img src={profile.image} className="user-img" alt={profile.name} />*/}
+                                    <img src={profile.image} className="user-img" alt={profile.name} />
                                     <h4>{profile.name}</h4>
                                     <p>{profile.bio}</p>
                                     {

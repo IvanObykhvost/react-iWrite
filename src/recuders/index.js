@@ -1,4 +1,4 @@
-﻿import post from './post';
+﻿import article from './article';
 import posts from './posts';
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux'
@@ -9,7 +9,7 @@ import profile from './profile';
 import editor from './editor';
 
 export default combineReducers({
-    post, 
+    article, 
     posts,
     routing: routerReducer,
     common,

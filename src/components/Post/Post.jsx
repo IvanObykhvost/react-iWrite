@@ -6,13 +6,17 @@ export default class Editor extends React.Component {
         super(props);
     }
 
-    componentDidMount(){
+    componentWillMount(){
         // let id = 
-        // this.props.onLoad()
+        this.props.onLoad()
     }
 
     render() {
         let { post } = this.props;
+        if(!post){
+            return <div>Please wait, profile is loading...</div>
+        }
+
         return(
             <div className="post-view">
                 <div className='banner'>
