@@ -35,7 +35,13 @@ export const POSTS_REQUEST = "POSTS_REQUEST"
 export const POSTS_RESPONSE = "POSTS_RESPONSE"
 
 
+/*------POST FAVOURITING-----------*/
+//action type, shows for BOTH: favourited OR unfavourited
+export const POST_FAVOURITED = "POST_FAVOURITED"
 
+//for asynch mode: 
+export const UNFAVOURITE = "UNFAVOURITE"
+/*------POST FAVOURITING-----------*/
 
 export const ARTICLE = {
     ARTICLE_POST_REQUEST,
@@ -125,4 +131,13 @@ export const FOLLOW_USER = {
     UNFOLLOW
 }
 
+//is used for post favouriting process
+export const POST_FAVOURITING = {
+    //action type, shows for BOTH: favourited OR unfavourited
+    POST_FAVOURITED,
+
+    //asynch mode used in action for switch
+    UNFAVOURITE, 
+    FAVOURITE
+}
 

@@ -1,4 +1,4 @@
-﻿import { POSTS } from '../constant/constant';
+﻿import { POSTS, POST_FAVOURITED } from '../constant/constant';
 
 const initialState = {
     posts: null,
@@ -34,6 +34,30 @@ export default function(state = initialState, action) {
                 error: action.response.error ? action.response.error : null,
                 posts: action.response.error ? null : action.response,
             }
+
+        //is used for BOTH: favourite and unfavorite
+        case POST_FAVOURITED:       
+
+            if (action.response.error) {
+                return {
+                    ...state               
+                }
+            }
+            else {
+                let posts = state.posts.map((post) => {
+                    if (post.id == action.response.post.id) {
+                        return post = { ...action.response.post };
+                    }
+
+                    return post;
+                })
+
+                return {
+                    ...state,
+                    posts
+                }
+            }            
+
         default:
             return state;
     }
