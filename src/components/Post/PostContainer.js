@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { postAdd, postUpdate } from '../../actions/editor';
+import { postLoad } from '../../actions/post';
 import Post from './Post';
 
 
@@ -9,11 +9,15 @@ const getPost = (posts, postId) => {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    post: getPost(state.posts, ownProps.postId), 
+    //post: getPost(state.posts, ownProps.postId), 
 })
 
 
 export default connect(
     mapStateToProps,
-    null
+    (dispatch, props) => ({
+        onLoad: (id) => {     
+            dispatch(postLoad(id));
+        }
+    })
 )(Post)

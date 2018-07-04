@@ -6,6 +6,11 @@ export default class Editor extends React.Component {
         super(props);
     }
 
+    componentDidMount(){
+        // let id = 
+        // this.props.onLoad()
+    }
+
     render() {
         let { post } = this.props;
         return(

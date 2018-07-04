@@ -36,7 +36,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 postError: action.response.error ? action.response.error : null,
-                post: action.response.post
+                post: action.response
             }
 
         //when post field changed on post form

@@ -22,7 +22,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props)  => ({
     onLoad: () => {        
-        dispatch(profileLoad({ username: props.username }));
+        dispatch(profileLoad(props.username));
         dispatch(postsGetByUsername(props.username, POSTS_REQUEST_TYPES.ALL));
     },
     onTabClick: (id) => {

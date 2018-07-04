@@ -1,4 +1,5 @@
 ﻿import { PROFILE, FOLLOW_USER} from '../constant/constant';
+import api from "../api";
 
 export function profileRequest() {
     return {
@@ -15,8 +16,9 @@ export function profileResponse(response) {
 
 export function profileLoad(username) {
     return dispatch => {
-        dispatch(profileRequest())
-        return asyncProfile(username)
+        dispatch(profileRequest());
+
+        return api.Profile.get(username)
             .then(response => dispatch(profileResponse(response)))
     }
 }

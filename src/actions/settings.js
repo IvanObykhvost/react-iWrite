@@ -1,4 +1,5 @@
 ﻿import { SETTINGS } from '../constant/constant';
+import api from '../api';
 
 export function settingsRequest() {
     return {
@@ -17,28 +18,8 @@ export function settings(data) {
     return dispatch => {
         dispatch(settingsRequest())
         
-        return asyncSettings(data)
+        return api.Auth.save(data)
             .then(response => dispatch(settingsResponse(response)))
     }
 }
 
-function asyncSettings(data) {
-    return new Promise(function(resolve, reject) {
-        setTimeout(() => {          
-                resolve(
-                    {
-                        user: {
-                            id: 20,
-                            email: "kolyatri@gmail.com",
-                            createdAt: "20180-6-21",
-                            updatedAt: "20180-6-21",
-                            token: "sdfsdfsdfasdfabsdfgsdfgbsd",
-                            name: "kolyatri",
-                            bio: "the happiest BOY in the world",
-                            image: ""
-                        },
-                        //error: "email already taken"
-                    })          
-        }, 2000);
-    })
-}

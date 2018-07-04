@@ -3,7 +3,8 @@ import qs from 'qs';
 import { auth } from './actions/auth';
 
 let api = axios.create({
-    baseURL: 'http://127.0.0.1:4081/api'
+    // baseURL: 'http://10.10.1.220:4082/api'
+    baseURL: 'http://10.10.1.220:4081/api'
 });
 
 
@@ -49,6 +50,8 @@ const Auth = {
 const Posts = {
     create: post => 
         requests.post('/post', post),
+    update: post => 
+        requests.put(`/post/${post.id}`, post),
     get: id => 
         requests.get(`/post/${id}`),
     all: () => 
@@ -64,5 +67,6 @@ const Profile = {
 
 export default {
     Auth,
-    Posts 
+    Posts,
+    Profile 
 }

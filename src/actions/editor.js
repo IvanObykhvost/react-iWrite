@@ -29,7 +29,8 @@ export function editorPost(id) {
     return dispatch => {
         dispatch(editorPostRequest())
         
-        return asyncEditorPost(id)           
+        // return asyncEditorPost(id) 
+        return api.Posts.get(id)           
             .then(response => dispatch(editorPostResponse(response)))
     }    
 }
@@ -60,13 +61,6 @@ function asyncEditorPost(id) {
         }, 2000);
     })
 }
-
-
-
-
-
-
-
 
 //is used when form is submitted 
 export function editorRequest() {
@@ -99,8 +93,7 @@ export function editor(post, type) {
 
             case EDITOR_REQUEST_TYPES.UPDATE:
                 //here should be asynch update
-                //response = api.Posts.update(post)
-                response = asyncEdit(post);
+                response = api.Posts.update(post)
                 break;      
 
             default:
