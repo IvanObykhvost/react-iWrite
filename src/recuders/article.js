@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
                 ...state,
                 inProgress: false,
                 error: action.response.error ? action.response.error : null,
-                post: action.response ? action.response : null
+                post: action.response.post ? action.response.post : null
             }
 
         default:
