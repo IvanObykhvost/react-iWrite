@@ -20,8 +20,9 @@ class Post extends React.Component {
         return (
             <Row className='feed-post-preview'>
                 <Col md={10}>
-                    {author.name}
-
+                    <Link to={`/@${author.name}`}>
+                        {author.name}
+                    </Link>
                 </Col>
                 <Col md={10}>
                     {post.createdAt}
