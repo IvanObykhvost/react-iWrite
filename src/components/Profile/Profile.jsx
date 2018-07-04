@@ -11,8 +11,14 @@ export default class Profile extends React.Component {
         super(props);       
     }
     
-    componentWillMount() {   
+    componentDidMount() {
         this.props.onLoad();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.username !== this.props.username) {
+            this.props.onLoad();
+        }
     }
 
     render() {     

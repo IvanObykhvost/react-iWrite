@@ -3,7 +3,6 @@ import { editorPost, editorEmptyPostInitialize, editorPostChange, editor, editor
 import Editor from './Editor';
 import { EDITOR_REQUEST_TYPES } from '../../constant/constant';
 
-
 const mapStateToProps = (state, props) => ({
     postId: props.postId,
     editor: state.editor, 

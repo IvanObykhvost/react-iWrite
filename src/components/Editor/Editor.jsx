@@ -16,8 +16,14 @@ export default class Editor extends React.Component {
         this.props.onSubmit(post);
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.props.onLoad();
+    }    
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.postId !== this.props.postId) {
+            this.props.onLoad();
+        }        
     }
 
     componentWillUnmount() {
