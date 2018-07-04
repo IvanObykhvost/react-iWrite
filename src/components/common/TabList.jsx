@@ -38,6 +38,13 @@ export default class TabList extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (JSON.stringify(prevProps.tabList) !== JSON.stringify(this.props.tabList)) {        
+            this.setState({
+                tabList: [...this.props.tabList]
+            })
+        }
+    }
 
     render() {     
         let _this = this;

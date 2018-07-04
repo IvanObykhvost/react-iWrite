@@ -22,10 +22,9 @@ export default function HeaderNav({ currentUser, onLogout }) {
             <div className='header-nav' >
                 <ButtonNav link={'/'} icon={<HomeIcon/>}>Home</ButtonNav>
                 <ButtonNav link={'/editor/'} icon={<QueueIcon/>}>New post</ButtonNav>
-                {/*<ButtonNav link={'/editor/1'}>Edit post</ButtonNav>*/}
                 <ButtonNav link={'/settings/'} icon={<SettingIcon />}>Settings</ButtonNav>
-                <ButtonNav link={'/@' + currentUser.name} icon={<ProfileIcon />}>{currentUser.name}</ButtonNav>
-                <ButtonNav link={'/logout/'} onLogout={onLogout}>Logout</ButtonNav>                
+                <ButtonNav link={'/@' + currentUser.name} icon={<ProfileIcon />}>{currentUser.name}</ButtonNav> 
+                <ButtonNav link={'/'} onLogout={onLogout}>Logout</ButtonNav>         
             </div>
         )
     }

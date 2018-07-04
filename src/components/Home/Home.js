@@ -15,6 +15,12 @@ export default class Home extends React.Component {
         this.props.onLoad();
     }          
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.currentUser !== this.props.currentUser) {
+            this.props.onLoad();
+        }
+    }
+
     render() {
         const tabList = this.props.tabList;
         const posts = this.props.posts;
