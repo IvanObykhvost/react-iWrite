@@ -1,24 +1,24 @@
 import { ARTICLE } from '../constant/constant';
 import api from "../api";
 
-export function articleRequest() {
+export function articlePostRequest() {
     return {
-        type: ARTICLE.ARTICLE_REQUEST
+        type: ARTICLE.ARTICLE_POST_REQUEST
     }
 }
 
-export function articleResponse(response) {
+export function articlePostResponse(response) {
     return {
-        type: ARTICLE.ARTICLE_RESPONSE,
+        type: ARTICLE.ARTICLE_POST_RESPONSE,
         response
     }
 }
 
-export function articleLoad(id) {
+export function articlePost(id) {
     return dispatch => {
-        dispatch(articleRequest())
+        dispatch(articlePostRequest())
 
         return api.Posts.get(id)
-            .then(response => dispatch(articleResponse(response)))
+            .then(response => dispatch(articlePostResponse(response)))
     }
 }

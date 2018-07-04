@@ -1,28 +1,27 @@
 ﻿import { ARTICLE } from '../constant/constant';
 
 const initialState = {
-    inProgress: false,
-    error: null,
-    post: null
+    //inProgress: false,
+    post: null,
+    postError: null
 }
 
 export default function (state = initialState, action) {
-    console.log(action);
     switch (action.type) {
-        case ARTICLE.ARTICLE_REQUEST:
+        case ARTICLE.ARTICLE_POST_REQUEST:
             return {
                 ...state,
-                inProgress: true,
-                error: null,
+                //inProgress: true,
+                postError: null,
                 post: null
             }
 
-        case ARTICLE.ARTICLE_RESPONSE:
+        case ARTICLE.ARTICLE_POST_RESPONSE:
             return {
                 ...state,
-                inProgress: false,
-                error: action.response.error ? action.response.error : null,
-                post: action.response ? action.response : null
+                //inProgress: false,
+                postError: action.response.error ? action.response.error : null,
+                post: action.response.post ? action.response.post : null
             }
 
         default:

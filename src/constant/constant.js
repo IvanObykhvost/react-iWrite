@@ -7,8 +7,8 @@ export const EDITOR_RESPONSE = "EDITOR_RESPONSE"
 export const EDITOR_UNLOAD = "EDITOR_UNLOAD"
 
 
-export const ARTICLE_REQUEST = "ARTICLE_REQUEST"
-export const ARTICLE_RESPONSE = "ARTICLE_RESPONSE"
+export const ARTICLE_POST_REQUEST = "ARTICLE_POST_REQUEST"
+export const ARTICLE_POST_RESPONSE = "ARTICLE_POST_RESPONSE"
 
 export const APP_LOAD_REQUEST = "APP_LOAD_REQUEST"
 export const APP_LOAD_RESPONSE = "APP_LOAD_RESPONSE"
@@ -34,9 +34,12 @@ export const UNFOLLOW = "UNFOLLOW"
 export const POSTS_REQUEST = "POSTS_REQUEST"
 export const POSTS_RESPONSE = "POSTS_RESPONSE"
 
+
+
+
 export const ARTICLE = {
-    ARTICLE_REQUEST,
-    ARTICLE_RESPONSE
+    ARTICLE_POST_REQUEST,
+    ARTICLE_POST_RESPONSE
 }
 
 /*--------------------------EDITOR---------*/
@@ -121,3 +124,5 @@ export const FOLLOW_USER = {
     FOLLOW,
     UNFOLLOW
 }
+
+
