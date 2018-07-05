@@ -12,13 +12,6 @@ let api = axios.create({
 const encode = encodeURIComponent;
 const responseData = res => res.data;
 
-let token = null;
-const tokenPlugin = req => {
-  if (token) {
-    req.set('authorization', `Token ${token}`);
-  }
-}
-
 const config =  {
     headers: {
         'authorization': window.localStorage.getItem('jwt')
@@ -57,7 +50,11 @@ const Posts = {
     all: () => 
         requests.get('/posts'),
     byAuthor: (username) =>
-        requests.get(`/posts?author=${encode(username)}`)
+        requests.get(`/posts?author=${encode(username)}`),
+    feed: () =>
+        requests.get(`/posts/feed`),
+    favorite: id =>
+        requests.post(`/post/${id}/favorite`)
 }
 
 const Profile = {

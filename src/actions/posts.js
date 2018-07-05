@@ -36,7 +36,7 @@ export function postsGetByUsername(username, type) {
                 break;
 
             case POSTS_REQUEST_TYPES.FOLLOW:
-                response = asyncPosts(username)
+                response = api.Posts.feed();
                 break;
 
             case POSTS_REQUEST_TYPES.FAVOURITE:
