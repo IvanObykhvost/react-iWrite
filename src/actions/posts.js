@@ -128,7 +128,7 @@ export function postFavourite(post, type) {
 
         switch (type) {
             case POST_FAVOURITING.FAVOURITE:
-                response = asyncPostFavourite(post)                
+                response = api.Posts.favorite(post.id);             
                 break;
 
             case POST_FAVOURITING.UNFAVOURITE:
