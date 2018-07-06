@@ -24,7 +24,7 @@ export default function (state = initialState, action) {
         case SETTINGS.SETTINGS_RESPONSE:
             return {
                 ...state,
-                currentUser: action.response.error ? null : action.response.user
+                currentUser: action.response.user ? action.response.user : state.currentUser
             }
 
         case "LOGOUT":

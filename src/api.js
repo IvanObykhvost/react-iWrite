@@ -7,8 +7,6 @@ let api = axios.create({
     baseURL: 'http://10.10.1.220:4081/api'
 });
 
-
-
 const encode = encodeURIComponent;
 const responseData = res => res.data;
 
