@@ -2,8 +2,8 @@
 import qs from 'qs';
 
 let api = axios.create({
-    baseURL: 'http://10.10.1.220:4082/api'
-    //baseURL: 'http://10.10.1.220:4081/api'
+    //baseURL: 'http://10.10.1.220:4082/api'
+    baseURL: 'http://10.10.1.220:4081/api'
 });
 
 const encode = encodeURIComponent;
