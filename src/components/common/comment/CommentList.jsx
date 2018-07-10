@@ -8,6 +8,7 @@ const CommentList = props => {
                 props.comments.map(comment => {
                     return (
                         <Comment
+                            postId={props.postId}
                             comment={comment}  
                             commentDeleteInProgress={props.commentDeleteInProgress}
                             currentUser={props.currentUser}

@@ -79,47 +79,9 @@ export function articleComments(postId) {
     return dispatch => {
         dispatch(articleCommentsRequest())
 
-        return asynchComments(postId)
+        return api.Comments.forArticle(postId)
             .then(response => dispatch(articleCommentsResponse(response)))
     }
-}
-
-function asynchComments(postId) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(() => {
-            resolve(
-                {
-                    //comments: [],
-                    comments: [
-                        {
-                            id: 23,
-                            createdAt: "2018-07-01T10:11:48.980Z",
-                            updatedAt: "2018-07-01T10:11:48.980Z",
-                            body: "comment message",
-                            author: {
-                                name: "kolyatri",
-                                bio: "the happiest man in the world",
-                                image: "",
-                                following: false
-                            }
-                        },
-                        {
-                            id: 24,
-                            createdAt: "2018-07-01T10:11:48.980Z",
-                            updatedAt: "2018-07-01T10:11:48.980Z",
-                            body: "comment message2",
-                            author: {
-                                name: "ivan_obuhvost",
-                                bio: "broke down the API",
-                                image: "",
-                                following: false
-                            }
-                        }
-                    ],
-                    //error: "server error"
-                })
-        }, 2000);
-    })
 }
 
 //--------------------------------------CREATE COMMENT------------------------------------------------//
@@ -140,32 +102,9 @@ export function articleCommentCreate(postId, commentText) {
     return dispatch => {
         dispatch(articleCommentCreateRequest())
 
-        return asynchCommentCreate(postId, commentText)
+        return api.Comments.create(postId, commentText)
             .then(response => dispatch(articleCommentCreateResponse(response)))
     }
-}
-
-function asynchCommentCreate(postId, commentText) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(() => {
-            resolve(
-                {
-                    /*comment: {
-                        id: 23,
-                        createdAt: "2018-07-01T10:11:48.980Z",
-                        updatedAt: "2018-07-01T10:11:48.980Z",
-                        body: commentText,
-                        author: {
-                            name: "kolyatri",
-                            bio: "the happiest man in the world",
-                            image: "",
-                            following: false
-                        }
-                    },*/
-                    error: "server error comment creation"
-                })
-        }, 2000);
-    })
 }
 
 //---------------------------------COMMENT DELETE
@@ -187,34 +126,10 @@ export function articleCommentDelete(postId, commentId) {
     return dispatch => {
         dispatch(articleCommentDeleteRequest())
 
-        return asynchCommentDelete(postId, commentId)
+        return api.Comments.delete(postId, commentId)
             .then(response => dispatch(articleCommentDeleteResponse(response)))
     }
 }
-
-function asynchCommentDelete(postId, commentId) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(() => {
-            resolve(
-                {
-                    comment: {
-                        id: 23,
-                        createdAt: "2018-07-01T10:11:48.980Z",
-                        updatedAt: "2018-07-01T10:11:48.980Z",
-                        body: "comment message",
-                        author: {
-                            name: "kolyatri",
-                            bio: "the happiest man in the world",
-                            image: "",
-                            following: false
-                        }
-                    }
-                    //error: "server error comment creation"
-                })
-        }, 2000);
-    })
-}
-
 
 export function articleUnload() {
     return {

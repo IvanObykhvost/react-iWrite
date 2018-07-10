@@ -24,7 +24,7 @@ const requests = {
         api.put(url, body, config).then(responseData),
     post: (url, body) =>
         api.post(url, qs.stringify(body), config).then(responseData)
-  };
+};
   
 const Auth = {
     current: () =>
@@ -35,7 +35,7 @@ const Auth = {
         requests.post('/register', { name, email, password }),
     save: user =>
       requests.put('/user', { user })
-  };
+};
 
 const Posts = {
     create: post => 
@@ -57,14 +57,16 @@ const Posts = {
     unfavorite: id =>
         requests.del(`/post/${id}/unfavorite`)
     
-}
+};
 
 const Comments = {
     create: (postId, comment) =>
       requests.post(`/post/${postId}/comments`, { comment }),
     delete: (postId, commentId) =>
-      requests.del(`/post/${postId}/comments/${commentId}`)
-  };
+      requests.del(`/post/${postId}/comments/${commentId}`),
+    forArticle: postId =>
+      requests.get(`/post/${postId}/comments`)
+};
 
 const Profile = {
     get: username => 
@@ -73,11 +75,11 @@ const Profile = {
         requests.post(`/profile/${username}/follow`),
     unfollow: username => 
         requests.del(`/profile/${username}/unfollow`)
-}
+};
 
 export default {
     Auth,
     Posts,
     Profile,
     Comments 
-}
+};

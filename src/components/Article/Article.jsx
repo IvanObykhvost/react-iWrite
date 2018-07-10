@@ -50,6 +50,7 @@ export default class Article extends React.Component {
                                     <span className="date">
                                         {new Date(post.createdAt).toDateString()}
                                     </span>
+
                                 </div>   
                                 {
                                     canModify ?                                              
@@ -74,6 +75,7 @@ export default class Article extends React.Component {
                         <div className="row article-content">
                             <div className="col-xs-12">                               
                                 <ul className="tag-list">
+                                    {post.message}
                                     {/*
                                         this.props.article.tagList.map(tag => {
                                             return (
@@ -98,7 +100,7 @@ export default class Article extends React.Component {
                                 commentCreateInProgress={commentCreateInProgress}
                                 commentCreateError={commentCreateError}
                                 commentDeleteInProgress={commentDeleteInProgress}
-                                psotId={postId} />
+                                postId={postId} />
                         </div>
                     </div>
                 </div>
