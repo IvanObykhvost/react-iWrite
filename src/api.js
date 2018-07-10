@@ -2,8 +2,8 @@
 import qs from 'qs';
 
 let api = axios.create({
-    baseURL: 'http://10.10.1.220:4082/api'
-    //baseURL: 'http://10.10.1.220:4081/api'
+    //baseURL: 'http://10.10.1.220:4082/api'
+    baseURL: 'http://10.10.1.220:4081/api'
 });
 
 const encode = encodeURIComponent;
@@ -46,13 +46,25 @@ const Posts = {
         requests.get(`/post/${id}`),
     all: () => 
         requests.get('/posts'),
-    byAuthor: (username) =>
+    byAuthor: username =>
         requests.get(`/posts?author=${encode(username)}`),
+    byFavorite: username =>
+        requests.get(`/posts?favorited=${encode(username)}`),
     feed: () =>
         requests.get(`/posts/feed`),
     favorite: id =>
-        requests.post(`/post/${id}/favorite`)
+        requests.post(`/post/${id}/favorite`),
+    unfavorite: id =>
+        requests.del(`/post/${id}/unfavorite`)
+    
 }
+
+const Comments = {
+    create: (postId, comment) =>
+      requests.post(`/post/${postId}/comments`, { comment }),
+    delete: (postId, commentId) =>
+      requests.del(`/post/${postId}/comments/${commentId}`)
+  };
 
 const Profile = {
     get: username => 
@@ -66,5 +78,6 @@ const Profile = {
 export default {
     Auth,
     Posts,
-    Profile 
+    Profile,
+    Comments 
 }
