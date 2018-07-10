@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col } from 'react-bootstrap';
-import { Link, Redirect }  from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import CommentContainer from '../common/comment/CommentContainer' 
 
 export default class Article extends React.Component {
     constructor(props){
@@ -8,7 +9,7 @@ export default class Article extends React.Component {
     }
 
     componentDidMount(){
-        this.props.onLoad()
+        this.props.onLoad();
     }
 
     componentWillUnmount() {
@@ -16,7 +17,7 @@ export default class Article extends React.Component {
     }
 
     render() {
-        const { article: { post, postError, postDeleteInProgress, postDeleteError, postDeleteSuccess }, canModify } = this.props;
+        const { article: { post, postError, postDeleteInProgress, postDeleteError, postDeleteSuccess, comments, commentsError, commentCreateError, commentCreateInProgress, commentDeleteInProgress }, canModify, postId } = this.props;
 
         if (postDeleteSuccess) {
             return <Redirect to='/' />;
@@ -67,6 +68,37 @@ export default class Article extends React.Component {
                                         null
                                 }
                             </div>
+                        </div>
+                    </div>
+                    <div className="container page">
+                        <div className="row article-content">
+                            <div className="col-xs-12">                               
+                                <ul className="tag-list">
+                                    {/*
+                                        this.props.article.tagList.map(tag => {
+                                            return (
+                                                <li
+                                                    className="tag-default tag-pill tag-outline"
+                                                    key={tag}>
+                                                    {tag}
+                                                </li>
+                                            );
+                                        })
+                                    */}
+                                </ul>
+                            </div>
+                        </div>
+                        <hr />
+                        <div className="article-actions">
+                        </div>
+                        <div className="row">
+                            <CommentContainer
+                                comments={comments}
+                                commentsError={commentsError}
+                                commentCreateInProgress={commentCreateInProgress}
+                                commentCreateError={commentCreateError}
+                                commentDeleteInProgress={commentDeleteInProgress}
+                                psotId={postId} />
                         </div>
                     </div>
                 </div>

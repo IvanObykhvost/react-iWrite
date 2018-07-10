@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { articlePost, articleUnload, articlePostDelete } from '../../actions/article';
+import { articlePost, articlePostDelete, articleComments, articleUnload } from '../../actions/article';
 import Article from './Article';
 
 const mapStateToProps = (state, props) => ({
@@ -13,6 +13,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
     onLoad: () => {
         dispatch(articlePost(props.postId));
+        dispatch(articleComments(props.postId));
     },
     onUnload: () => {
         dispatch(articleUnload());
