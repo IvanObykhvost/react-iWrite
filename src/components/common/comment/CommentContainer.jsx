@@ -10,12 +10,8 @@ class CommentContainer extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-        //this.props.onLoad();
-    }
-
     render() {
-        const { comments, commentsError, commentCreateError, commentCreateInProgress, commentDeleteInProgress, currentUser, postId } = this.props;
+        const { commentsData: { comments, commentsError, commentCreateError, commentCreateInProgress, commentDeleteInProgress }, currentUser, postId } = this.props;
 
         if (!comments && !commentsError) {
             return <div>Please wait, comments are loading...</div>;
@@ -42,8 +38,11 @@ class CommentContainer extends React.Component {
                         <div className="col-xs-12 col-md-8 offset-md-2">
                             <div>
                                 <div>{commentCreateError}</div>
-                                <CommentInput postId={postId} //currentUser={currentUser}
-                                    commentCreateInProgress={commentCreateInProgress} onSubmit={this.props.onSubmit} />
+                                <CommentInput
+                                    postId={postId} 
+                                    commentCreateInProgress={commentCreateInProgress}
+                                    onSubmit={this.props.onSubmit}
+                                />
                             </div>
                             <CommentList postId={postId} comments={comments} currentUser={currentUser} commentDeleteInProgress={commentDeleteInProgress} onCommentDelete={this.props.onCommentDelete}/>
                         </div>)
@@ -54,12 +53,7 @@ class CommentContainer extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    postId: props.postId,
-    comments: props.comments,
-    commentsError: props.commentsError,
-    commentCreateInProgress: props.commentCreateInProgress,
-    commentCreateError: props.commentCreateError,
-    commentDeleteInProgress: props.commentDeleteInProgress,
+    commentsData: props.commentsData,
     currentUser: state.common.currentUser
 })
 

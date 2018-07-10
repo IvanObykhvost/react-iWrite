@@ -17,7 +17,8 @@ export default class Article extends React.Component {
     }
 
     render() {
-        const { article: { post, postError, postDeleteInProgress, postDeleteError, postDeleteSuccess, comments, commentsError, commentCreateError, commentCreateInProgress, commentDeleteInProgress }, canModify, postId } = this.props;
+        const { article: { postData: { post, postError, postDeleteInProgress, postDeleteError, postDeleteSuccess } }, canModify, postId } = this.props;
+         const { article: { commentsData }} = this.props;
 
         if (postDeleteSuccess) {
             return <Redirect to='/' />;
@@ -50,7 +51,6 @@ export default class Article extends React.Component {
                                     <span className="date">
                                         {new Date(post.createdAt).toDateString()}
                                     </span>
-
                                 </div>   
                                 {
                                     canModify ?                                              
@@ -94,13 +94,7 @@ export default class Article extends React.Component {
                         <div className="article-actions">
                         </div>
                         <div className="row">
-                            <CommentContainer
-                                comments={comments}
-                                commentsError={commentsError}
-                                commentCreateInProgress={commentCreateInProgress}
-                                commentCreateError={commentCreateError}
-                                commentDeleteInProgress={commentDeleteInProgress}
-                                postId={postId} />
+                            <CommentContainer commentsData={commentsData} postId={postId}/>
                         </div>
                     </div>
                 </div>

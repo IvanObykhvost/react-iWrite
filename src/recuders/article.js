@@ -1,22 +1,24 @@
 ﻿import { ARTICLE } from '../constant/constant';
 
-const initialState = {
-    //inProgress: false,
-    post: null,
-    postError: null,
+const initialState = {   
+    postData: {
+        post: null,
+        postError: null,
 
-    postDeleteInProgress: false,
-    postDeleteError: null,
-    postDeleteSuccess: false,
+        postDeleteInProgress: false,
+        postDeleteError: null,
+        postDeleteSuccess: false,
+    },
+    commentsData: {
+        comments: null,
+        commentsError: null,
 
-    comments: null,
-    commentsError: null,
+        commentCreateInProgress: false,
+        commentCreateError: null,
 
-    commentCreateInProgress: false,
-    commentCreateError: null,
-
-    commentDeleteInProgress: false,
-    commentDeleteError: null,
+        commentDeleteInProgress: false,
+        commentDeleteError: null,
+    }
 }
 
 export default function (state = initialState, action) {
@@ -26,104 +28,160 @@ export default function (state = initialState, action) {
         case ARTICLE.ARTICLE_POST_REQUEST:
             return {
                 ...state,
-                postError: null,
-                post: null
+                postData: {
+                    ...state.postData,
+                    postError: null,
+                    post: null
+                }
             }
 
         case ARTICLE.ARTICLE_POST_RESPONSE:
             return {
                 ...state,
-                postError: action.response.error ? action.response.error : null,
-                post: action.response.post ? action.response.post : null
+                postData: {
+                    ...state.postData,
+                    postError: action.response.error ? action.response.error : null,
+                    post: action.response.post ? action.response.post : null
+                }
             }        
 
         case ARTICLE.ARTICLE_POST_DELETE_REQUEST:
             return {
                 ...state,
-                postDeleteInProgress: true,
-                postDeleteError: null,
-                postDeleteSuccess: false
+                postData: {
+                    ...state.postData,
+                    postDeleteInProgress: true,
+                    postDeleteError: null,
+                    postDeleteSuccess: false
+                }
             }   
 
         case ARTICLE.ARTICLE_POST_DELETE_RESPONSE:
             return {
                 ...state,
-                postDeleteInProgress: false,
-                postDeleteError: action.response.error ? action.response.error : null,
-                postDeleteSuccess: action.response.success ? true : false
+                postData: {
+                    ...state.postData,
+                    postDeleteInProgress: false,
+                    postDeleteError: action.response.error ? action.response.error : null,
+                    postDeleteSuccess: action.response.success ? true : false
+                }
             }  
 
         case ARTICLE.ARTICLE_COMMENTS_REQUEST:
             return {
-                ...state,              
-                comments: null,
-                commentsError: null
+                ...state, 
+                commentsData: {
+                    ...state.commentsData,
+                    comments: null,
+                    commentsError: null
+                }               
             }
 
         case ARTICLE.ARTICLE_COMMENTS_RESPONSE:
             return {
                 ...state,              
-                comments: action.response.comments ? action.response.comments : null,
-                commentsError: action.response.error ? action.response.error : null
+                commentsData: {
+                    ...state.commentsData,
+                    comments: action.response.comments ? action.response.comments : null,
+                    commentsError: action.response.error ? action.response.error : null
+                }
             }  
 
         case ARTICLE.ARTICLE_COMMENT_CREATE_REQUEST:
             return {
                 ...state,
-                commentCreateInProgress: true,               
-                commentCreateError: false,              
+                commentsData: {
+                    ...state.commentsData,
+                    commentCreateInProgress: true,
+                    commentCreateError: false,
+                }
             }
 
-        case ARTICLE.ARTICLE_COMMENT_CREATE_RESPONSE:
-            result = { ...state };
-            result.commentCreateInProgress = false;
-
-            if (action.response.error)
-                result.commentCreateError = action.response.error;
+        case ARTICLE.ARTICLE_COMMENT_CREATE_RESPONSE:            
+            if (action.response.error) {                
+                return {
+                    ...state,
+                    commentsData: {
+                        ...state.commentsData,
+                        commentCreateInProgress: false,
+                        commentCreateError: action.response.error
+                    }
+                }
+            }
             else {
-                let comments = [...state.comments];
-                comments.unshift(action.response.comment);
-                result.comments = comments;
-            }
+                let comments = [...state.commentsData.comments];
+                comments.unshift(action.response.comment);               
 
-            return result;
+                return {
+                    ...state,
+                    commentsData: {
+                        ...state.commentsData,
+                        commentCreateInProgress: false,
+                        comments: [...comments]
+                    }
+                }
+            }           
+
 
         case ARTICLE.ARTICLE_COMMENT_DELETE_REQUEST:
             return {
                 ...state,
-                commentDeleteInProgress: true,
-                commentDeleteError: null,
+                commentsData: {
+                    ...state.commentsData,
+                    commentDeleteInProgress: false                    
+                }
             }
 
-        case ARTICLE.ARTICLE_COMMENT_DELETE_RESPONSE:
-            result = { ...state };
-            result.commentDeleteInProgress = false;
-
-            if (action.response.error)
-                result.commentDeleteError = action.response.error;
+        case ARTICLE.ARTICLE_COMMENT_DELETE_RESPONSE:           
+            if (action.response.error) {
+                return {
+                    ...state,
+                    commentsData: {
+                        ...state.commentsData,
+                        commentDeleteInProgress: false,
+                        commentDeleteError: action.response.error
+                    }
+                }
+            }
             else {
-                result.comments = [];
-                state.comments.forEach((comment) => {
+                let comments = [];
+                state.commentsData.comments.forEach((comment) => {
                     if (comment.id !== action.response.comment.id) {
-                       result.comments.push(comment);
-                    }                    
-                });                              
-            }
+                        comments.push(comment);
+                    }
+                });    
 
-            return result;
+                return {
+                    ...state,
+                    commentsData: {
+                        ...state.commentsData,
+                        commentCreateInProgress: false,
+                        comments: [...comments]
+                    }
+                }
+            }         
             
 
         case ARTICLE.ARTICLE_UNLOAD:
             return {                
-                post: null,
-                postError: null,
+                postData: {
+                    post: null,
+                    postError: null,
 
-                postDeleteInProgress: false,
-                postDeleteError: null,
-                postDeleteSuccess: false,
+                    postDeleteInProgress: false,
+                    postDeleteError: null,
+                    postDeleteSuccess: false,
+                },
+                commentsData: {
+                    comments: null,
+                    commentsError: null,
 
-                comments: null,
-                commentsError: null,
+                    commentCreateInProgress: false,
+                    commentCreateError: null,
+
+                    commentDeleteInProgress: false,
+                    commentDeleteError: null,
+                }
             }
 
         default:
