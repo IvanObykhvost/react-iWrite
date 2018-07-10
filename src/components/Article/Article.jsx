@@ -50,7 +50,6 @@ export default class Article extends React.Component {
                                     <span className="date">
                                         {new Date(post.createdAt).toDateString()}
                                     </span>
-
                                 </div>   
                                 {
                                     canModify ?                                              

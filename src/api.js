@@ -44,6 +44,8 @@ const Posts = {
         requests.put(`/post/${post.id}`, post),
     get: id => 
         requests.get(`/post/${id}`),
+    delete: id => 
+        requests.del(`/post/${id}`),
     all: () => 
         requests.get('/posts'),
     byAuthor: username =>

@@ -41,8 +41,8 @@ function articlePostDeleteResponse(response) {
 export function articlePostDelete(post) {
     return dispatch => {
         dispatch(articlePostDeleteRequest())
-        //return api.Posts.get(id)
-        return asynchPostDelete(post)
+
+        return api.Posts.delete(post.id)
             .then(response => dispatch(articlePostDeleteResponse(response)))
     }
 }
