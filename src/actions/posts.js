@@ -31,7 +31,6 @@ export function postsGetByUsername(username, type) {
 
         switch (type) {
             case POSTS_REQUEST_TYPES.ALL:
-                // response = asyncPosts(username)
                 response = api.Posts.byAuthor(username);
                 break;
 
@@ -40,7 +39,7 @@ export function postsGetByUsername(username, type) {
                 break;
 
             case POSTS_REQUEST_TYPES.FAVOURITE:
-                response = asyncPosts(username)
+                response = api.Posts.byFavorite(username)
                 break;
 
             default:
@@ -51,42 +50,6 @@ export function postsGetByUsername(username, type) {
             .then(response => dispatch(postsResponse(response)))        
     }
 }
-
-/*
-export function postsGetFollowByUsername(username) {
-    return dispatch => {
-        dispatch(postsRequest())
-        return asyncPosts(username)
-            .then(response => dispatch(postsResponse(response)))
-    }
-}
-
-export function postsGetByUsername(username) {
-    return dispatch => {
-        dispatch(postsRequest())
-        return asyncPosts(username)
-            .then(response => dispatch(postsResponse(response)))
-    }
-}
-
-export function postsGetFavouriteByUsername(username) {
-    return dispatch => {
-        dispatch(postsRequest())
-        return asyncPosts(username)
-            .then(response => dispatch(postsResponse(response)))
-    }
-}
-*/
-
-//TODO: to get rid of it
-/*export function postsLoad(data) {
-    return dispatch => {
-        dispatch(postsRequest())
-        return asyncPosts(data)
-            .then(response => dispatch(postsResponse(response)))
-    }
-}*/
-
 
 function asyncPosts(username) {
     return new Promise(function(resolve, reject) {
@@ -113,7 +76,7 @@ function asyncPosts(username) {
 
 
 //THE SAME FOR UNFAVOURITED PROCESS
-function postFavouriteResponse(response) {
+function postFavoriteResponse(response) {
     return {
         type: POST_FAVOURITING.POST_FAVOURITED,
         response
@@ -121,18 +84,18 @@ function postFavouriteResponse(response) {
 }
 
 //WORKS FOR BOTH: favourite and unfavourite
-export function postFavourite(post, type) {
+export function postFavorite(post, type) {
     return dispatch => {
        // dispatch(postsRequest());
         let response = null;
 
         switch (type) {
             case POST_FAVOURITING.FAVOURITE:
-                response = asyncPostFavourite(post)                
+                response = api.Posts.favorite(post.id);             
                 break;
 
             case POST_FAVOURITING.UNFAVOURITE:
-                response = asyncPostUnfavourite(post)
+                response = api.Posts.unfavorite(post.id);    
                 break;           
 
             default:
@@ -140,7 +103,7 @@ export function postFavourite(post, type) {
         }
 
         response
-            .then(response => dispatch(postFavouriteResponse(response)))
+            .then(response => dispatch(postFavoriteResponse(response)))
     }
 }
 
@@ -159,20 +122,6 @@ function asyncPostFavourite(post) {
     })
 }
 
-function asyncPostUnfavourite(post) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(() => {
-            resolve(
-                {
-                    post: {
-                        id: 2, title: 'Title 2', topic: 'Topic 2', tags: ['Tag 2'], message: 'Message 2', createdAt: "7/04/2018", author: { name: "Kolyatri" }, favourited: false, favouritesCount: 8
-                    }
-                    //error: "Server error, sorry" 
-                },
-            )
-        }, 2000);
-    })
-}
 
 
 

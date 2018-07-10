@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap';
-import { postFavourite } from '../../actions/posts';
+import { postFavorite } from '../../actions/posts';
 import { POSTS_REQUEST_TYPES, POST_FAVOURITING } from '../../constant/constant';
 
 class Post extends React.Component {
@@ -59,11 +59,11 @@ const mapDispatchToProps = dispatch => ({
     //type(asynch mode can be : FAVOURITE OR UNFAVOURITE)
 
     onFavourite: (post) => {
-        if (post.favourited) {
-            dispatch(postFavourite(post, POST_FAVOURITING.UNFAVOURITE))
+        if (post.favorited) {
+            dispatch(postFavorite(post, POST_FAVOURITING.UNFAVOURITE))
         }
         else {
-            dispatch(postFavourite(post, POST_FAVOURITING.FAVOURITE))
+            dispatch(postFavorite(post, POST_FAVOURITING.FAVOURITE))
         }
     }
 });

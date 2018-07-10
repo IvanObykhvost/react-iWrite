@@ -1,6 +1,5 @@
 ﻿import axios from 'axios';
 import qs from 'qs';
-import { auth } from './actions/auth';
 
 let api = axios.create({
     //baseURL: 'http://10.10.1.220:4082/api'
@@ -47,12 +46,17 @@ const Posts = {
         requests.get(`/post/${id}`),
     all: () => 
         requests.get('/posts'),
-    byAuthor: (username) =>
+    byAuthor: username =>
         requests.get(`/posts?author=${encode(username)}`),
+    byFavorite: username =>
+        requests.get(`/posts?favorited=${encode(username)}`),
     feed: () =>
         requests.get(`/posts/feed`),
     favorite: id =>
-        requests.post(`/post/${id}/favorite`)
+        requests.post(`/post/${id}/favorite`),
+    unfavorite: id =>
+        requests.del(`/post/${id}/unfavorite`)
+    
 }
 
 const Profile = {
