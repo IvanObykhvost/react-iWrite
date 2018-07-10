@@ -20,7 +20,7 @@ export default class CommentInput extends React.Component {
             e.preventDefault();
             const { postId } = this.props;           
             this.setState({ body: '' });
-        this.props.onSubmit( postId, this.state.body);
+            this.props.onSubmit( postId, this.state.body);
     };
 
     render() {
