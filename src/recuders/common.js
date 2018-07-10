@@ -27,7 +27,7 @@ export default function (state = initialState, action) {
                 currentUser: action.response.user ? action.response.user : state.currentUser
             }
 
-        case "LOGOUT":
+        case AUTH.LOGOUT:
             return {
                 ...state,
                 currentUser: null

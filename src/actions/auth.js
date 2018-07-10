@@ -10,7 +10,7 @@ export function authRequest() {
 export function authResponse(response) {
     return {
         type: AUTH.AUTH_RESPONSE,
-        response,
+        response
     }
 }
 
