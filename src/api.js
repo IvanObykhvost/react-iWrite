@@ -6,24 +6,23 @@ let api = axios.create({
     baseURL: 'http://10.10.1.220:4081/api'
 });
 
+api.interceptors.request.use((config) => {
+    config.headers['authorization'] = window.localStorage.getItem('jwt');
+    return config;
+})
+
 const encode = encodeURIComponent;
 const responseData = res => res.data;
 
-const config =  {
-    headers: {
-        'authorization': window.localStorage.getItem('jwt')
-    }
-};
-
 const requests = {
     del: url =>
-        api.delete(url, config).then(responseData),
+        api.delete(url).then(responseData),
     get: url =>
-        api.get(url, config).then(responseData),
+        api.get(url).then(responseData),
     put: (url, body) =>
-        api.put(url, body, config).then(responseData),
+        api.put(url, body).then(responseData),
     post: (url, body) =>
-        api.post(url, qs.stringify(body), config).then(responseData)
+        api.post(url, body).then(responseData)
 };
   
 const Auth = {
