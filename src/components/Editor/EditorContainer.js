@@ -5,7 +5,7 @@ import { EDITOR_REQUEST_TYPES } from '../../constant/constant';
 
 const mapStateToProps = (state, props) => ({
     postId: props.postId,
-    editor: state.editor, 
+    editor: state.editor
 })
 
 const mapDispatchToProps = function (dispatch, props) {
@@ -30,6 +30,7 @@ const mapDispatchToProps = function (dispatch, props) {
 
     return result = {
         ...result,
+        onChangeTags: (values) => dispatch(editorPostChange("tags", values)),
         onChange: (key, value) => dispatch(editorPostChange(key, value)),
         onUnload: () => dispatch(editorUnload())
     }

@@ -15,7 +15,7 @@ const mapStateToProps = (state, props) => ({
     ],
     posts: state.posts,
     //if curent user = profile user
-    isUser: state.common.currentUser && state.profile.profile && state.common.currentUser.name == state.profile.profile.name ?
+    isUser: state.common.currentUser && state.profile.profile && state.common.currentUser.name === state.profile.profile.name ?
         true :
         false
 })
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch, props)  => ({
     },
     onTabClick: (id) => {
         //My Articles
-        if (id == 0) {
+        if (id === 0) {
             dispatch(postsGetByUsername(props.username, POSTS_REQUEST_TYPES.ALL));
         }
         //Favourite Atricles

@@ -2,8 +2,8 @@
 import qs from 'qs';
 
 let api = axios.create({
-    //baseURL: 'http://10.10.1.220:4082/api'
-    baseURL: 'http://10.10.1.220:4081/api'
+    baseURL: 'http://10.10.1.220:4082/api'
+    //baseURL: 'http://10.10.1.220:4081/api'
 });
 
 api.interceptors.request.use((config) => {
@@ -51,6 +51,8 @@ const Posts = {
         requests.get(`/posts?author=${encode(username)}`),
     byFavorite: username =>
         requests.get(`/posts?favorited=${encode(username)}`),
+    byTag: tag => 
+        requests.get(`/posts?tag=${encode(tag)}`),
     feed: () =>
         requests.get(`/posts/feed`),
     favorite: id =>
@@ -59,6 +61,11 @@ const Posts = {
         requests.del(`/post/${id}/unfavorite`)
     
 };
+
+const Tags = {
+    getAll: () => 
+        requests.get('/tags')
+}
 
 const Comments = {
     create: (postId, comment) =>
@@ -82,5 +89,6 @@ export default {
     Auth,
     Posts,
     Profile,
-    Comments 
+    Comments,
+    Tags 
 };

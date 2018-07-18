@@ -11,15 +11,19 @@ class CommentContainer extends React.Component {
     }
 
     render() {
-        const { commentsData: { comments, commentsError, commentCreateError, commentCreateInProgress, commentDeleteInProgress }, currentUser, postId } = this.props;
-
+        const { commentsData: { comments, commentsError, commentCreateInProgress, commentDeleteInProgress }, currentUser, postId } = this.props;
+        let {commentsData: {commentCreateError}} = this.props;
+        
+        if(commentCreateError) {
+            commentCreateError = <div className="error">{commentCreateError}</div>;
+        }
         if (!comments && !commentsError) {
             return <div>Please wait, comments are loading...</div>;
         }
 
         else {
             if (commentsError) {
-                return <div>{commentsError}</div>;
+                return <div className="error">{commentsError}</div>;
             }
             else {
                 if (!currentUser) {
@@ -37,7 +41,7 @@ class CommentContainer extends React.Component {
                     return (
                         <div className="col-xs-12 col-md-8 offset-md-2">
                             <div>
-                                <div>{commentCreateError}</div>
+                                {commentCreateError}
                                 <CommentInput
                                     postId={postId} 
                                     commentCreateInProgress={commentCreateInProgress}

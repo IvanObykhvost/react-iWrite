@@ -1,7 +1,6 @@
-﻿import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom'
+﻿import React from 'react';
+import { Link } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import HomeIcon from 'material-ui/svg-icons/action/home';
 import PropTypes from 'prop-types';
 
 export default function ButtonNav({ link, children, icon, onLogout }) {

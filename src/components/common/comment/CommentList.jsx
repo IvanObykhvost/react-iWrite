@@ -3,21 +3,17 @@ import React from 'react';
 
 const CommentList = props => {
     return (
-        <div>
-            {
-                props.comments.map(comment => {
-                    return (
-                        <Comment
-                            postId={props.postId}
-                            comment={comment}  
-                            commentDeleteInProgress={props.commentDeleteInProgress}
-                            currentUser={props.currentUser}
-                            onCommentDelete={props.onCommentDelete}
-                            key={comment.id} />
-                    );
-                })
-            }
-        </div>
+            props.comments.map(comment => {
+                return (
+                    <Comment
+                        postId={props.postId}
+                        comment={comment}  
+                        commentDeleteInProgress={props.commentDeleteInProgress}
+                        currentUser={props.currentUser}
+                        onCommentDelete={props.onCommentDelete}
+                        key={comment.id} />
+                );
+            })
     );
 };
 

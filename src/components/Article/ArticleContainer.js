@@ -8,7 +8,7 @@ const mapStateToProps = (state, props) => ({
     postId: props.postId,
     article: state.article,
     canModify: state.common.currentUser && state.article.postData.post 
-                && state.common.currentUser.name == state.article.postData.post.author.name ? true : false
+                && state.common.currentUser.name === state.article.postData.post.author.name ? true : false
 })
 
 const mapDispatchToProps = (dispatch, props) => ({

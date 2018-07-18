@@ -1,6 +1,10 @@
 ﻿import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import { Row, Col } from 'react-bootstrap';
+import SimpleButton from '../common/Buttons/SimpleButton';
+import Input from '../common/Inputs/Input';
+import TagsInput from '../common/Inputs/TagsInput';
 
 export default class Editor extends React.Component {
     constructor(props) {
@@ -9,6 +13,10 @@ export default class Editor extends React.Component {
 
     change = e => {        
         this.props.onChange([e.target.name], e.target.value);
+    }
+
+    changeTag = e => {
+        this.props.onChangeTags(e);
     }
 
     submit = (e,post) => {
@@ -47,28 +55,66 @@ export default class Editor extends React.Component {
             }
             else {
                 return (
-                    <div>
-                        <h1>{
-                            postId ?
-                                'Update post' :
-                                'Add post'
-                        }</h1>
-                        <div>{
-                            editorError ?
-                                editorError :
-                                null
-                         }
+                    <div className="editor-page">
+                        <div className="container-page">
+                        <Row>
+                            <Col md={10} className="offset-md-1">
+                                <h1>{
+                                    postId ?
+                                        'Update post' :
+                                        'Add post'
+                                }</h1>
+                                {
+                                    editorError ?
+                                        <p className="error">
+                                            {editorError}
+                                        </p>
+                                        : null
+                                }
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={4} className="offset-md-4">
+                                <form onSubmit={e => this.submit(e,post)}>
+                                    <Input 
+                                        type={"text"} 
+                                        name="title" 
+                                        placeholder="Title" 
+                                        value={post.title} 
+                                        onChange={e => this.change(e)} 
+                                    />
+                                    <Input 
+                                        type={"text"} 
+                                        name="topic" 
+                                        placeholder="Topic" 
+                                        value={post.topic} 
+                                        onChange={e => this.change(e)} 
+                                    />
+                                    <Input 
+                                        componentClass="textarea" 
+                                        name="message" 
+                                        placeholder="Message" 
+                                        value={post.message} 
+                                        onChange={e => this.change(e)} 
+                                        rows={4}
+                                    />
+                                    <TagsInput 
+                                        name="tags" 
+                                        placeholder="Tags"
+                                        onChange={e => this.changeTag(e)} 
+                                        value={post.tags.map(tag => {return {value: tag, label: tag}})}
+                                        noResultsText="Create new tags"
+                                    />
+                                    <SimpleButton 
+                                        type="submit"
+                                        name="Publish article"
+                                        bsStyle="primary"
+                                        disabled={editorInProgress}
+                                    />
+                                </form>
+                            </Col>
+                        </Row>
                         </div>
-                        <form onSubmit={e => this.submit(e,post)}>
-                            <input name="title" placeholder="Title" value={post.title} onChange={e => this.change(e)} /><br />
-                            <input name="topic" placeholder="Topic" value={post.topic} onChange={e => this.change(e)} /><br />
-                            <input name="message" placeholder="Message" value={post.message} onChange={e => this.change(e)} /><br />
-                            <input name="tags" placeholder="Tags" value={post.tags} onChange={e => this.change(e)} /><br />
-                            <button type="submit"
-                                disabled={editorInProgress}>
-                                Publish Article
-                        </button>
-                        </form>
                     </div>);
             }
         }

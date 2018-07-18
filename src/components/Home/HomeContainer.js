@@ -22,7 +22,7 @@ const mapStateToProps = function(state){
     return {
         posts: state.posts,
         tabList: tabList,
-        tags: [],
+        tags: state.common.popularTags,
         currentUser: state.common.currentUser
     };
 }

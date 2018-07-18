@@ -18,7 +18,7 @@ export default function (state = initialState, action) {
                 post: {
                     title: '',
                     topic: '',
-                    tags: '',
+                    tags: [],
                     message: ''
                 },
                 postError: null
@@ -41,10 +41,20 @@ export default function (state = initialState, action) {
 
         //when post field changed on post form
         case EDITOR.EDITOR_POST_CHANGE:
-            return {
-                ...state,            
-                post: { ...state.post, [action.key]: action.value }
+            if(action.key === "tags"){
+                state.post.tags = action.value.map(tag => tag.value);
+                return {
+                    ...state,    
+                    post: { ...state.post}
+                }
             }
+            else {
+                return {
+                    ...state,            
+                    post: { ...state.post, [action.key]: action.value }
+                }
+            }
+            
 
         case EDITOR.EDITOR_REQUEST:
             return {

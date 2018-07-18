@@ -1,10 +1,9 @@
-﻿import React, { Component } from 'react';
+﻿import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import TabList from '../common/TabList';
 import PostList from '../common/PostList';
 import Sidebar from '../common/Sidebar';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -22,21 +21,18 @@ export default class Home extends React.Component {
     }
 
     render() {
-        const tabList = this.props.tabList;
-        const posts = this.props.posts;
-        const onTabClick = this.props.onTabClick;        
-        
+        const { tabList, posts, onTabClick, tags } = this.props;        
         return (
             <div className="container page">
-                <div className="row">
-                    <div className="col-md-9">
-                        <div className="feed-toggle">
-                            <TabList tabList={tabList} onTabClick={onTabClick} />                            
-                        </div>
-                        <PostList posts={posts} />
-                    </div>
-                    <Sidebar/>
-               </div>
+                <Row>
+                    <Col md={9} className="feed-toggle">
+                        <TabList tabList={tabList} onTabClick={onTabClick} />   
+                        <PostList posts={posts} />                         
+                    </Col>
+                    <Col md={3}>
+                        <Sidebar tags={tags}/>
+                    </Col>
+               </Row>
             </div>
         );
     }
