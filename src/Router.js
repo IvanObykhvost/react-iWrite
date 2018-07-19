@@ -1,8 +1,7 @@
 ﻿import React from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import { compose } from 'redux';
 import HomePage from './scenes/Home/HomePage';
-import EditorPage from './scenes/Editor/EditorPage';
+import EditorContainer from './scenes/EditorContainer/EditorContainer';
 import ArticlePage from './scenes/Article/ArticlePage';
 import LoginPage from './scenes/Login/LoginPage';
 import RegisterPage from './scenes/Register/RegisterPage';
@@ -13,8 +12,8 @@ import ErrorPage from './scenes/Error/ErrorPage';
 export default function Router() {
     return (<Switch>
                 <Route exact path="/" component={HomePage} />      
-                <Route path="/editor/:id?" component={EditorPage} /> 
-                <Route path="/editor" component={EditorPage} />               
+                <Route path="/editor/:id?" component={EditorContainer} /> 
+                <Route path="/editor" component={EditorContainer} />               
                 <Route path="/article/:id?" component={ArticlePage}/> 
                 <Route path="/login/" component={LoginPage} /> 
                 <Route path="/register/" component={RegisterPage} /> 
