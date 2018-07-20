@@ -17,16 +17,15 @@ export default class LoginConteiner extends React.Component {
                 password: ''
             },
             error: null,
-            inProgress: false
+            inProgress: false,
+            success: null
         }
     }
 
     onChange = e => {
-        this.setState({
-            user: {
-                [e.target.name]: e.target.value
-            }
-        });
+        let user = {...this.state.user};
+        user[e.target.name] = e.target.value;
+        this.setState({user});
     }
 
     submit = e => {
@@ -38,8 +37,10 @@ export default class LoginConteiner extends React.Component {
         api.Auth.login(this.state.user)
             .then(
                 data => {
+                    //check error and put current user
                     this.setState({
                         error: data.error ? data.error : null,
+                        success: data.success ? data.success : null,
                         inProgress: false
                     });
                 }
@@ -47,20 +48,24 @@ export default class LoginConteiner extends React.Component {
     }    
 
     render() {                
-        const currentUser = this.props.currentUser;
-        const error = this.props.error;
-        const inProgress = this.props.inProgress;
+        let {state} = this;
 
-        if (currentUser) {
-            return <Redirect to='/' />;
+        if(state.error){
+            state.error = <p className="error">{state.error}</p>;
         }
 
-        return (
-            <Login 
-                onChange={e => this.onChange(e)}
-                
-            />
-        );
+        if (state.success) {
+            return <Redirect to='/' />;
+        }
+        else {
+            return (
+                <Login 
+                    onChange={e => this.onChange(e)}
+                    onSubmit={e => this.submit(e)}
+                    state={state}
+                />
+            );
+        }
     }
 }
 

@@ -2,7 +2,7 @@
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import HomePage from './scenes/Home/HomePage';
 import EditorContainer from './scenes/EditorContainer/EditorContainer';
-import ArticlePage from './scenes/Article/ArticlePage';
+import ArticleContainer from './scenes/ArticleContainer/ArticleContainer';
 import LoginPage from './scenes/Login/LoginPage';
 import RegisterPage from './scenes/Register/RegisterPage';
 import SettingContainer from './scenes/SetingsContainer/SettingContainer';
@@ -14,7 +14,7 @@ export default function Router() {
                 <Route exact path="/" component={HomePage} />      
                 <Route path="/editor/:id?" component={EditorContainer} /> 
                 <Route path="/editor" component={EditorContainer} />               
-                <Route path="/article/:id?" component={ArticlePage}/> 
+                <Route path="/article/:id?" component={ArticleContainer}/> 
                 <Route path="/login/" component={LoginPage} /> 
                 <Route path="/register/" component={RegisterPage} /> 
                 <Route path="/settings/" component={SettingContainer} /> 
