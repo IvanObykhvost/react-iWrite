@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'react-bootstrap';
-import Input from '../../../components/common/Inputs/Input';
+import Input from '../../../components/Form/Inputs/Input';
 import TagsInput from '../../../components/common/Inputs/TagsInput';
-import SimpleButton from '../../../components/common/Buttons/SimpleButton';
-import { STATUS } from '../constant';
+import Button from '../../../components/Form/Buttons/Button';
 
 
 export default function Editor({post, onChange, onChangeTag, onSubmit, inProgress, error}){
@@ -53,7 +52,7 @@ export default function Editor({post, onChange, onChangeTag, onSubmit, inProgres
                             value={post.tags.map(tag => ({value: tag, label: tag}))}
                             noResultsText="Create new tags"
                         />
-                        <SimpleButton 
+                        <Button 
                             type="submit"
                             name="Publish article"
                             bsStyle="primary"

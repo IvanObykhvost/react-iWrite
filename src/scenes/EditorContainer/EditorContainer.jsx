@@ -79,31 +79,26 @@ export default class EditorContainer extends React.Component {
             status: STATUS.EDDITOR_IN_PROGREES
         });
 
-        if(this.state.status === STATUS.POST_UPDATE){
-            api.Posts.update(this.state.post)
-                .then(
-                    data => {
-                        this.setState({
-                            error: data.error ? data.error : null,
-                            status: data.error ? STATUS.EDDITOR_ERROR : STATUS.EDITOR_SUCCESS
-                        })
-                    }
-                )
+        let post = this.state.post;
+        let request = null;
+
+        if(this.state.status === STATUS.POST_ADD){
+            delete post.id;
+            request = api.Posts.create(post);
         }
         else {
-            let post = this.state.post;
-            delete post.id;
-
-            api.Posts.create(this.state.post)
-                .then(
-                    data => {
-                        this.setState({
-                            error: data.error ? data.error : null,
-                            status: data.error ? STATUS.EDDITOR_ERROR : STATUS.EDITOR_SUCCESS
-                        });
-                    }
-                ) 
+            request = api.Posts.update(post);
         }
+
+        request
+            .then(
+                data => {
+                    this.setState({
+                        error: data.error ? data.error : null,
+                        status: data.error ? STATUS.EDDITOR_ERROR : STATUS.EDITOR_SUCCESS
+                    })
+                }
+            )
     }
 
     render() {

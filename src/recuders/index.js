@@ -4,7 +4,6 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux'
 import common from './common';
 import auth from './auth';
-import settings from './settings';
 import profile from './profile';
 
 export default combineReducers({
@@ -13,6 +12,5 @@ export default combineReducers({
     routing: routerReducer,
     common,
     auth,
-    settings,
     profile
 });
