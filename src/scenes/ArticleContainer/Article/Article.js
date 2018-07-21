@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Row, Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Button from "../../../components/Form/Buttons/Button";
-import CommentContainer from "../../../components/common/comment/CommentContainer";
+import CommentContainer from "../../../components/CommentContainer/CommentContainer";
 
-export default function Article({ article, comments, onClickDelete }) {
+export default function Article({ article, onClickDelete }) {
     const { post, post: { author }} = article;
 
     return (
@@ -69,25 +69,15 @@ export default function Article({ article, comments, onClickDelete }) {
                         <hr />
                     </Col>
                 </Row>
-                <Row>
-                    {/* {
-                        comments.error 
-                        ?
-                            comments.error 
-                        :
-                            <Col md={8} className="offset-md-2">
-                                <CommentContainer commentsData={comments.commentsData} postId={post.id}/>
-                            </Col>
-                        
-                    } */}
-                </Row>
+                <CommentContainer 
+                    postId={post.id}
+                />
             </div>
         </div>
     )
 }
 
 Article.propTypes = {
-    comments: PropTypes.object.isRequired,
     article: PropTypes.object.isRequired,
     onClickDelete: PropTypes.func.isRequired
 }

@@ -1,14 +1,11 @@
-﻿import { Link } from 'react-router-dom';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Row, Col, Image } from 'react-bootstrap';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
-import ButtonIcon from "../Buttons/ButtonIcon";
+import ButtonIcon from "../../Form/Buttons/ButtonIcon";
 
-const Comment = props => {
-    const { postId, comment, commentDeleteInProgress } = props;   
-    const showDeleteButton = props.currentUser &&
-        props.currentUser.name === comment.author.name;
-
+function Comment({comment, showDeleteButton, onClickDelete}) {
     return (
         <div className="card">
             <div className="card-block">
@@ -20,7 +17,7 @@ const Comment = props => {
                 
             </div>
             <div className="card-footer">
-                <Row className="">
+                <Row>
                     <Col md={10} xs={10} className="text-left">
                         <Link
                             to={`/@${comment.author.name}`}
@@ -43,13 +40,8 @@ const Comment = props => {
                         showDeleteButton ?   
                             <ButtonIcon   
                                 icon={<DeleteIcon className="button-delete" />}
-                                onClick={() => props.onCommentDelete(postId, comment.id)}
+                                onClick={onClickDelete}
                             />
-                            // <SimpleButton
-                            //     disabled={commentDeleteInProgress}
-                            //     className="btn btn-sm btn-primary"
-                            //     onClick={() =>  props.onCommentDelete(postId, comment.id)}
-                            //     name='Delete Comment'/>
                             :                        
                             null
                     } 
@@ -59,5 +51,12 @@ const Comment = props => {
         </div>
     );
 };
+
+Comment.propTypes = {
+    comment: PropTypes.object.isRequired,
+    showDeleteButton: PropTypes.bool.isRequired,
+    // inProgress: PropTypes.bool.isRequired,
+    onClickDelete: PropTypes.func.isRequired
+}
 
 export default Comment;

@@ -9,138 +9,80 @@ class ArticleContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state= {
-            userName: this.props.userName,
-            article: {
-                post: {
-                    id: this.props.match.params.id
-                },
-                error: null,
-                inProgress: true,
-                success: null,
-                isOwner: false
+            userName: this.props.currentUser ? this.props.currentUser.name : null,
+            post: {
+                id: this.props.match.params.id
             },
-            comments: {
-                commentsData: null,
-                error: null,
-                inProgress: true
-            }
+            error: null,
+            inProgress: true,
+            success: null,
+            isOwner: false
+
         }
     }
 
     componentDidMount(){
-        const id = this.state.article.post.id;
+        const id = this.state.post.id;
         api.Posts.get(id)
             .then(
                 data => {
                     if(data.error){
-                        this.setState({
-                            article: {
-                                ...this.state.article,
-                                inProgress: false,
-                                error: data.error ? data.error : null
-                            }
-                        });
-                        return Promise.reject();
+                        return Promise.reject(data.error);
                     }
                     else {
                         const autorName = data.post.author.name;
+                        const isOwner = this.state.userName ? autorName === this.state.userName : false
                         this.setState({
-                            article: {
-                                ...this.state.article,
-                                post: data.post,
-                                inProgress: false,
-                                isOwner: autorName === this.state.userName ? true : false
-                            }
+                            post: data.post,
+                            inProgress: false,
+                            isOwner
                         });
-                        //return api.Comments.forArticle(id);
                     }    
                 }
             )
-            // .then(
-            //     data => {
-            //         if(data.error){
-            //             this.setState({
-            //                 comments: {
-            //                     ...this.state.comments,
-            //                     error: data.error ? data.error : null,
-            //                     inProgress: false
-            //                 }
-            //             });
-            //         }
-            //         else {
-            //             this.setState({
-            //                 comments: {
-            //                     ...this.state.comments,
-            //                     commentsData: data.comments,
-            //                     inProgress: false
-            //                 }
-            //             });
-            //         }
-            //     }
-            // )
+            .catch(e => this.setState({error: e }))
     }
 
     onClickDelete = () => {
         //inProgress
-        api.Posts.delete(this.state.article.post.id)
+        api.Posts.delete(this.state.post.id)
             .then(
                 data => {
                     this.setState({
-                        article: {
-                            ...this.state.article,
-                            error: data.error ? data.error : null,
-                            success: data.success ? data.success : null
-                        }
+                        error: data.error ? data.error : null,
+                        success: data.success ? data.success : null
                     });
                 }
             )
     }
 
     render() {
-        let {article, comments} = this.state;
+        let {state} = this;
 
-        if (article.success) {
+        if (state.success) {
             return <Redirect to='/' />;
         }
 
-        if (article.error) {
-            return <p className="error">{article.error}</p>;
+        if (state.error) {
+            return <p className="error">{state.error}</p>;
         }
-
-        if(comments.error){
-            comments.error = <p className="error">{comments.error}</p>;
-        }
-
         
         return (
-            !article.inProgress ? // && !comments.inProgress ?
-            <Article 
-                onClickDelete={e => this.onClickDelete()}
-                article={article}
-                //comments={comments}
-            />
-            :
-            null
+            !state.inProgress ?
+                <Article 
+                    onClickDelete={e => this.onClickDelete()}
+                    article={state}
+                />
+                :
+                null
         )
     }
 }
 
 const mapStateToProps = (state, props) => ({
-    userName: state.common.currentUser.name
+    currentUser: state.common.currentUser
 })
 
-// const mapDispatchToProps = (dispatch, props) => ({
-//     onLoad: () => {
-//         dispatch(articlePost(props.postId));
-//         dispatch(articleComments(props.postId));
-//     },
-//     onUnload: () => {
-//         dispatch(articleUnload());
-//     },
-//     onPostDelete: (post) => {
-//         dispatch(articlePostDelete(post));
-//     },
-// });
 export default connect(mapStateToProps, null)(ArticleContainer)
 
 
