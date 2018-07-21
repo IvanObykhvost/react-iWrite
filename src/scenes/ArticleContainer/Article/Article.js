@@ -4,6 +4,7 @@ import { Row, Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Button from "../../../components/Form/Buttons/Button";
 import CommentContainer from "../../../components/CommentContainer/CommentContainer";
+import ButtonLink from "../../../components/Form/Buttons/ButtonLink";
 
 export default function Article({ article, onClickDelete }) {
     const { post, post: { author }} = article;
@@ -36,15 +37,12 @@ export default function Article({ article, onClickDelete }) {
                             {
                                 article.isOwner ?                                              
                                     <span>      
-                                        <Link                                       
+                                        <ButtonLink
                                             to={`/editor/${post.id}`}
-                                        >
-                                            <Button
-                                                type="button"
-                                                name="Edit Article"
-                                                bsClass="btn btn-outline-secondary btn-sm"
-                                            />
-                                        </Link>                                      
+                                            type="button"
+                                            name="Edit Article"
+                                            bsClass="btn btn-outline-secondary btn-sm"
+                                        />
                                         <Button 
                                             name="Delete Article"
                                             type="button"

@@ -26,18 +26,15 @@ class ArticleContainer extends React.Component {
         api.Posts.get(id)
             .then(
                 data => {
-                    if(data.error){
-                        return Promise.reject(data.error);
-                    }
-                    else {
-                        const autorName = data.post.author.name;
-                        const isOwner = this.state.userName ? autorName === this.state.userName : false
-                        this.setState({
-                            post: data.post,
-                            inProgress: false,
-                            isOwner
-                        });
-                    }    
+                    if(data.error) return Promise.reject(data.error);
+
+                    const autorName = data.post.author.name;
+                    const isOwner = this.state.userName ? autorName === this.state.userName : false
+                    this.setState({
+                        post: data.post,
+                        inProgress: false,
+                        isOwner
+                    });
                 }
             )
             .catch(e => this.setState({error: e }))
@@ -48,12 +45,15 @@ class ArticleContainer extends React.Component {
         api.Posts.delete(this.state.post.id)
             .then(
                 data => {
+                    if(data.error) return Promise.reject(data.error);
+
                     this.setState({
-                        error: data.error ? data.error : null,
+                        error: null,
                         success: data.success ? data.success : null
                     });
                 }
             )
+            .catch(e => this.setState({error: e }))
     }
 
     render() {

@@ -6,7 +6,7 @@ import ArticleContainer from './scenes/ArticleContainer/ArticleContainer';
 import LoginPage from './scenes/Login/LoginPage';
 import RegisterPage from './scenes/Register/RegisterPage';
 import SettingContainer from './scenes/SetingsContainer/SettingContainer';
-import ProfilePage from './scenes/Profile/ProfilePage';
+import ProfileContainer from './scenes/ProfileContainer/ProfileContainer';
 import ErrorPage from './scenes/Error/ErrorPage';
 
 export default function Router() {
@@ -18,7 +18,7 @@ export default function Router() {
                 <Route path="/login/" component={LoginPage} /> 
                 <Route path="/register/" component={RegisterPage} /> 
                 <Route path="/settings/" component={SettingContainer} /> 
-                <Route path="/@:username/" component={ProfilePage} />               
+                <Route path="/@:username/" component={ProfileContainer} />               
                 <Route path="/error/" component={ErrorPage} />
             </Switch>
     )
