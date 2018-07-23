@@ -6,13 +6,34 @@ import api from '../../api';
 class ProfileContainer extends React.Component {
     constructor(props){
         super(props);
+        let username = this.props.match.params.username;
+        const tabList = [
+            { 
+                id: 0, 
+                title: "My Articles",  
+                active: true, 
+                onLoad(){
+                     return api.Posts.byAuthor(username);
+                     }
+            },
+            { 
+                id: 1, 
+                title: "Favorited Articles", 
+                active: false, 
+                onLoad(){ 
+                    return api.Posts.byFavorite(username); 
+                }
+            }
+        ]
+
         this.state = {
-            username: this.props.match.params.username,
+            username,
             currentUser: this.props.currentUser,
             profile: null,
             error: null,
             inProgress: true,
-            isUser: false
+            isUser: false,
+            tabList
         }
     }
 
@@ -87,6 +108,7 @@ class ProfileContainer extends React.Component {
                     isUser={state.currentUser && state.profile ? state.currentUser.name === state.profile.name : false}
                     currentUser={state.currentUser}
                     onClickFollow={e => this.handelClickFollowUser()}
+                    tabList={state.tabList}
                 />
                 :
                 <div>Please wait, profile is loading...</div>

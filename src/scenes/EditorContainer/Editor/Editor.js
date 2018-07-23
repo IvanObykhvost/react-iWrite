@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'react-bootstrap';
 import Input from '../../../components/Form/Inputs/Input';
-import TagsInput from '../../../components/common/Inputs/TagsInput';
 import Button from '../../../components/Form/Buttons/Button';
+import InputComboBox from '../../../components/Form/Inputs/InputComboBox';
 
 
 export default function Editor({post, onChange, onChangeTag, onSubmit, inProgress, error}){
@@ -45,7 +45,7 @@ export default function Editor({post, onChange, onChangeTag, onSubmit, inProgres
                             onChange={onChange} 
                             rows={4}
                         />
-                        <TagsInput 
+                        <InputComboBox 
                             name="tags" 
                             placeholder="Tags"
                             onChange={onChangeTag} 

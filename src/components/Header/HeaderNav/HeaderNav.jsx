@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React from 'react';
 import ButtonNav from '../../common/Buttons/ButtonNav';
 import HomeIcon from 'material-ui/svg-icons/action/home';
 import QueueIcon from 'material-ui/svg-icons/av/queue';

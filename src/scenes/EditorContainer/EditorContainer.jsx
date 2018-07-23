@@ -117,18 +117,17 @@ export default class EditorContainer extends React.Component {
         }
 
         return (
-            status !== STATUS.POST_ON_LOAD 
-            ?
-            <Editor 
-                onChange={e => this.change(e)} 
-                onChangeTag={e => this.changeTag(e)}
-                onSubmit={e => this.submit(e)} 
-                error={renderError}
-                post={post}
-                inProgress={status === STATUS.EDDITOR_IN_PROGREES ? true : false}
-            />
-            :
-            null
+            status !== STATUS.POST_ON_LOAD ?
+                <Editor 
+                    onChange={e => this.change(e)} 
+                    onChangeTag={e => this.changeTag(e)}
+                    onSubmit={e => this.submit(e)} 
+                    error={renderError}
+                    post={post}
+                    inProgress={status === STATUS.EDDITOR_IN_PROGREES ? true : false}
+                />
+                :
+                null
         )
     }
 }

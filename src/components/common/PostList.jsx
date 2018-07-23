@@ -1,5 +1,4 @@
 ﻿import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
 import Post from './Post';
 import PropTypes from 'prop-types';
 
@@ -25,7 +24,7 @@ export default class PostList extends React.Component {
                 </div>);
         }
         else {
-            if (posts.length == 0) {
+            if (posts.length === 0) {
                 return (
                     <div>
                         <p>Sorry, no posts found.</p>

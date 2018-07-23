@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { Row, Col, Image } from 'react-bootstrap';
 import ButtonLink from '../../../components/Form/Buttons/ButtonLink';
 import ButtonFollowUser from './ButtonFollowUser/ButtonFollowUser';
+import TabContainer from '../../../components/TabContainer/TabContainer';
 
-export default function Profile({profile, isUser, currentUser, onClickFollow}) {
+export default function Profile({profile, isUser, currentUser, tabList, onClickFollow}) {
     return (                 
         <div className="user-info">
             {/* <div className="container"> */}
                 <Row>
-                    <Col xs={12} md={10} className="offset-md-1">
+                    <Col xs={10} md={10} className="offset-md-1">
                         <Image src={profile.image} alt={profile.name} className="user-img" thumbnail/>
                         <h4>{profile.name}</h4>
                         <p>{profile.bio}</p>
@@ -32,6 +33,11 @@ export default function Profile({profile, isUser, currentUser, onClickFollow}) {
                         }
                     </Col>
                 </Row>
+                <Row>
+                    <Col xs={10} md={6} className="offset-md-3">
+                        <TabContainer tabList={tabList}/>
+                    </Col>
+                </Row>
             {/* </div> */}
         </div>   
         )
@@ -41,5 +47,6 @@ Profile.propTypes = {
     currentUser: PropTypes.object,
     profile: PropTypes.object.isRequired,
     isUser: PropTypes.bool.isRequired,
-    onClickFollow: PropTypes.func.isRequired
+    onClickFollow: PropTypes.func.isRequired,
+    tabList: PropTypes.array.isRequired,
 }
