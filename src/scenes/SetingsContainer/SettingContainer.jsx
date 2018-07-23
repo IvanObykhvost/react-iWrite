@@ -69,7 +69,7 @@ class SettingsContainer extends React.Component {
     }
 }
 
-const mapStateToProps = ({ common: { currentUser } }) => ({
+const mapStateToProps = ({ user: { currentUser } }) => ({
     currentUser
 });
 

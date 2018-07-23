@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 import Input from '../../../components/Form/Inputs/Input';
 import Button from '../../../components/Form/Buttons/Button';
 
-function Register({state, onSubmit, onChange}) {
+export default function Register({state, onSubmit, onChange}) {
     return (
         <div className="login-page">
             <div className="container-page">

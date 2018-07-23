@@ -8,22 +8,8 @@ class ProfileContainer extends React.Component {
         super(props);
         let username = this.props.match.params.username;
         const tabList = [
-            { 
-                id: 0, 
-                title: "My Articles",  
-                active: true, 
-                onLoad(){
-                     return api.Posts.byAuthor(username);
-                     }
-            },
-            { 
-                id: 1, 
-                title: "Favorited Articles", 
-                active: false, 
-                onLoad(){ 
-                    return api.Posts.byFavorite(username); 
-                }
-            }
+            { id: 0, title: "My Articles", active: true, onLoad(){return api.Posts.byAuthor(username);}},
+            { id: 1, title: "Favorited Articles", active: false, onLoad(){return api.Posts.byFavorite(username);}}
         ]
 
         this.state = {
@@ -118,41 +104,8 @@ class ProfileContainer extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    currentUser: state.common.currentUser
-    
-    // tabList: [
-    //     { id: 0, title: "My Articles",  active: true},
-    //     { id: 1, title: "Favorited Articles", active: false },
-    // ],
+    currentUser: state.user.currentUser
 })
-
-// const mapDispatchToProps = (dispatch, props)  => ({
-//     onLoad: () => {        
-//         dispatch(profileLoad(props.username));
-//         dispatch(postsGetByUsername(props.username, POSTS_REQUEST_TYPES.ALL));
-//     },
-//     onTabClick: (id) => {
-//         //My Articles
-//         if (id === 0) {
-//             dispatch(postsGetByUsername(props.username, POSTS_REQUEST_TYPES.ALL));
-//         }
-//         //Favourite Atricles
-//         else {
-//             dispatch(postsGetByUsername(props.username, POSTS_REQUEST_TYPES.FAVOURITE));
-//         }
-//     },
-//     //onUnload: () => dispatch(profilePageUnload())
-//     onFollowUser: (user) => {       
-//         //trying to unfollow
-//         if (user.following) {
-//             dispatch(followUser(user, FOLLOW_USER.UNFOLLOW));
-//         }
-//         //trying to follow
-//         else {
-//             dispatch(followUser(user, FOLLOW_USER.FOLLOW));
-//         }
-//     },    
-// })
 
 export default connect(
     mapStateToProps,

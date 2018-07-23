@@ -1,13 +1,12 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { auth } from '../../actions/auth';
-
 import Login from "./Login/Login";
 import api from '../../api';
+import { currentUser } from '../../data/user/action';
 
 
-export default class LoginConteiner extends React.Component {   
+class LoginContainer extends React.Component {   
     constructor(props) {       
         super(props);   
 
@@ -18,7 +17,7 @@ export default class LoginConteiner extends React.Component {
             },
             error: null,
             inProgress: false,
-            success: null
+            success: false
         }
     }
 
@@ -33,18 +32,30 @@ export default class LoginConteiner extends React.Component {
         this.setState({
             inProgress: true
         });
+        const user = this.state.user;
 
-        api.Auth.login(this.state.user)
+        api.Auth.login(user.email, user.password)
             .then(
                 data => {
-                    //check error and put current user
+                    if(data.error)
+                       return Promise.reject(data.error);
+
+                    localStorage.setItem('jwt', data.user.token);
+                    return this.props.CurrentUser();
+                }
+            )      
+            .then(
+                () => {
                     this.setState({
-                        error: data.error ? data.error : null,
-                        success: data.success ? data.success : null,
+                        success: true,
                         inProgress: false
                     });
                 }
-            )      
+            )
+            .catch(e => this.setState({
+                    error: e,
+                    inProgress: false
+            }));
     }    
 
     render() {                
@@ -69,22 +80,9 @@ export default class LoginConteiner extends React.Component {
     }
 }
 
-// const mapStateToProps = ({ auth: { error, inProgress }, common: { currentUser } }) => ({
-//     error,
-//     currentUser,
-//     inProgress
-// });
+const mapDispatchToProps = dispatch => ({
+    CurrentUser: () =>
+        dispatch(currentUser())
+});
 
-// const mapDispatchToProps = dispatch => ({
-//     onSubmit: (state) =>
-//         dispatch(auth(state)),
-// });
-
-// Login.propTypes = {
-//     error: PropTypes.string,
-//     currentUser: PropTypes.object,
-//     inProgress: PropTypes.bool,
-//     onSubmit: PropTypes.func
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(LoginContainer);

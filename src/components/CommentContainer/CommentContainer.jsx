@@ -136,8 +136,9 @@ class CommentContainer extends React.Component {
                     }
                     {
                         !state.inProgress.onLoad ?
-                            state.comments.map(comment =>
+                            state.comments.map((comment, index) =>
                                 <Comment 
+                                    key={index}
                                     comment={comment}
                                     showDeleteButton={state.user ? comment.author.name === state.user.name : false}
                                     inProgress={state.inProgress.create}
@@ -155,7 +156,7 @@ class CommentContainer extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    currentUser: state.common.currentUser
+    currentUser: state.user.currentUser
 })
 
 export default connect(mapStateToProps, null)(CommentContainer);

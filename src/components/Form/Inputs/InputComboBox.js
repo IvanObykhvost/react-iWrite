@@ -15,5 +15,5 @@ export default function InputComboBox ({...props}) {
 }
 
 InputComboBox.propTypes = {
-    props: PropTypes.object.isRequired
+    props: PropTypes.object
 }

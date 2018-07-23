@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { appLoad } from '../../actions/app';
 import { logout } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import HeaderContainer from '../HeaderContainer/HeaderContainer';
 
 class App extends React.Component{
     constructor(props) {
@@ -14,8 +15,9 @@ class App extends React.Component{
 
     componentWillMount() {
         const token = window.localStorage.getItem('jwt');
-        this.props.onLoad(token ?  token : null);
+        // this.props.onLoad(token ?  token : null);
     }
+
 
     render() {        
         if (this.props.inProgress === true) {
@@ -25,7 +27,7 @@ class App extends React.Component{
             return (
                 <BrowserRouter>
                     <div className='App'>                               
-                        <Header currentUser={this.props.currentUser} onLogout={this.props.onLogout}/>
+                        <HeaderContainer currentUser={this.props.currentUser}/>
                         <Router />
                     </div>
                 </BrowserRouter>)
@@ -33,12 +35,16 @@ class App extends React.Component{
     }
 }
 
-const mapStateToProps = ({ common: { currentUser, inProgress }}) => {
-    return {
-        currentUser,
-        inProgress
-    }
-};
+// const mapStateToProps = ({ common: { currentUser, inProgress }}) => {
+//     return {
+//         currentUser,
+//         inProgress
+//     }
+// };
+
+const mapStateToProps = ({ user : { currentUser} }) => ({
+    currentUser
+});
 
 const mapDispatchToProps = dispatch => ({
     onLoad: (token) =>

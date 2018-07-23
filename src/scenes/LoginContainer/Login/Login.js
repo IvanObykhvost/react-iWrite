@@ -4,10 +4,10 @@ import { Row, Col } from 'react-bootstrap';
 import Input from '../../../components/Form/Inputs/Input';
 import Button from '../../../components/Form/Buttons/Button';
 
-function Login({state, onChange, onSubmit}) {   
+export default function Login({state, onChange, onSubmit}) {   
     return (
         <div className="login-page">
-            <div className="container-page">
+            <div className="container">
                 <Row>
                     <Col md={10} className="offset-md-1">
                         <h1>Sign In</h1>
@@ -15,7 +15,7 @@ function Login({state, onChange, onSubmit}) {
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={2} className="offset-md-5 offset-sm-3" sm={6}>
+                    <Col md={4} className="offset-md-4 offset-sm-3" sm={6}>
                         <form onSubmit={onSubmit}>
                             <Input 
                                 type="email"

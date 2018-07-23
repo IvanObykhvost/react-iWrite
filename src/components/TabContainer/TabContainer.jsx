@@ -12,6 +12,14 @@ export default class TabContainer extends React.Component {
         }
     }   
 
+    componentWillReceiveProps(nextProps) {
+        let selectTab = nextProps.tabList.find(tab => tab.active);
+        this.setState({
+            tabList: nextProps.tabList,
+            selectTab
+        });
+    }
+
     handleClickTab = id => {
         //is clicked tab already selected?
         const selectedTab = this.state.tabList.find(function (tab) { return tab.id === id; });

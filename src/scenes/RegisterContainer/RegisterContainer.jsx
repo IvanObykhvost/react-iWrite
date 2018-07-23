@@ -1,21 +1,24 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Register from "./Register/Register";
 import api from '../../api';
 
 
-export default class LoginConteiner extends React.Component {   
+class RegisterContainer extends React.Component {   
     constructor(props) {       
         super(props);   
 
         this.state = {
+            currentUser: this.props.currentUser,
             user: {
                 name: '',
                 email: '',
                 password: ''
             },
             error: null,
-            inProgress: false
+            inProgress: false,
+            success: null
         }
     }
 
@@ -51,7 +54,7 @@ export default class LoginConteiner extends React.Component {
             state.error = <p className="error">{state.error}</p>;
         }
 
-        if (state.success) {
+        if (state.success || state.currentUser) {
             return <Redirect to='/' />;
         }
 
@@ -64,3 +67,9 @@ export default class LoginConteiner extends React.Component {
         );
     }
 }
+
+const mapStateToProps = ({user: { currentUser } }) => ({
+    currentUser
+});
+
+export default connect(mapStateToProps, null)(RegisterContainer);

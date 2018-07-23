@@ -58,7 +58,7 @@ export default function Article({ article, onClickDelete }) {
                     </Col>
                 </Row>
             </div>
-            <div className="container-page">
+            <div className="container">
                 <Row className="article-content">
                     <Col md={8} className="offset-md-2">
                         <pre>

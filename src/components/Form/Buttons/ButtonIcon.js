@@ -16,5 +16,5 @@ export default function ButtonIcon({ icon, ...props }) {
 
 ButtonIcon.propTypes = {
     icon: PropTypes.object.isRequired,
-    props: PropTypes.object.isRequired
+    props: PropTypes.object
 }

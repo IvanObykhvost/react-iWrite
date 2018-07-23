@@ -80,7 +80,7 @@ class ArticleContainer extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    currentUser: state.common.currentUser
+    currentUser: state.user.currentUser
 })
 
 export default connect(mapStateToProps, null)(ArticleContainer)

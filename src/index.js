@@ -9,12 +9,13 @@ import './index.css';
 import './main.css';
 import 'bootstrap/dist/css/bootstrap.css'; 
 import "react-select/dist/react-select.css";
-import App from './components/App/App';
+import AppContainer from './scenes/AppContainer/AppContainer';
+// import App from './components/App/App';
 
 
 ReactDOM.render(
     <Provider store={store}>
-       <App />
+       <AppContainer />
     </Provider>
     ,document.getElementById('root'));
 registerServiceWorker();

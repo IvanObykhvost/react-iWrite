@@ -7,7 +7,7 @@ import Button from '../../../components/Form/Buttons/Button';
 export default function  Settings({state, onChange, onSubmit}) {
     return (
         <div className="setting-page">
-            <div className="container-page">
+            <div className="container">
                 <Row>
                     <Col md={10} className="offset-md-1">
                         <h1>Your settings</h1>
@@ -16,7 +16,7 @@ export default function  Settings({state, onChange, onSubmit}) {
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={4} className="offset-md-4">   
+                    <Col md={6} className="offset-md-3">   
                         <form onSubmit={onSubmit}>
                             <Input 
                                 type="text"
