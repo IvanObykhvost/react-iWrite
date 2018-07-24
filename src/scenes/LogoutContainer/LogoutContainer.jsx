@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Logout from './Logout/Logout';
-import { logout } from '../../actions/auth';
+import { logout } from '../../data/user/action';
+
 
 class LogoutConteiner extends React.Component {   
     constructor(props) {       

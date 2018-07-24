@@ -4,18 +4,19 @@ import { Link } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
-export default function ButtonNav({ link, name, icon, onClick }) {
+export default function ButtonNav({ link, name, icon}) {
     return (
         <Link to={link}
             className='button-nav'
         >
-            {
+            {/* {
                 icon ?
                 <MuiThemeProvider>
                     {icon}
                 </MuiThemeProvider>
                 : null
-            }
+            } */}
+            
             {name}
         </Link>
  
@@ -25,6 +26,5 @@ export default function ButtonNav({ link, name, icon, onClick }) {
 ButtonNav.propTypes = {
     link: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    icon: PropTypes.object,
-    onClick: PropTypes.func
+    icon: PropTypes.object
 }
