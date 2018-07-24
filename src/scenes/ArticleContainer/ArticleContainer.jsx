@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import api from "../../api";
 import Article from './Article/Article';
+import Label from "../../components/Form/Label/Label";
 
 class ArticleContainer extends React.Component {
     constructor(props) {
@@ -64,7 +65,7 @@ class ArticleContainer extends React.Component {
         }
 
         if (state.error) {
-            return <p className="error">{state.error}</p>;
+            return <Label className="error" message={state.error}/>;
         }
         
         return (

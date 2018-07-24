@@ -2,15 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './Profile/Profile';
 import api from '../../api';
+import Label from '../../components/Form/Label/Label';
 
 class ProfileContainer extends React.Component {
     constructor(props){
         super(props);
         let username = this.props.match.params.username;
-        const tabList = [
-            { id: 0, title: "My Articles", active: true, onLoad(){return api.Posts.byAuthor(username);}},
-            { id: 1, title: "Favorited Articles", active: false, onLoad(){return api.Posts.byFavorite(username);}}
-        ]
 
         this.state = {
             username,
@@ -19,7 +16,7 @@ class ProfileContainer extends React.Component {
             error: null,
             inProgress: true,
             isUser: false,
-            tabList
+            tabList: this.getTabList(username)
         }
     }
 
@@ -27,12 +24,16 @@ class ProfileContainer extends React.Component {
         this.onLoad(this.state.username);
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.match.params.username !== this.props.match.params.username) {
-            this.onLoad(this.props.match.params.username);
-        }
+    componentWillReceiveProps (nextProps) {
+       this.onLoad(nextProps.match.params.username);
     }
 
+    getTabList = username => {
+        return [
+            { id: 0, title: "My Articles", active: true, onLoad(){return api.Posts.byAuthor(username);}},
+            { id: 1, title: "Favorited Articles", active: false, onLoad(){return api.Posts.byFavorite(username);}}
+        ]
+    }
     onLoad = username => {
         this.setState({
             inProgress: true
@@ -44,6 +45,8 @@ class ProfileContainer extends React.Component {
                     if(data.error) return Promise.reject(data.error);
 
                     this.setState({
+                        username,
+                        tabList: this.getTabList(username),
                         profile: data.user,
                         inProgress: false
                     });
@@ -67,7 +70,7 @@ class ProfileContainer extends React.Component {
         request
             .then(
                 data => {
-                    if(data.error) return ProgressEvent.reject(data.error);
+                    if(data.error) return Promise.reject(data.error);
 
                     this.setState({
                         profile: {
@@ -83,9 +86,7 @@ class ProfileContainer extends React.Component {
     render() {
         let {state} = this;
         if(state.error)
-            return <div className="error">{state.error}</div>;
-
-        
+            return <Label className="erro" message={state.error}/>;
 
         return (
             !state.inProgress ? 

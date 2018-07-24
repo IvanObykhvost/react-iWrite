@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'react-bootstrap';
 import Input from '../../../components/Form/Inputs/Input';
 import Button from '../../../components/Form/Buttons/Button';
+import Label from '../../../components/Form/Label/Label';
 
 export default function  Settings({state, onChange, onSubmit}) {
     return (
@@ -11,8 +12,8 @@ export default function  Settings({state, onChange, onSubmit}) {
                 <Row>
                     <Col md={10} className="offset-md-1">
                         <h1>Your settings</h1>
-                        {state.error}
-                        {state.success}
+                        <Label className="error" message={state.error}/>
+                        <Label className="success" message={state.success}/>
                     </Col>
                 </Row>
                 <Row>
@@ -38,6 +39,7 @@ export default function  Settings({state, onChange, onSubmit}) {
                                 placeholder="Email" 
                                 value={state.user.email} 
                                 onChange={onChange} 
+                                autoComplete="email"
                             />
                             <Input 
                                 type="text"

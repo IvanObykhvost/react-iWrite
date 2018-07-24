@@ -3,13 +3,14 @@ import { Redirect } from 'react-router-dom';
 import Editor from './Editor/Editor';
 import { STATUS } from './constant';
 import api from "../../api";
+import Label from '../../components/Form/Label/Label';
 
 export default class EditorContainer extends React.Component {
     constructor(props) {
         super(props);   
         
         this.initState = {
-            status: STATUS.POST_INITIALIZE,
+            status: STATUS.POST_ADD,
             post: {
                 id: this.props.match.params.id,
                 title: "",
@@ -17,12 +18,13 @@ export default class EditorContainer extends React.Component {
                 message: "",
                 tags: []
             },
-            error: null
+            inProgress: false,
+            error: null,
+            success: null
         };
 
         this.state = {
-            ...this.initState,
-            status: STATUS.POST_ADD
+            ...this.initState
         };
     }
 
@@ -30,30 +32,28 @@ export default class EditorContainer extends React.Component {
         this.onLoad();
     }    
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.post.id !== this.props.match.params.id) {
-            
-            let state = {...this.initState};
-            state.post.id = this.props.match.params.id;
-            this.setState(
-                {...state}, 
-                () => this.onLoad()
-            );
-        }        
+    componentWillReceiveProps (nextProps) {
+        let state = {...this.initState};
+        state.post.id = nextProps.match.params.id;
+        this.setState(
+            {...state}, 
+            () => this.onLoad()
+        );
     }
 
     onLoad = () => {
         if(this.state.post.id){
             this.setState({
-                status: STATUS.POST_ON_LOAD
+                status: STATUS.POST_UPDATE,
+                inProgress: true
             });
             api.Posts.get(this.state.post.id)
                 .then(
                     data => {
                         this.setState({ 
-                            post: data.post ? data.post : this.state.post,
-                            error: data.error ? data.error : null,
-                            status: data.error ? STATUS.POST_ERROR : STATUS.POST_UPDATE
+                            inProgress: false,
+                            post: data.post ? data.post : null,
+                            error: data.error ? data.error : null
                         });
                     }   
                 )
@@ -76,7 +76,7 @@ export default class EditorContainer extends React.Component {
     submit = e => {
         e.preventDefault();      
         this.setState({
-            status: STATUS.EDDITOR_IN_PROGREES
+            inProgress: true
         });
 
         let post = this.state.post;
@@ -94,37 +94,38 @@ export default class EditorContainer extends React.Component {
             .then(
                 data => {
                     this.setState({
+                        inProgress: false,
                         error: data.error ? data.error : null,
-                        status: data.error ? STATUS.EDDITOR_ERROR : STATUS.EDITOR_SUCCESS
+                        success: data.success? data.success : null
                     })
                 }
             )
     }
 
     render() {
-        let {post, status, error} = this.state;
-        let renderError = null;
-        if (status === STATUS.EDITOR_SUCCESS) {
+        let {state, state: {post}} = this;
+
+
+        if (state.status === STATUS.POST_ADD && state.success) {
             return <Redirect to='/' />;
         }
-
-        if(status === STATUS.POST_ERROR){
-            return <p className="error">{error}</p>;
+        if (state.status === STATUS.POST_UPDATE && state.success) {
+            return <Redirect to={`/article/${post.id}`} />;
         }
-           
-        if (status === STATUS.EDDITOR_ERROR) {
-            renderError = <p className="error">{error}</p>;
+
+        if(!post && state.error){
+            return <Label className="error" message={state.error}/>;
         }
 
         return (
-            status !== STATUS.POST_ON_LOAD ?
+            !state.inProgress ?
                 <Editor 
                     onChange={e => this.change(e)} 
                     onChangeTag={e => this.changeTag(e)}
                     onSubmit={e => this.submit(e)} 
-                    error={renderError}
+                    error={state.error}
                     post={post}
-                    inProgress={status === STATUS.EDDITOR_IN_PROGREES ? true : false}
+                    inProgress={state.inProgress}
                 />
                 :
                 null

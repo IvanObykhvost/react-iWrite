@@ -17,6 +17,12 @@ export function currentUserResponse(data) {
 export function currentUser(){
     return dispatch => {
         return api.Auth.current()
-            .then( data => dispatch(currentUserResponse(data)))
+            .then(data => dispatch(currentUserResponse(data)))
+    }
+}
+
+export function setTokenInCookie(data) {
+    return dispatch => {
+        return dispatch(currentUserResponse(data));
     }
 }

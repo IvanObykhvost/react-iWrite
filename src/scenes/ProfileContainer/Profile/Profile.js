@@ -8,7 +8,7 @@ import TabContainer from '../../../components/TabContainer/TabContainer';
 export default function Profile({profile, isUser, currentUser, tabList, onClickFollow}) {
     return (                 
         <div className="user-info">
-            {/* <div className="container"> */}
+            <div className="container">
                 <Row>
                     <Col xs={10} md={10} className="offset-md-1">
                         <Image src={profile.image} alt={profile.name} className="user-img" thumbnail/>
@@ -34,11 +34,11 @@ export default function Profile({profile, isUser, currentUser, tabList, onClickF
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs={10} md={6} className="offset-md-3">
+                    <Col xs={12} md={10} className="offset-md-1">
                         <TabContainer tabList={tabList}/>
                     </Col>
                 </Row>
-            {/* </div> */}
+            </div>
         </div>   
         )
 }

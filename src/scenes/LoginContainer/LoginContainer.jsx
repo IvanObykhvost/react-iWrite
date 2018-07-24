@@ -61,10 +61,6 @@ class LoginContainer extends React.Component {
     render() {                
         let {state} = this;
 
-        if(state.error){
-            state.error = <p className="error">{state.error}</p>;
-        }
-
         if (state.success) {
             return <Redirect to='/' />;
         }

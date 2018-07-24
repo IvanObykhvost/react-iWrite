@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import api from '../../api';
 import Settings from './Settings/Settings';
+import { setTokenInCookie } from "../../data/user/action";
 
 
 class SettingsContainer extends React.Component {
@@ -33,26 +34,32 @@ class SettingsContainer extends React.Component {
         api.Auth.save(this.state.user)
             .then(
                 data => {
-                    //change currrent user
+                    if(data.error) return Promise.reject(data.error);
+
+                    return this.props.setTokenInCookie(data);
+                }
+            )
+            .then(
+                response =>  {
+                    let {data} = {...response};
+                    if(data.error) return Promise.reject(data.error);
+                    
                     this.setState({
                         inProgress: false,
                         error: data.error ? data.error : null,
                         success: data.success ? data.success : null
                     });
-                }
-            )
+            })
+            .catch(e => this.setState({
+                error: e,
+                inProgress: false,
+                success: null
+            }))
     }
 
     render() {
         
         let {state} = this;
-
-        if(state.error){
-            state.error = <p className="error">{state.error}</p>;
-        }
-        if(state.success){
-            state.success = <p className="success">{state.success}</p>;
-        }
 
         if(!state.user.token) {
             return <Redirect to='/' />;
@@ -73,5 +80,9 @@ const mapStateToProps = ({ user: { currentUser } }) => ({
     currentUser
 });
 
+const mapDispatchToProps = dispatch => ({
+    setTokenInCookie: user =>
+        dispatch(setTokenInCookie(user))
+});
 
-export default connect(mapStateToProps, null)(SettingsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsContainer);

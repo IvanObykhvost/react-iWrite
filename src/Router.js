@@ -8,7 +8,6 @@ import RegisterContainer from './scenes/RegisterContainer/RegisterContainer';
 import SettingContainer from './scenes/SetingsContainer/SettingContainer';
 import ProfileContainer from './scenes/ProfileContainer/ProfileContainer';
 import LogoutContainer from './scenes/LogoutContainer/LogoutContainer';
-import ErrorPage from './scenes/Error/ErrorPage';
 
 export default function Router() {
     return (<Switch>
@@ -20,7 +19,6 @@ export default function Router() {
                 <Route path="/register/" component={RegisterContainer} /> 
                 <Route path="/settings/" component={SettingContainer} /> 
                 <Route path="/@:username/" component={ProfileContainer} />               
-                <Route path="/error/" component={ErrorPage} />
                 <Route path="/logout/" component={LogoutContainer} />
             </Switch>
     )

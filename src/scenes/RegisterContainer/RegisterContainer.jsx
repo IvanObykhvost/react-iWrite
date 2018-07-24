@@ -50,10 +50,6 @@ class RegisterContainer extends React.Component {
     render() {                
         let {state} = this;
 
-        if(state.error){
-            state.error = <p className="error">{state.error}</p>;
-        }
-
         if (state.success || state.currentUser) {
             return <Redirect to='/' />;
         }

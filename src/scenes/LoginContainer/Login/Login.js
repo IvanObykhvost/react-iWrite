@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'react-bootstrap';
 import Input from '../../../components/Form/Inputs/Input';
 import Button from '../../../components/Form/Buttons/Button';
+import Label from '../../../components/Form/Label/Label';
 
 export default function Login({state, onChange, onSubmit}) {   
     return (
@@ -11,7 +12,7 @@ export default function Login({state, onChange, onSubmit}) {
                 <Row>
                     <Col md={10} className="offset-md-1">
                         <h1>Sign In</h1>
-                        {state.error}
+                        <Label className="error" message={state.error}/>
                     </Col>
                 </Row>
                 <Row>
@@ -30,6 +31,7 @@ export default function Login({state, onChange, onSubmit}) {
                                 placeholder="Password" 
                                 value={state.user.password} 
                                 onChange={onChange} 
+                                autoComplete="off"
                             />
                             <Button 
                                 type="submit"

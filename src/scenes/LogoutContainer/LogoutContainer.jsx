@@ -8,8 +8,11 @@ class LogoutConteiner extends React.Component {
         super(props);   
     }
 
+    componentWillMount(){
+        this.props.logout();     
+    }
+
     render() {   
-        this.props.logout();        
         return(
             <Logout/>
         );

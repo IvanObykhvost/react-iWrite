@@ -134,7 +134,7 @@ div.fade.in {
 }
 
 .article-header {
-    height: 150px;
+    /* height: 150px; */
     background-color: #444;
     padding: 2rem 0 2rem 0;
 }
