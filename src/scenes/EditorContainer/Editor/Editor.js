@@ -38,7 +38,7 @@ export default function Editor({post, onChange, onChangeTag, onSubmit, inProgres
                                 onChange={onChange} 
                             />
                             <Input 
-                                componentClass="textarea" 
+                                type="textarea" 
                                 name="message" 
                                 placeholder="Message" 
                                 value={post.message} 

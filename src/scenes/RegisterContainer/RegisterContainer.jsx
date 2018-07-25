@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Register from "./Register/Register";
 import api from '../../api';
+import { currentUser } from '../../data/user/action';
+import CheckFalseOrTrue from '../../utils/CheckFalseOrTrue';
 
 
 class RegisterContainer extends React.Component {   
@@ -18,7 +20,8 @@ class RegisterContainer extends React.Component {
             },
             error: null,
             inProgress: false,
-            success: null
+            success: false,
+            isPopup: CheckFalseOrTrue(this.props.isPopup)
         }
     }
 
@@ -33,24 +36,38 @@ class RegisterContainer extends React.Component {
         this.setState({
             inProgress: true
         });
-
-        api.Auth.register(this.state.user)
+        let {user} = this.state;
+        api.Auth.register(user.name, user.email, user.password)
             .then(
                 data => {
-                    //check error and put current user
+                    if(data.error) return Promise.reject(data.error);
+
+                    localStorage.setItem('jwt', data.user.token);
+                    return this.props.CurrentUser();
+                }
+            )      
+            .then(
+                () => {
                     this.setState({
-                        error: data.error ? data.error : null,
-                        success: data.success ? data.success : null,
+                        success: true,
                         inProgress: false
                     });
                 }
-            )      
+            )
+            .catch(e => this.setState({
+                    error: e,
+                    inProgress: false,
+                    success: false
+            }));
     }    
 
     render() {                
         let {state} = this;
 
-        if (state.success || state.currentUser) {
+        if (state.currentUser || state.success) {
+            if(state.isPopup)
+                return window.location.reload();
+
             return <Redirect to='/' />;
         }
 
@@ -68,4 +85,9 @@ const mapStateToProps = ({user: { currentUser } }) => ({
     currentUser
 });
 
-export default connect(mapStateToProps, null)(RegisterContainer);
+const mapDispatchToProps = dispatch => ({
+    CurrentUser: () =>
+        dispatch(currentUser())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer);

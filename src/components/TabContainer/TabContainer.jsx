@@ -27,7 +27,7 @@ export default class TabContainer extends React.Component {
 
         //is clicked tab NOT selected
         const tabList = this.state.tabList.map(function (tab, index) {
-            tab.active = index === id ? true : false;
+            tab.active = index === id;
             return tab;
         })
         

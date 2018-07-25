@@ -1,31 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PopupContainer from '../../../PopupContainer/PopupContainer';
 import LoginContainer from '../../../../scenes/LoginContainer/LoginContainer';
-import Button from '../../../Form/Buttons/Button';
+import RegisterContainer from '../../../../scenes/RegisterContainer/RegisterContainer';
 
 export default function SingInOrUp() {
     return (
         <div>
             <PopupContainer 
-                // type="button"
                 name="Sign in"
             >
+                <LoginContainer isPopup={true}/>
             </PopupContainer>
-            {/* <Link 
-                to="/login"
-            >
-                Sign in
-            </Link> */}
 
             &nbsp;or&nbsp;
 
-            <Link 
-                to="/register"
+            <PopupContainer 
+                name="Sign up"
             >
-                sign up
-            </Link>
-            
+                <RegisterContainer isPopup={true}/>
+            </PopupContainer>
+
             &nbsp;to add comments on this article.
         </div>
     )

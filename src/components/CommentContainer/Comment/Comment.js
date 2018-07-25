@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Media } from 'reactstrap';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import ButtonIcon from "../../Form/Buttons/ButtonIcon";
 
@@ -23,7 +23,11 @@ function Comment({comment, showDeleteButton, onClickDelete}) {
                             to={`/@${comment.author.name}`}
                             className="comment-author"
                         >
-                            {/* <Image src={comment.author.image} className="post-userImage" alt={comment.author.username}/> */}
+                            <Media object 
+                                src={comment.author.image} 
+                                className="post-userImage" 
+                                alt={comment.author.username}
+                            />
                         </Link>
                         <Link
                             to={`/@${comment.author.name}`}                    
@@ -39,8 +43,7 @@ function Comment({comment, showDeleteButton, onClickDelete}) {
                     {
                         showDeleteButton ?   
                             <ButtonIcon   
-                                icon={<DeleteIcon className="button-delete" />}
-                                onClick={onClickDelete}
+                                icon={<DeleteIcon className="button-delete" onClick={onClickDelete}/>}
                             />
                             :                        
                             null

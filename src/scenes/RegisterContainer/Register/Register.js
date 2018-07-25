@@ -11,18 +11,23 @@ export default function Register({state, onSubmit, onChange}) {
             <Container>
                 <Row>
                     <Col md={{size: 10, offset: 1}}>
-                        <h1>Sign Up</h1>
+                        {!state.isPopup && <h1>Sign Up</h1>}
                         <Label className="error" message={state.error}/>
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={{size: 4, offset: 4}} sm={{size: 6, offset: 3}}>
+                    <Col 
+                        md={{
+                            size: state.isPopup ? 10 : 4, 
+                            offset: state.isPopup ? 1 : 4
+                        }}
+                    >
                         <form onSubmit={onSubmit}>
                             <Input 
                                 type="text"
-                                name="username" 
+                                name="name" 
                                 placeholder="Username" 
-                                value={state.username} 
+                                value={state.name} 
                                 onChange={onChange} 
                             />
                             <Input 

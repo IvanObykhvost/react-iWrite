@@ -8,7 +8,7 @@ export default function CommentInput({text, inProgress, onChange, onSubmit}) {
     return (
         <form className="card comment-form" onSubmit={onSubmit}>
             <Input 
-                componentClass="textarea" 
+                type="textarea" 
                 name="comment" 
                 placeholder="Write a comment..." 
                 value={text} 

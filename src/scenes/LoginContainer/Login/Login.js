@@ -10,15 +10,18 @@ export default function Login({state, onChange, onSubmit}) {
         <div className="login-page">
             <Container>
                 <Row>
-                    {/* <Col md={10} className="offset-md-1"> */}
                     <Col md={{size: 10, offset: 1}}>
-                        <h1>Sign In</h1>
+                        {!state.isPopup && <h1>Sign In</h1>}
                         <Label className="error" message={state.error}/>
                     </Col>
                 </Row>
                 <Row>
-                    {/* <Col md={4} className="offset-md-4 offset-sm-3" sm={6}> */}
-                    <Col md={{size: 4, offset: 4}} sm={{size: 6, offset: 3}}>
+                    <Col 
+                        md={{
+                            size: state.isPopup ? 10 : 4, 
+                            offset: state.isPopup ? 1 : 4
+                        }}
+                    >
                         <form onSubmit={onSubmit}>
                             <Input 
                                 type="email"

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Login from "./Login/Login";
 import api from '../../api';
 import { currentUser } from '../../data/user/action';
-
+import CheckFalseOrTrue from '../../utils/CheckFalseOrTrue';
 
 class LoginContainer extends React.Component {   
     constructor(props) {       
@@ -17,7 +17,8 @@ class LoginContainer extends React.Component {
             },
             error: null,
             inProgress: false,
-            success: false
+            success: false,
+            isPopup: CheckFalseOrTrue(this.props.isPopup)
         }
     }
 
@@ -62,17 +63,19 @@ class LoginContainer extends React.Component {
         let {state} = this;
 
         if (state.success) {
+            if(state.isPopup){
+                return window.location.reload();
+            }
             return <Redirect to='/' />;
         }
-        else {
-            return (
-                <Login 
-                    onChange={e => this.onChange(e)}
-                    onSubmit={e => this.submit(e)}
-                    state={state}
-                />
-            );
-        }
+
+        return (
+            <Login 
+                onChange={e => this.onChange(e)}
+                onSubmit={e => this.submit(e)}
+                state={state}
+            />
+        );
     }
 }
 

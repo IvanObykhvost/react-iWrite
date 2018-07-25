@@ -1,6 +1,7 @@
 import React from 'react';
 import Popup from './Popup/Popup';
 import Button from '../Form/Buttons/Button';
+import CheckFalseOrTrue from '../../utils/CheckFalseOrTrue';
 
 
 export default class PopupContainer extends React.Component{
@@ -10,7 +11,8 @@ export default class PopupContainer extends React.Component{
         this.state = {
             isOpen: false,
             element: this.getElement(this.props),
-            name: this.props.name
+            name: this.props.name,
+            isButtonClose: CheckFalseOrTrue(this.props.isButtonClose)
         };
     }
 
@@ -50,6 +52,7 @@ export default class PopupContainer extends React.Component{
                     isOpen={state.isOpen}
                     onClose={e => this.handelClose()}
                     title={state.name}
+                    isButtonClose={state.isButtonClose}
                 >
                     {this.props.children}
                 </Popup>

@@ -148,7 +148,7 @@ div.fade.in {
 .article-header {
     /* height: 150px; */
     background-color: #444;
-    padding: 2rem 0 2rem 0;
+    padding: 2rem 15px;
 }
 
 .article-header div.row {
@@ -226,7 +226,7 @@ form button {
 }
 
 .article-meta .images {
-    padding: 0px;
+    /* padding: 0px; */
     text-align: right;
 }
 
@@ -270,10 +270,14 @@ form .Select-control {
     color: green;
 }
 
-.post-like:hover {
-    cursor: pointer;
-}
-
 .modal-link {
     display: inline;
+}
+
+.centered {
+    text-align: center;
+}
+
+.text-aling-left {
+    text-align: right;
 }

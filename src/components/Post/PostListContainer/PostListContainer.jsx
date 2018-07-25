@@ -1,12 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PostPreview from './PostPreview/PostPreview';
 import api from '../../../api';
+import CheckFalseOrTrue from '../../../utils/CheckFalseOrTrue';
 
-export default class PostListContainer extends React.Component {
+class PostListContainer extends React.Component {
     constructor(props) {
         super(props); 
         
         this.state = {
+            isUser: CheckFalseOrTrue(this.props.currentUser),
             posts: [],
             onLoad: this.props.onLoad,
             error: null,
@@ -73,8 +76,10 @@ export default class PostListContainer extends React.Component {
     render() {        
         let {state} = this;
 
-        if(state.error) 
+        if(state.error){
             return <div className="error">{state.error}</div>;
+        } 
+            
 
         return (
             !state.inProgress ?
@@ -86,6 +91,7 @@ export default class PostListContainer extends React.Component {
                                     key={post.id} 
                                     post={post}
                                     onClick={e => this.handelClickFavorite(post.id, post.favorited)}
+                                    isUser={state.isUser}
                                 />
                             )
                         }                       
@@ -98,3 +104,12 @@ export default class PostListContainer extends React.Component {
 
     }
 }
+
+const mapStateToProps = (state) => ({
+    currentUser: state.user.currentUser
+})
+
+export default connect(
+    mapStateToProps,
+    null
+)(PostListContainer);
