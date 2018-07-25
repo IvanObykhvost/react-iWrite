@@ -7,6 +7,18 @@
     text-align: center;
 }
 
+.a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: inline;
+}
+
+.a:hover {
+    text-decoration: underline;
+}
+
 .header {
     background-color: rgba(60, 106, 179, 1);
     height: 40px;
@@ -262,3 +274,6 @@ form .Select-control {
     cursor: pointer;
 }
 
+.modal-link {
+    display: inline;
+}

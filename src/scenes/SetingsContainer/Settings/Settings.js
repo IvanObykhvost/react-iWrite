@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'reactstrap';
 import Input from '../../../components/Form/Inputs/Input';
 import Button from '../../../components/Form/Buttons/Button';
 import Label from '../../../components/Form/Label/Label';
@@ -8,16 +8,16 @@ import Label from '../../../components/Form/Label/Label';
 export default function  Settings({state, onChange, onSubmit}) {
     return (
         <div className="setting-page">
-            <div className="container">
+            <Container>
                 <Row>
-                    <Col md={10} className="offset-md-1">
+                    <Col md={{size: 10, offset: 1}}>
                         <h1>Your settings</h1>
                         <Label className="error" message={state.error}/>
                         <Label className="success" message={state.success}/>
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={6} className="offset-md-3">   
+                    <Col md={{size: 6, offset: 3}}>
                         <form onSubmit={onSubmit}>
                             <Input 
                                 type="text"
@@ -51,13 +51,13 @@ export default function  Settings({state, onChange, onSubmit}) {
                             <Button 
                                 type="submit"
                                 name="Update settings"
-                                bsStyle="primary"
+                                color="primary"
                                 disabled={state.inProgress}
                             />
                         </form>
                     </Col>
                 </Row>
-            </div>
+            </Container>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Image } from 'react-bootstrap';
+import { Row, Col, Container } from 'reactstrap';
 import ButtonLink from '../../../components/Form/Buttons/ButtonLink';
 import ButtonFollowUser from './ButtonFollowUser/ButtonFollowUser';
 import TabContainer from '../../../components/TabContainer/TabContainer';
@@ -8,10 +8,10 @@ import TabContainer from '../../../components/TabContainer/TabContainer';
 export default function Profile({profile, isUser, currentUser, tabList, onClickFollow}) {
     return (                 
         <div className="user-info">
-            <div className="container">
+            <Container>
                 <Row>
-                    <Col xs={10} md={10} className="offset-md-1">
-                        <Image src={profile.image} alt={profile.name} className="user-img" thumbnail/>
+                    <Col md={{size: 10, offset: 1}} xs={10}>
+                        {/* <Image src={profile.image} alt={profile.name} className="user-img" thumbnail/> */}
                         <h4>{profile.name}</h4>
                         <p>{profile.bio}</p>
                         {
@@ -34,11 +34,11 @@ export default function Profile({profile, isUser, currentUser, tabList, onClickF
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs={12} md={10} className="offset-md-1">
+                    <Col md={{size: 10, offset: 1}} xs={12}>
                         <TabContainer tabList={tabList}/>
                     </Col>
                 </Row>
-            </div>
+            </Container>
         </div>   
         )
 }

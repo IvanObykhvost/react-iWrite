@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Image } from 'react-bootstrap';
+import { Row, Col } from 'reactstrap';
 import Button from '../../../Form/Buttons/Button';
 import Input from '../../../Form/Inputs/Input';
 
@@ -23,7 +23,7 @@ export default function CommentInput({text, inProgress, onChange, onSubmit}) {
                         <Button
                             type="submit"
                             name="Post comment"
-                            bsStyle="primary"
+                            color="primary"
                             disabled={inProgress}
                         />
                     </Col>

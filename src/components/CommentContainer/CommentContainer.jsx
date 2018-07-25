@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import api from '../../api';
 import SingInOrUp from './Comment/SingInOrUp/SingInOrUp';

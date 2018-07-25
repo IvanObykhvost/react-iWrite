@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Header from './Header/Header';
 import HomeIcon from 'material-ui/svg-icons/action/home';
 import QueueIcon from 'material-ui/svg-icons/av/queue';

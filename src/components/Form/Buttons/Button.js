@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as bootstrap from 'react-bootstrap';
+import * as reactstrap from 'reactstrap';
 
 export default function Button({ name, ...props }) {
     return (
-        <bootstrap.Button { ...props }>
+        <reactstrap.Button { ...props }>
             {name}
-        </bootstrap.Button>
+        </reactstrap.Button>
     )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'reactstrap';
 import TabContainer from '../../../components/TabContainer/TabContainer';
 import SidebarContainer from '../../../components/SidebarContainer/SidebarContainer';
 
@@ -8,7 +8,7 @@ import SidebarContainer from '../../../components/SidebarContainer/SidebarContai
 export default function Home({tabList}) {
 
     return (
-        <div className="container">
+        <Container>
             <Row>
                 <Col md={9} className="feed-toggle">
                     <TabContainer tabList={tabList} />   
@@ -17,7 +17,7 @@ export default function Home({tabList}) {
                     <SidebarContainer />
                 </Col>
             </Row>
-        </div>
+        </Container>
     );
 }
 

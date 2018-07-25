@@ -1,9 +1,9 @@
 import React from 'react';
-import { FormControl } from 'react-bootstrap';
+import * as reactstrap from 'reactstrap';
 
 export default function Input({ ...props }) {
     return (
-        <FormControl
+        <reactstrap.Input 
             { ...props }
         />
     )
