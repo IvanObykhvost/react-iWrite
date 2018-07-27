@@ -278,6 +278,41 @@ form .Select-control {
     text-align: center;
 }
 
-.text-aling-left {
-    text-align: right;
+.text-align-right {text-align: right;}
+.text-align-center {text-align: center;}
+.text-align-justify {text-align: justify;}
+
+.div-center {
+    margin: 0 auto;
+    display: table;
+}
+
+.padding-10 {padding: 10px;}
+.padding-20 {padding: 10px;}
+.padding-bottom-20 {padding-bottom: 20px;}
+
+.height-40 {height: 40px;}
+
+.display-linebreak {
+    white-space: pre-line;
+    margin-bottom: 1.25rem;
+}
+
+.profile {
+    background-color: #f3f3f3;
+    padding: 2rem 15px;
+}
+
+.user-img {
+    display: inline-block !important;
+    width: 150px;
+    height: auto;
+    border-radius: 100px;
+}
+
+.load-more{
+    margin: 20px 0px;
+}
+.post-preview-header .post-like{
+    cursor: pointer;
 }

@@ -2,45 +2,56 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PostPreview from './PostPreview/PostPreview';
 import api from '../../../api';
-import CheckFalseOrTrue from '../../../utils/CheckFalseOrTrue';
+import { CheckFalseOrTrue } from '../../../utils/Operations';
+import PaginationContainer from '../../PaginationContainer/PaginationContainer';
 
 class PostListContainer extends React.Component {
     constructor(props) {
         super(props); 
         
-        this.state = {
+        this.initState = {
             isUser: CheckFalseOrTrue(this.props.currentUser),
             posts: [],
             onLoad: this.props.onLoad,
             error: null,
-            inProgress: true
+            inProgress: true,
+            title: this.props.title
+        }
+
+        this.state = {
+            ...this.initState,
         }
     }
    
-    componentDidMount() {
-        this.onLoad();
+
+    componentDidUpdate(prevProps){
+        if(this.props.title !== prevProps.title){
+            this.setState({
+                ...this.initState,
+                isUser: CheckFalseOrTrue(this.props.currentUser),
+                onLoad: this.props.onLoad,
+                title: this.props.title
+            });
+        }
     }
 
-    componentWillReceiveProps (nextProps) {
-        this.setState({
-                posts: [],
-                onLoad: nextProps.onLoad,
-                inProgress: true
-            },
-            () => this.onLoad()
-        );
-    }
-
-    onLoad = () => {
-        this.state.onLoad()
+    handelLoadMore = (page, limit) => {
+        return this.state.onLoad(page, limit)
             .then(
                 data => {
                     if(data.error) return Promise.reject(data.error);
 
+                    let {posts} = {...this.state};
+                    posts = [...posts, ...data.posts];
                     this.setState({
-                        posts: data,
+                        posts,
                         inProgress: false
                     });
+
+                    return {
+                        length: data.posts.length, 
+                        count: data.count
+                    };
                 }
             )
             .catch(e => this.setState({error: e}))
@@ -58,15 +69,14 @@ class PostListContainer extends React.Component {
                 data => {
                     if(data.error) return Promise.reject(data.error);
                     let {posts} = {...this.state};
+                   
                     posts = posts.map(post => {
                         if(post.id === data.post.id)
                             post = {...data.post}
-
                         return post;
                     });
                     this.setState({
-                        posts,
-                        inProgress: false
+                        posts
                     });
                 }
             )
@@ -82,10 +92,10 @@ class PostListContainer extends React.Component {
             
 
         return (
-            !state.inProgress ?
-                state.posts.length != 0 ?
-                    <div className="post-container">                       
-                        {
+            <div className="post-container">     
+                {
+                    !state.inProgress ?
+                        state.posts.length > 0 ?
                             state.posts.map(post => 
                                 <PostPreview 
                                     key={post.id} 
@@ -94,12 +104,16 @@ class PostListContainer extends React.Component {
                                     isUser={state.isUser}
                                 />
                             )
-                        }                       
-                    </div>
-                    :
-                    <div><p>Sorry, no posts found.</p></div>
-                :
-                <div>Please wait, posts are loading...</div>
+                            :
+                            <div className="text-align-center"><p>Sorry, no posts found.</p></div>
+                        :
+                        null
+                } 
+                <PaginationContainer 
+                    onLoad={this.handelLoadMore} 
+                    title={state.title}
+                />
+            </div>
         );
 
     }

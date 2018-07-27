@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Media } from 'reactstrap';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import ButtonIcon from "../../Form/Buttons/ButtonIcon";
+import { CheckImage } from "../../../utils/Operations";
 
 function Comment({comment, showDeleteButton, onClickDelete}) {
     return (
@@ -11,7 +12,9 @@ function Comment({comment, showDeleteButton, onClickDelete}) {
             <div className="card-block">
                 <Row>
                     <Col md={12} className="text-left card-text">
-                        <pre>{comment.text}</pre>
+                        <div className="display-linebreak text-align-justify">
+                            {comment.text}
+                        </div>
                     </Col>
                 </Row>
                 
@@ -24,7 +27,7 @@ function Comment({comment, showDeleteButton, onClickDelete}) {
                             className="comment-author"
                         >
                             <Media object 
-                                src={comment.author.image} 
+                                src={CheckImage(comment.author.image)} 
                                 className="post-userImage" 
                                 alt={comment.author.username}
                             />

@@ -8,63 +8,65 @@ import ButtonLink from "../../../components/Form/Buttons/ButtonLink";
 
 export default function Article({ article, onClickDelete }) {
     const { post, post: { author }} = article;
-
+    // const image = author.image ? author.image : "http://getdrawings.com/img/user-silhouette-icon-3.png"; 
     return (
         <div className="article-page">
             <div className="article-header">
-                <Row>
-                    <Col md={{size: 8, offset: 2}}>
-                        <h2>{post.title}</h2>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={{size: 8, offset: 2}} className="article-meta">
-                        <Row className="align-items-center">
-                            <Col md={1} className="images">
-                                <Link to={`/@${author.name}`}>
-                                    <Media src={author.image} alt={author.name}/>
-                                </Link>
-                            </Col>
-                            <Col md={2} className="author">
-                                <Link to={`/@${author.name}`} >
-                                    {author.name}
-                                </Link>
-                                <span className="date">
-                                    {new Date(post.createdAt).toDateString()}
-                                </span>
-                            </Col>
-                            <Col md={9} className="buttons">
-                            {
-                                article.isOwner ?                                              
-                                    <span>      
-                                        <ButtonLink
-                                            to={`/editor/${post.id}`}
-                                            type="button"
-                                            name="Edit Article"
-                                            className="btn btn-outline-secondary btn-sm"
-                                        />
-                                        <Button 
-                                            name="Delete Article"
-                                            type="button"
-                                            className="btn btn-outline-danger btn-sm"
-                                            onClick={onClickDelete}
-                                            // disabled={article.inProgress}
-                                        />
-                                    </span> :
-                                    null
-                            }
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
+                <Container>
+                    <Row>
+                        <Col md={{size: 8, offset: 2}}>
+                            <h2>{post.title}</h2>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={{size: 8, offset: 2}} className="article-meta">
+                            <Row className="align-items-center">
+                                {/* <Col md={{size: 1, offset: 1}} className="images">
+                                    <Link to={`/@${author.name}`}>
+                                        <Media src={author.image} alt={author.name}/>
+                                    </Link>
+                                </Col> */}
+                                <Col md={3} className="author">
+                                    <Link to={`/@${author.name}`} >
+                                        {author.name}
+                                    </Link>
+                                    <span className="date">
+                                        {new Date(post.createdAt).toDateString()}
+                                    </span>
+                                </Col>
+                                <Col md={9} className="buttons">
+                                {
+                                    article.isOwner ?                                              
+                                        <span>      
+                                            <ButtonLink
+                                                to={`/editor/${post.id}`}
+                                                type="button"
+                                                name="Edit Article"
+                                                className="btn btn-outline-secondary btn-sm"
+                                            />
+                                            <Button 
+                                                name="Delete Article"
+                                                type="button"
+                                                className="btn btn-outline-danger btn-sm"
+                                                onClick={onClickDelete}
+                                                // disabled={article.inProgress}
+                                            />
+                                        </span> :
+                                        null
+                                }
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
 
             <Container>
                 <Row className="article-content">
                     <Col md={{size: 8, offset: 2}}>
-                        <pre>
+                        <div className="display-linebreak text-align-justify">
                             {post.message}
-                        </pre>
+                        </div>
                         <hr />
                     </Col>
                 </Row>

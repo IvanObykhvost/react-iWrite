@@ -8,12 +8,12 @@ class HomeContainer extends React.Component {
         super(props);
 
         this.tabList = [
-            { id: 0, title: "Your Feed", active: true, onLoad(){ return api.Posts.feed(); }},
-            { id: 1, title: "Global Feed", active: false, onLoad(){ return api.Posts.all(); }}
+            { id: 0, title: "Your Feed", active: true, onLoad(page, limit){ return api.Posts.feed(page, limit); }},
+            { id: 1, title: "Global Feed", active: false, onLoad(page, limit){ return api.Posts.all(page, limit); }}
         ] 
 
         this.tabListWithoutUser = [
-            { id: 1, title: "Global Feed", active: true, onLoad(){ return api.Posts.all(); }}
+            { id: 1, title: "Global Feed", active: true, onLoad(page, limit){ return api.Posts.all(page, limit); }}
         ]
         this.state = {
             currentUser: this.props.currentUser,

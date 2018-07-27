@@ -5,6 +5,7 @@ import api from '../../api';
 import SingInOrUp from './Comment/SingInOrUp/SingInOrUp';
 import CommentInput from './Comment/CommentInput/CommentInput';
 import Comment from "./Comment/Comment";
+import PaginationContainer from '../PaginationContainer/PaginationContainer';
 
 class CommentContainer extends React.Component {
     constructor(props) {
@@ -24,25 +25,54 @@ class CommentContainer extends React.Component {
         }
     }
 
-    componentDidMount(){
-        api.Comments.forArticle(this.state.postId)
+    // componentDidMount(){
+    //     api.Comments.forArticle(this.state.postId)
+    //         .then(
+    //             data => {
+    //                 this.setState({
+    //                     inProgress: {
+    //                         ...this.state.inProgress,
+    //                         onLoad: false
+    //                     }
+    //                 });
+
+    //                 if(data.error) return Promise.reject(data.error);
+                        
+    //                 this.setState({
+    //                     comments: data.comments
+    //                 });
+    //             }
+    //         )
+    //         .catch(e => this.setState({ error: e }))
+    // }
+
+    onLoad = (page, limit) => {
+        return api.Comments.forArticle(this.state.postId, page, limit)
             .then(
                 data => {
+                    if(data.error) return Promise.reject(data.error);
+                        
                     this.setState({
+                        comments: [...this.state.comments,...data.comments],
                         inProgress: {
                             ...this.state.inProgress,
                             onLoad: false
                         }
                     });
 
-                    if(data.error) return Promise.reject(data.error);
-                        
-                    this.setState({
-                        comments: data.comments
-                    });
+                    return {
+                        length: data.comments.length,
+                        count: data.count
+                    };
                 }
             )
-            .catch(e => this.setState({ error: e }))
+            .catch(e => this.setState({ 
+                error: e,
+                inProgress: {
+                    ...this.state.inProgress,
+                    onLoad: false
+                } 
+            }))
     }
 
     change = e => {
@@ -135,7 +165,7 @@ class CommentContainer extends React.Component {
                             <SingInOrUp/>
                     }
                     {
-                        !state.inProgress.onLoad ?
+                        !state.inProgress.onLoad &&
                             state.comments.map((comment, index) =>
                                 <Comment 
                                     key={index}
@@ -145,9 +175,12 @@ class CommentContainer extends React.Component {
                                     onClickDelete={e => this.handelClickDelete(comment.id)}
                                 />
                             )
-                            :
-                            <div>Please wait, comments are loading...</div>
+                       
                     }
+                    <PaginationContainer
+                        onLoad={this.onLoad}
+                        title="comments"
+                    />
                 </Col>
             </Row>
         )

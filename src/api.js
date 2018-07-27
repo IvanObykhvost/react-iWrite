@@ -1,8 +1,7 @@
 ﻿import axios from 'axios';
-import qs from 'qs';
 
 let api = axios.create({
-    baseURL: 'http://10.10.1.220:4082/api'
+    baseURL: 'http://10.10.1.220:4081/api'
     //baseURL: 'http://10.10.1.220:4081/api'
 });
 
@@ -13,6 +12,7 @@ api.interceptors.request.use((config) => {
 
 const encode = encodeURIComponent;
 const responseData = res => res.data;
+const getLimit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
 
 const requests = {
     del: url =>
@@ -45,16 +45,16 @@ const Posts = {
         requests.get(`/post/${id}`),
     delete: id => 
         requests.del(`/post/${id}`),
-    all: () => 
-        requests.get('/posts'),
-    byAuthor: username =>
-        requests.get(`/posts?author=${encode(username)}`),
-    byFavorite: username =>
-        requests.get(`/posts?favorited=${encode(username)}`),
+    all: (page, limit) => 
+        requests.get(`/posts?${getLimit(limit, page)}`),
+    byAuthor: (username, page, limit) =>
+        requests.get(`/posts?author=${encode(username)}&${getLimit(limit, page)}`),
+    byFavorite: (username, page, limit) =>
+        requests.get(`/posts?favorited=${encode(username)}&${getLimit(limit, page)}`),
     byTag: tag => 
         requests.get(`/posts?tag=${encode(tag)}`),
-    feed: () =>
-        requests.get(`/posts/feed`),
+    feed: (page, limit) =>
+        requests.get(`/posts/feed?${getLimit(limit, page)}`),
     favorite: id =>
         requests.post(`/post/${id}/favorite`),
     unfavorite: id =>
@@ -72,8 +72,8 @@ const Comments = {
       requests.post(`/post/${postId}/comments`, { comment }),
     delete: (postId, commentId) =>
       requests.del(`/post/${postId}/comments/${commentId}`),
-    forArticle: postId =>
-      requests.get(`/post/${postId}/comments`)
+    forArticle: (postId, page, limit) =>
+      requests.get(`/post/${postId}/comments?${getLimit(limit, page)}`)
 };
 
 const Profile = {

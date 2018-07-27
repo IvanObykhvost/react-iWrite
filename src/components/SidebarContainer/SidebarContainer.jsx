@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from './Sidebar/Sidebar';
 import api from '../../api';
+import Loader from '../Loader/Loader';
 
 export default class SidebarContainer extends React.Component {
     constructor(props) {
@@ -36,7 +37,7 @@ export default class SidebarContainer extends React.Component {
             !state.inProgress ? 
                 <Sidebar tags={state.tags}/>
                 :
-                <div>Please wait, tags are loading...</div>
+                <Loader />
         );
     }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { currentUser } from '../../data/user/action';
 import App from "./App/App";
+import Loader from '../../components/Loader/Loader';
 
 class AppContainer extends React.Component{
     constructor(props) {
@@ -24,11 +25,11 @@ class AppContainer extends React.Component{
     render() {   
         let {state} = this;
 
-        if(state.inProgress) 
-            return <div>Приложение загружается, подождите пожалуйста</div>;
-        
         return(
-            <App currentUser={this.props.currentUser}/>
+            !state.inProgress ?
+                <App currentUser={this.props.currentUser}/>
+                :
+                <Loader />
         );
     }
 }

@@ -23,7 +23,10 @@ export default function Tab({tabList, selectTab, onClick}) {
                 </ul>
             </Col>
             <Col md={12}>
-                <PostListContainer onLoad={selectTab.onLoad}/>
+                <PostListContainer 
+                    onLoad={selectTab.onLoad}
+                    title={selectTab.title}
+                />
             </Col>
         </Row>
     );

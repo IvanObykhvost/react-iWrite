@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Register from "./Register/Register";
 import api from '../../api';
 import { currentUser } from '../../data/user/action';
-import CheckFalseOrTrue from '../../utils/CheckFalseOrTrue';
+import { CheckFalseOrTrue } from '../../utils/Operations';
 
 
 class RegisterContainer extends React.Component {   

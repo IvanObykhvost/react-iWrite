@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Profile from './Profile/Profile';
 import api from '../../api';
 import Label from '../../components/Form/Label/Label';
+import Loader from '../../components/Loader/Loader';
 
 class ProfileContainer extends React.Component {
     constructor(props){
@@ -30,8 +31,18 @@ class ProfileContainer extends React.Component {
 
     getTabList = username => {
         return [
-            { id: 0, title: "My Articles", active: true, onLoad(){return api.Posts.byAuthor(username);}},
-            { id: 1, title: "Favorited Articles", active: false, onLoad(){return api.Posts.byFavorite(username);}}
+            { 
+                id: 0, 
+                title: "My Articles", 
+                active: true, 
+                onLoad(page, limit){return api.Posts.byAuthor(username, page, limit);}
+            },
+            { 
+                id: 1, 
+                title: "Favorited Articles", 
+                active: false, 
+                onLoad(page, limit){return api.Posts.byFavorite(username, page, limit);}
+            }
         ]
     }
     onLoad = username => {
@@ -98,13 +109,13 @@ class ProfileContainer extends React.Component {
                     tabList={state.tabList}
                 />
                 :
-                <div>Please wait, profile is loading...</div>
+                <Loader />
         )
         
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = state => ({
     currentUser: state.user.currentUser
 })
 
