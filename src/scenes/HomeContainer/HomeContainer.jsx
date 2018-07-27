@@ -7,25 +7,50 @@ class HomeContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.tabList = [
-            { id: 0, title: "Your Feed", active: true, onLoad(page, limit){ return api.Posts.feed(page, limit); }},
-            { id: 1, title: "Global Feed", active: false, onLoad(page, limit){ return api.Posts.all(page, limit); }}
-        ] 
-
-        this.tabListWithoutUser = [
-            { id: 1, title: "Global Feed", active: true, onLoad(page, limit){ return api.Posts.all(page, limit); }}
-        ]
         this.state = {
             currentUser: this.props.currentUser,
-            tabList: this.props.currentUser ? this.tabList : this.tabListWithoutUser
+            tabList: this.getTabList(this.props.currentUser)
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            currentUser: nextProps.currentUser,
-            tabList: nextProps.currentUser ? this.tabList : this.tabListWithoutUser
+    componentDidUpdate(prevProps){
+        if(this.props.currentUser !== prevProps.currentUser){
+            this.setState({
+                currentUser: this.props.currentUser,
+                tabList: this.getTabList(this.props.currentUser)
+            });
+        }
+    }
+
+    getTabList = user => {
+        if(user){
+            return [
+                { id: 0, title: "Your Feed", active: true, onLoad(page, limit){ return api.Posts.feed(page, limit); }},
+                { id: 1, title: "Global Feed", active: false, onLoad(page, limit){ return api.Posts.all(page, limit); }}
+            ];
+        }
+
+        return [
+            { id: 1, title: "Global Feed", active: true, onLoad(page, limit){ return api.Posts.all(page, limit); }}
+        ];
+
+    }
+
+    handelAddTab = tag => {
+        let tabList = this.getTabList(this.state.currentUser);
+        tabList = tabList.map(tab => {
+            tab.active = false;
+            return tab;
         });
+        tabList.push({
+            id: 2,
+            title: `#${tag}`,
+            active: true,
+            onLoad(page, limit){ 
+                return api.Posts.byTag(tag, page, limit);
+            }
+        });
+        this.setState({tabList});
     }
 
     render() {
@@ -35,6 +60,7 @@ class HomeContainer extends React.Component {
             <Home
                 tabList={state.tabList}
                 state={state}
+                onClick={this.handelAddTab}
             />
         );
     }

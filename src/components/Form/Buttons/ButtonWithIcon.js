@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export default function ButtonWithIcon({ icon, name, ...props }) {
     return (
-        <reactstrap.Button 
+        <reactstrap.Button className="button-with-icon"
            {...props}
         >
             <MuiThemeProvider>

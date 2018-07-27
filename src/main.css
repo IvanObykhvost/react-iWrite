@@ -26,7 +26,7 @@
     width: 100%;
 }
 
-.header-nav .button-nav {
+/* .header-nav .button-nav {
     height: 40px;
     display: inline-flex;
     align-items: center;
@@ -38,7 +38,40 @@
     color: white;
     padding-left: 10px;
     padding-right: 10px;
+} */
+
+.header-nav .button-nav {
+    display: inline-flex;
+    /* height: 40px; */
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 17px;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    margin-left: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    position: relative;
 }
+
+.header-nav .button-nav.icon{
+    padding-left: 40px;
+}
+
+.header-nav .button-nav svg{
+    display: block;
+    position: absolute;
+    top: 0;
+    margin: 8px;
+    color: #757575;
+    fill: #757575;
+    left: 4px;
+}
+
 
 .header-nav .button-nav:hover{
     background-color: #447dd2;
@@ -143,6 +176,7 @@ div.fade.in {
     padding: 0px 10px;
     display: inline-block;
     margin: 1px 1px;
+    cursor: default;
 }
 
 .article-header {
@@ -315,4 +349,22 @@ form .Select-control {
 }
 .post-preview-header .post-like{
     cursor: pointer;
+}
+
+.button-with-icon svg{
+    height: 15px !important;
+    width: 15px !important;
+}
+
+.sidebar .tag-list li{
+    cursor: pointer;
+}
+
+.sidebar .tag-list li:hover{
+    color: #fff;
+    background-color: #447dd2;
+}
+
+.article-content .tag-list{
+    float: left;
 }

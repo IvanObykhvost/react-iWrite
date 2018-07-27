@@ -10,7 +10,8 @@ export default class SidebarContainer extends React.Component {
         this.state = {
             tags: [],
             error: null,
-            inProgress: true
+            inProgress: true,
+            onClick: this.props.onClick 
         }
     } 
 
@@ -35,7 +36,10 @@ export default class SidebarContainer extends React.Component {
 
         return(
             !state.inProgress ? 
-                <Sidebar tags={state.tags}/>
+                <Sidebar 
+                    tags={state.tags}
+                    onClick={state.onClick}
+                />
                 :
                 <Loader />
         );

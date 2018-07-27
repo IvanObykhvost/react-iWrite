@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import { Row, Col, Media } from 'reactstrap';
-import Button from '../../../Form/Buttons/Button';
+// import Button from '../../../Form/Buttons/Button';
 import { CheckImage } from "../../../../utils/Operations";
 
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite';

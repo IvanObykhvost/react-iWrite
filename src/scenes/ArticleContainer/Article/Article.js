@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { Row, Col, Container, Media } from 'reactstrap';
+import { Row, Col, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Button from "../../../components/Form/Buttons/Button";
 import CommentContainer from "../../../components/CommentContainer/CommentContainer";
@@ -8,7 +8,6 @@ import ButtonLink from "../../../components/Form/Buttons/ButtonLink";
 
 export default function Article({ article, onClickDelete }) {
     const { post, post: { author }} = article;
-    // const image = author.image ? author.image : "http://getdrawings.com/img/user-silhouette-icon-3.png"; 
     return (
         <div className="article-page">
             <div className="article-header">
@@ -66,6 +65,9 @@ export default function Article({ article, onClickDelete }) {
                     <Col md={{size: 8, offset: 2}}>
                         <div className="display-linebreak text-align-justify">
                             {post.message}
+                        </div>
+                        <div className="tag-list">
+                            { post.tags.map((tag, index) => <li key={index}>{tag}</li>)}
                         </div>
                         <hr />
                     </Col>

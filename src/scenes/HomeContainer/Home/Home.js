@@ -5,7 +5,7 @@ import TabContainer from '../../../components/TabContainer/TabContainer';
 import SidebarContainer from '../../../components/SidebarContainer/SidebarContainer';
 
 
-export default function Home({tabList}) {
+export default function Home({tabList, onClick}) {
 
     return (
         <Container>
@@ -14,7 +14,7 @@ export default function Home({tabList}) {
                     <TabContainer tabList={tabList} />   
                 </Col>
                 <Col md={3}>
-                    <SidebarContainer />
+                    <SidebarContainer onClick={onClick}/>
                 </Col>
             </Row>
         </Container>
@@ -23,5 +23,6 @@ export default function Home({tabList}) {
 
 Home.propTypes = {   
     tabList: PropTypes.array.isRequired,
+    onClick: PropTypes.func.isRequired
 }
 

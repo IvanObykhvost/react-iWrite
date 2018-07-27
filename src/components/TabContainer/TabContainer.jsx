@@ -21,13 +21,11 @@ export default class TabContainer extends React.Component {
     }
 
     handleClickTab = id => {
-        //is clicked tab already selected?
         const selectedTab = this.state.tabList.find(function (tab) { return tab.id === id; });
         if (selectedTab.active) return;
 
-        //is clicked tab NOT selected
-        const tabList = this.state.tabList.map(function (tab, index) {
-            tab.active = index === id;
+        const tabList = this.state.tabList.map(tab => {
+            tab.active = tab.id === id;
             return tab;
         })
         

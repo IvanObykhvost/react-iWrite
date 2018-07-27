@@ -25,27 +25,6 @@ class CommentContainer extends React.Component {
         }
     }
 
-    // componentDidMount(){
-    //     api.Comments.forArticle(this.state.postId)
-    //         .then(
-    //             data => {
-    //                 this.setState({
-    //                     inProgress: {
-    //                         ...this.state.inProgress,
-    //                         onLoad: false
-    //                     }
-    //                 });
-
-    //                 if(data.error) return Promise.reject(data.error);
-                        
-    //                 this.setState({
-    //                     comments: data.comments
-    //                 });
-    //             }
-    //         )
-    //         .catch(e => this.setState({ error: e }))
-    // }
-
     onLoad = (page, limit) => {
         return api.Comments.forArticle(this.state.postId, page, limit)
             .then(

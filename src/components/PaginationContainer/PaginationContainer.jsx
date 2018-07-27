@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Form/Buttons/Button';
+// import Button from '../Form/Buttons/Button';
 import Loader from '../Loader/Loader';
 
 export default class PaginationContainer extends React.Component {
@@ -23,6 +23,7 @@ export default class PaginationContainer extends React.Component {
 
     componentDidMount() {
         this.handelLoadMore();
+        window.addEventListener('scroll', this.handleScroll);
     }
 
 
@@ -36,6 +37,22 @@ export default class PaginationContainer extends React.Component {
             () => this.handelLoadMore()
         )}
     }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    isBottom(el) {
+        return el.getBoundingClientRect().bottom <= window.innerHeight;
+      }
+
+    handleScroll = () => {
+        const wrappedElement = document.getElementById('root');
+        if (this.isBottom(wrappedElement) && this.state.isLoadMore) {
+            this.handelLoadMore();
+            document.removeEventListener('scroll', this.handleScroll);
+        }
+      };
 
     handelLoadMore= () => {
         this.setState({
@@ -72,15 +89,16 @@ export default class PaginationContainer extends React.Component {
             <div className="load-more height-40">
             {
                 !state.inProgress ?
-                    state.isLoadMore &&
-                        <div className="text-align-center">
-                            <Button
-                                name="Load more"
-                                color="primary"
-                                outline 
-                                onClick={e => this.handelLoadMore()}
-                            />
-                        </div> 
+                    null
+                    // state.isLoadMore &&
+                    //     <div className="text-align-center">
+                    //         <Button
+                    //             name="Load more"
+                    //             color="primary"
+                    //             outline 
+                    //             onClick={e => this.handelLoadMore()}
+                    //         />
+                    //     </div> 
                 :
                 <Loader />
             }
