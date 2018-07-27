@@ -25,8 +25,10 @@ class ProfileContainer extends React.Component {
         this.onLoad(this.state.username);
     }
 
-    componentWillReceiveProps (nextProps) {
-       this.onLoad(nextProps.match.params.username);
+    componentDidUpdate(prevProps){
+        if(this.props.match.params.username !== prevProps.match.params.username){
+            this.onLoad(this.props.match.params.username);
+        }
     }
 
     getTabList = username => {

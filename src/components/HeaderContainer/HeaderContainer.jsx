@@ -17,12 +17,14 @@ export default class HeaderContainer extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        const currentUser = nextProps.currentUser;
-        this.setState({
+    componentDidUpdate(prevProps){
+        if(this.props.currentUser !== prevProps.currentUser){
+            const currentUser = this.props.currentUser;
+            this.setState({
                 currentUser,
                 buttons: this.initButtons(currentUser)
-        });
+            });
+        }
     }
 
     initButtons = currentUser => {

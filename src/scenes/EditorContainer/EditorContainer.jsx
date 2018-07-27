@@ -32,13 +32,15 @@ export default class EditorContainer extends React.Component {
         this.onLoad();
     }    
 
-    componentWillReceiveProps (nextProps) {
-        let state = {...this.initState};
-        state.post.id = nextProps.match.params.id;
-        this.setState(
-            {...state}, 
-            () => this.onLoad()
-        );
+    componentDidUpdate(prevProps){
+        if(this.props.match.params.id !== prevProps.match.params.id){
+            let state = {...this.initState};
+            state.post.id = this.props.match.params.id;
+            this.setState(
+                {...state}, 
+                () => this.onLoad()
+            );
+        }
     }
 
     onLoad = () => {

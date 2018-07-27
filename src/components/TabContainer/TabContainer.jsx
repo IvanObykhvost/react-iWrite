@@ -12,12 +12,14 @@ export default class TabContainer extends React.Component {
         }
     }   
 
-    componentWillReceiveProps(nextProps) {
-        let selectTab = nextProps.tabList.find(tab => tab.active);
-        this.setState({
-            tabList: nextProps.tabList,
-            selectTab
-        });
+    componentDidUpdate(prevProps){
+        if(JSON.stringify(this.props.tabList) !== JSON.stringify(prevProps.tabList)){
+            let selectTab = this.props.tabList.find(tab => tab.active);
+            this.setState({
+                tabList: this.props.tabList,
+                selectTab
+            });
+        }
     }
 
     handleClickTab = id => {
