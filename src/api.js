@@ -51,8 +51,8 @@ const Posts = {
         requests.get(`/posts?author=${encode(username)}&${getLimit(limit, page)}`),
     byFavorite: (username, page, limit) =>
         requests.get(`/posts?favorited=${encode(username)}&${getLimit(limit, page)}`),
-    byTag: tag => 
-        requests.get(`/posts?tag=${encode(tag)}`),
+    byTag: (tag, page, limit) => 
+        requests.get(`/posts?tag=${encode(tag)}&${getLimit(limit, page)}`),
     feed: (page, limit) =>
         requests.get(`/posts/feed?${getLimit(limit, page)}`),
     favorite: id =>
