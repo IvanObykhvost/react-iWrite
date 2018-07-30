@@ -42,18 +42,14 @@ class RegisterContainer extends React.Component {
                 data => {
                     if(data.error) return Promise.reject(data.error);
 
-                    localStorage.setItem('jwt', data.user.token);
-                    return this.props.CurrentUser();
-                }
-            )      
-            .then(
-                () => {
                     this.setState({
                         success: true,
                         inProgress: false
                     });
+                    localStorage.setItem('jwt', data.user.token);
+                    return this.props.CurrentUser();
                 }
-            )
+            )      
             .catch(e => this.setState({
                     error: e,
                     inProgress: false,
@@ -64,10 +60,7 @@ class RegisterContainer extends React.Component {
     render() {                
         let {state} = this;
 
-        if (state.currentUser || state.success) {
-            if(state.isPopup)
-                return window.location.reload();
-
+        if (state.currentUser || (state.success && !state.isPopup)) {
             return <Redirect to='/' />;
         }
 

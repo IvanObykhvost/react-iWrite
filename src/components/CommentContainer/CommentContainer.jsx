@@ -25,6 +25,18 @@ class CommentContainer extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps){
+        if(this.props.currentUser !== prevProps.currentUser){
+            this.setState({
+                ...this.state,
+                inProgress: {
+                    ...this.state.inProgress
+                },
+                user: this.props.currentUser
+            })
+        }
+    }
+
     onLoad = (page, limit) => {
         return api.Comments.forArticle(this.state.postId, page, limit)
             .then(
@@ -167,8 +179,8 @@ class CommentContainer extends React.Component {
     }    
 }
 
-const mapStateToProps = (state, props) => ({
-    currentUser: state.user.currentUser
-})
+const mapStateToProps = ({ user : { currentUser} }) => ({
+    currentUser
+});
 
 export default connect(mapStateToProps, null)(CommentContainer);

@@ -22,6 +22,10 @@ class LoginContainer extends React.Component {
         }
     }
 
+    componentWillUnmount(){
+
+    }
+
     onChange = e => {
         let user = {...this.state.user};
         user[e.target.name] = e.target.value;
@@ -41,31 +45,26 @@ class LoginContainer extends React.Component {
                     if(data.error)
                        return Promise.reject(data.error);
 
-                    localStorage.setItem('jwt', data.user.token);
-                    return this.props.CurrentUser();
-                }
-            )      
-            .then(
-                () => {
                     this.setState({
                         success: true,
                         inProgress: false
                     });
+                    localStorage.setItem('jwt', data.user.token);
+                    return this.props.CurrentUser();
                 }
-            )
-            .catch(e => this.setState({
+            )      
+            .catch(e => {
+                this.setState({
                     error: e,
                     inProgress: false
-            }));
+            })}
+        );
     }    
 
     render() {                
         let {state} = this;
 
-        if (state.success) {
-            if(state.isPopup){
-                return window.location.reload();
-            }
+        if (state.success && !state.isPopup) {
             return <Redirect to='/' />;
         }
 
