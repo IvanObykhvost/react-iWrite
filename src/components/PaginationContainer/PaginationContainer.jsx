@@ -62,6 +62,7 @@ export default class PaginationContainer extends React.Component {
         return this.state.onLoad(this.state.page, this.state.limit)
             .then(
                 data => {
+                    if(!data) return Promise.reject();
                     let {state} = this;
                     
                     if(data.length > 0){
@@ -80,6 +81,7 @@ export default class PaginationContainer extends React.Component {
                     this.setState({state});
                 }
             )
+            .catch(e => {})
     }
 
     render() {        
@@ -88,19 +90,10 @@ export default class PaginationContainer extends React.Component {
         return (
             <div className="load-more height-40">
             {
-                !state.inProgress ?
+                state.inProgress ?
+                    <Loader />
+                    :
                     null
-                    // state.isLoadMore &&
-                    //     <div className="text-align-center">
-                    //         <Button
-                    //             name="Load more"
-                    //             color="primary"
-                    //             outline 
-                    //             onClick={e => this.handelLoadMore()}
-                    //         />
-                    //     </div> 
-                :
-                <Loader />
             }
             </div>
             
