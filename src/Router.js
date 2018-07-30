@@ -5,7 +5,7 @@ import EditorContainer from './scenes/EditorContainer/EditorContainer';
 import ArticleContainer from './scenes/ArticleContainer/ArticleContainer';
 import LoginContainer from "./scenes/LoginContainer/LoginContainer";
 import RegisterContainer from './scenes/RegisterContainer/RegisterContainer';
-import SettingContainer from './scenes/SetingsContainer/SettingContainer';
+import SettingContainer from './scenes/SettingsContainer/SettingContainer';
 import ProfileContainer from './scenes/ProfileContainer/ProfileContainer';
 import LogoutContainer from './scenes/LogoutContainer/LogoutContainer';
 
