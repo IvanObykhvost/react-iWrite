@@ -7,6 +7,10 @@
     text-align: center;
 }
 
+label {
+    float: left;
+}
+
 .a {
     color: #007bff;
     text-decoration: none;
