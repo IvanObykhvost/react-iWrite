@@ -82,7 +82,11 @@ const Profile = {
     follow: username => 
         requests.post(`/profile/${username}/follow`),
     unfollow: username => 
-        requests.del(`/profile/${username}/unfollow`)
+        requests.del(`/profile/${username}/unfollow`),
+    followers: (username, page, limit) => 
+        requests.get(`/profile/${username}/followers?${getLimit(limit, page)}`),
+    following: (username, page, limit) => 
+        requests.get(`/profile/${username}/following?${getLimit(limit, page)}`)
 };
 
 export default {

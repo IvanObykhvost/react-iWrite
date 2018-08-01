@@ -4,7 +4,9 @@ import * as reactstrap from 'reactstrap';
 
 export default function Button({ name, ...props }) {
     return (
-        <reactstrap.Button { ...props }>
+        <reactstrap.Button 
+            { ...props }
+        >
             {name}
         </reactstrap.Button>
     )

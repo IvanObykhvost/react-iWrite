@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import PostListContainer from '../../Post/PostListContainer/PostListContainer';
+import FollowerListContainer from '../../FollowerListContainer/FollowerListContainer';
 
 export default function Tab({tabList, selectTab, onClick}) {
-    
     return (
         <Row>
             <Col md={12}>
@@ -23,10 +23,18 @@ export default function Tab({tabList, selectTab, onClick}) {
                 </ul>
             </Col>
             <Col md={12}>
-                <PostListContainer 
-                    onLoad={selectTab.onLoad}
-                    title={selectTab.title}
-                />
+                {
+                    selectTab.type === 'post' ?
+                        <PostListContainer 
+                            onLoad={selectTab.onLoad}
+                            title={selectTab.title}
+                        />
+                        :
+                        <FollowerListContainer
+                            onLoad={selectTab.onLoad}
+                            title={selectTab.title}
+                        />
+                }
             </Col>
         </Row>
     );

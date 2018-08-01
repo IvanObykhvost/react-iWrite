@@ -5,6 +5,7 @@ import Input from '../../../components/Form/Inputs/Input';
 import Button from '../../../components/Form/Buttons/Button';
 import InputComboBox from '../../../components/Form/Inputs/InputComboBox';
 import Label from '../../../components/Form/Label/Label';
+import Alert from '../../../components/Form/Alert/Alert';
 
 export default function Editor({post, onChange, onChangeTag, onSubmit, inProgress, error}){
     return (
@@ -17,11 +18,14 @@ export default function Editor({post, onChange, onChangeTag, onSubmit, inProgres
                                 'Update post' :
                                 'Add post'
                         }</h1>
-                    <Label className="error" message={error}/>
                     </Col>
                 </Row>
                 <Row>
                     <Col md={{size: 6, offset: 3}}>
+                        <Alert
+                            message={error}
+                            color={Alert.color.danger}
+                        />
                         <form onSubmit={onSubmit}>
                             <Input 
                                 type={"text"} 

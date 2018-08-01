@@ -35,14 +35,22 @@ class PostListContainer extends React.Component {
         }
     }
 
-    handelLoadMore = (page, limit) => {
+    handelLoadMore = (page, limit, type) => {
+
+        if(type === PaginationContainer.type.button)
+            this.setState({posts: []});
+
         return this.state.onLoad(page, limit)
             .then(
                 data => {
                     if(data.error) return Promise.reject(data.error);
 
                     let {posts} = {...this.state};
-                    posts = [...posts, ...data.posts];
+                    if(type === PaginationContainer.type.loader)
+                        posts = [...posts, ...data.posts];
+                    if(type === PaginationContainer.type.button)
+                        posts = [...data.posts];
+
                     this.setState({
                         posts,
                         inProgress: false
@@ -112,6 +120,8 @@ class PostListContainer extends React.Component {
                 <PaginationContainer 
                     onLoad={this.handelLoadMore} 
                     title={state.title}
+                    type={PaginationContainer.type.loader}
+                    limit={5}
                 />
             </div>
         );

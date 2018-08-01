@@ -37,13 +37,29 @@ class ProfileContainer extends React.Component {
                 id: 0, 
                 title: "My Articles", 
                 active: true, 
+                type: 'post',
                 onLoad(page, limit){return api.Posts.byAuthor(username, page, limit);}
             },
             { 
                 id: 1, 
                 title: "Favorited Articles", 
                 active: false, 
+                type: 'post',
                 onLoad(page, limit){return api.Posts.byFavorite(username, page, limit);}
+            },
+            {
+                id: 2, 
+                title: "Followers", 
+                active: false, 
+                type: 'user',
+                onLoad(page, limit){return api.Profile.followers(username, page, limit);}
+            },
+            {
+                id: 3, 
+                title: "Following", 
+                active: false, 
+                type: 'user',
+                onLoad(page, limit){return api.Profile.following(username, page, limit);}
             }
         ]
     }

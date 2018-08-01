@@ -4,6 +4,7 @@ import { Row, Col, Container } from 'reactstrap';
 import Input from '../../../components/Form/Inputs/Input';
 import Button from '../../../components/Form/Buttons/Button';
 import Label from '../../../components/Form/Label/Label';
+import Alert from '../../../components/Form/Alert/Alert';
 
 export default function  Settings({state, onChange, onSubmit}) {
     return (
@@ -12,12 +13,13 @@ export default function  Settings({state, onChange, onSubmit}) {
                 <Row>
                     <Col md={{size: 10, offset: 1}}>
                         <h1>Your settings</h1>
-                        <Label className="error" message={state.error}/>
-                        <Label className="success" message={state.success}/>
                     </Col>
-                </Row>
+                </Row> 
                 <Row>
                     <Col md={{size: 6, offset: 3}}>
+                        <Alert message={state.error} color={Alert.color.danger}/>
+                        <Alert message={state.success} color={Alert.color.success}/>
+
                         <form onSubmit={onSubmit}>
                             <Input 
                                 type="text"

@@ -368,3 +368,18 @@ form .Select-control {
 .article-content .tag-list{
     float: left;
 }
+
+/* .follower-container {
+    display: flex;
+} */
+
+.follower-card .card-header a{
+    float: left;
+}
+.follower-card .card-header div{
+    float: right;
+}
+
+.user-card {
+
+}

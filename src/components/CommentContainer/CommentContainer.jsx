@@ -37,14 +37,27 @@ class CommentContainer extends React.Component {
         }
     }
 
-    onLoad = (page, limit) => {
+    onLoad = (page, limit, type) => {
+        if(type === PaginationContainer.type.button){
+            this.setState({
+                comments: []
+            })
+        }
+
         return api.Comments.forArticle(this.state.postId, page, limit)
             .then(
                 data => {
                     if(data.error) return Promise.reject(data.error);
-                        
+                    
+                    let {comments} = {...this.state};
+                    if(type === PaginationContainer.type.button)
+                        comments = [...data.comments];
+
+                    if(type === PaginationContainer.type.loader)
+                        comments = [...this.state.comments,...data.comments]
+
                     this.setState({
-                        comments: [...this.state.comments,...data.comments],
+                        comments,
                         inProgress: {
                             ...this.state.inProgress,
                             onLoad: false
@@ -171,6 +184,8 @@ class CommentContainer extends React.Component {
                     <PaginationContainer
                         onLoad={this.onLoad}
                         title="comments"
+                        type={PaginationContainer.type.loader}
+                        limit={5}
                     />
                 </Col>
             </Row>

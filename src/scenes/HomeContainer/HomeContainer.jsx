@@ -24,15 +24,28 @@ class HomeContainer extends React.Component {
 
     getTabList = user => {
         if(user){
-            return [
-                { id: 0, title: "Your Feed", active: true, onLoad(page, limit){ return api.Posts.feed(page, limit); }},
-                { id: 1, title: "Global Feed", active: false, onLoad(page, limit){ return api.Posts.all(page, limit); }}
-            ];
+            return [{ 
+                    id: 0, 
+                    title: "Your Feed", 
+                    active: true, 
+                    type: 'post',
+                    onLoad(page, limit){ return api.Posts.feed(page, limit); }
+                },{ 
+                    id: 1, 
+                    title: "Global Feed", 
+                    active: false, 
+                    type: 'post',
+                    onLoad(page, limit){ return api.Posts.all(page, limit); }
+            }];
         }
 
-        return [
-            { id: 1, title: "Global Feed", active: true, onLoad(page, limit){ return api.Posts.all(page, limit); }}
-        ];
+        return [{ 
+                id: 1, 
+                title: "Global Feed", 
+                active: true, 
+                type: 'post', 
+                onLoad(page, limit){ return api.Posts.all(page, limit); }
+        }];
 
     }
 
@@ -46,6 +59,7 @@ class HomeContainer extends React.Component {
             id: 2,
             title: `#${tag}`,
             active: true,
+            type: 'post',
             onLoad(page, limit){ 
                 return api.Posts.byTag(tag, page, limit);
             }
