@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Container, Media } from 'reactstrap';
 import ButtonLink from '../../../components/Form/Buttons/ButtonLink';
-import ButtonFollowUser from './ButtonFollowUser/ButtonFollowUser';
 import TabContainer from '../../../components/TabContainer/TabContainer';
 import { CheckImage } from "../../../utils/Operations";
+import ButtonFollowContainer from '../../../components/Form/Buttons/ButtonFollowContainer/ButtonFollowContainer';
 
 export default function Profile({profile, isUser, currentUser, tabList, onClickFollow}) {
     return (                 
@@ -16,7 +16,7 @@ export default function Profile({profile, isUser, currentUser, tabList, onClickF
                         <h4>{profile.name}</h4>
                         <p>{profile.bio}</p>
                         {
-                            currentUser ? 
+                            currentUser && 
                                 isUser ? 
                                     <ButtonLink 
                                         to="/settings/"
@@ -24,13 +24,10 @@ export default function Profile({profile, isUser, currentUser, tabList, onClickF
                                         name="Edit Profile Settings"
                                     />
                                     :
-                                    <ButtonFollowUser 
+                                    <ButtonFollowContainer
                                         username={profile.name}
                                         following={profile.following}
-                                        onClickFollow={onClickFollow}
                                     />
-                                :
-                                null
                         }
                     </Col>
                 </Row>

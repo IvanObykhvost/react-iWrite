@@ -1,37 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
-import { Row, Col, Media, Card, Button, CardHeader, CardFooter, CardBody,
+import { Row, Col, Media, Card, CardHeader, CardFooter, CardBody,
     CardTitle, CardText } from 'reactstrap';
-// import ButtonDropdownContainer from '../../Form/Buttons/ButtonDropdownContainer';
+import { CheckImage } from "../../../utils/Operations";
+import ButtonFollowContainer from '../../Form/Buttons/ButtonFollowContainer/ButtonFollowContainer';
 
 
-export default function FollowerList({follower, onClick}) {
-    const bio = follower.bio ? follower.bio : "- No Bio Provided -"
+export default function FollowerList({user, onClick}) {
+    const bio = user.bio ? user.bio : "- No Bio Provided -"
     return (
             <Col md={4} className='follower-card'>
                 <Card>
-                    <CardHeader>
-                        <Link to={`/@${follower.name}`} className="user-card">
-                            {follower.name}
-                        </Link>
-                        {/* <ButtonDropdownContainer>
-                            <Link to={`/@${follower.name}`}>{follower.name}</Link>
-                            <Link to={`/@${follower.name}`}>{follower.name}</Link>
-                        </ButtonDropdownContainer> */}
-                    </CardHeader>
                     <CardBody>
-                        <CardText>{bio}</CardText>
+                        <Link to={`/@${user.name}`} className="user-card">
+                            <Media src={CheckImage(user.image)} alt={user.name}/>
+                        </Link>
+                        <CardText>
+                            <Link to={`/@${user.name}`} className="user-card">
+                                {user.name}
+                            </Link>
+                        </CardText>
+                        <hr/>
+                        <CardText className='bio'>{bio}</CardText>
+                        <hr/>
+                        <ButtonFollowContainer
+                            username={user.name}
+                            following={user.following}
+                        />
                     </CardBody>
-                    {/* <CardFooter>
-                        
-                    </CardFooter> */}
+                    <CardFooter>
+                        <Row>
+                            <Col className="posts" md={4}> 
+                                <span>{user.post}</span>
+                                <span>posts</span>
+                            </Col>
+                            <Col className="followers" md={4}> 
+                                <span>{user.followers}</span>
+                                <span>followers</span>
+                            </Col>
+                            <Col className="favorite" md={4}> 
+                                <span>{user.favorites}</span>
+                                <span>favorites</span>
+                            </Col>
+                        </Row>
+                    </CardFooter>
                 </Card>
             </Col>
     )
 }
 
 FollowerList.propTypes = {
-    follower: PropTypes.object.isRequired//,
+    user: PropTypes.object.isRequired//,
     // onClick: PropTypes.func.isRequired
 }
