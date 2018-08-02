@@ -18,7 +18,6 @@ class ArticleContainer extends React.Component {
             inProgress: true,
             success: null,
             isOwner: false
-
         }
     }
 

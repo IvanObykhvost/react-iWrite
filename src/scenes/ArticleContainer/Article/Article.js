@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Button from "../../../components/Form/Buttons/Button";
 import CommentContainer from "../../../components/CommentContainer/CommentContainer";
 import ButtonLink from "../../../components/Form/Buttons/ButtonLink";
+import ScrollToTopContainer from '../../../components/ScrollToTopContainer/ScrollToTopContainer'; 
 
 export default function Article({ article, onClickDelete }) {
     const { post, post: { author }} = article;
@@ -56,6 +57,9 @@ export default function Article({ article, onClickDelete }) {
                                 </Col>
                             </Row>
                         </Col>
+                    </Row>
+                    <Row>
+                        <ScrollToTopContainer scrollStepInPx="50" delayInMs="16.66" />
                     </Row>
                 </Container>
             </div>

@@ -72,8 +72,7 @@ class HomeContainer extends React.Component {
 
         return(
             <Home
-                tabList={state.tabList}
-                state={state}
+                tabList={state.tabList}                
                 onClick={this.handelAddTab}
             />
         );
