@@ -4,7 +4,7 @@ import { Row, Col, Container } from 'reactstrap';
 import Input from '../../../components/Form/Inputs/Input';
 import Button from '../../../components/Form/Buttons/Button';
 import InputComboBox from '../../../components/Form/Inputs/InputComboBox';
-import Label from '../../../components/Form/Label/Label';
+// import Label from '../../../components/Form/Label/Label';
 import Alert from '../../../components/Form/Alert/Alert';
 
 export default function Editor({post, onChange, onChangeTag, onSubmit, inProgress, error}){

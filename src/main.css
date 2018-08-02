@@ -7,6 +7,10 @@
     text-align: center;
 }
 
+label {
+    float: left;
+}
+
 .a {
     color: #007bff;
     text-decoration: none;
@@ -376,10 +380,41 @@ form .Select-control {
 .follower-card .card-header a{
     float: left;
 }
-.follower-card .card-header div{
+.follower-card .card-header{
     float: right;
 }
 
-.user-card {
+.follower-card .card-header button{
+    float: right;
+}
 
+.follower-card .card-body img{
+    width: 120px;
+    height: 120px;
+    border: 5px solid #3c69b3;
+    border-radius: 100px;
+    display: inline-block;
+}
+
+.follower-card .card-body .card-text.bio{
+    font-size: 12px;
+}
+.follower-card .card-footer {
+    background-color: #757575;
+}
+
+.follower-card .card-footer div{
+    padding: 0px 5px;
+    border-right: 1px solid #464646;
+    color: #f3f3f3;
+    cursor: default;
+}
+
+.follower-card .card-footer div:last-child{
+    border-right: none;
+}
+
+.follower-card .card-footer span{
+    display: block;
+    font-size: 15px;
 }

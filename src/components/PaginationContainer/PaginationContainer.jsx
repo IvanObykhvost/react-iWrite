@@ -129,6 +129,7 @@ export default class PaginationContainer extends React.Component {
             )
             .catch(e => {})
     }
+    
     render() {        
         let {state} = this;
         let range = []

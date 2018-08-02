@@ -80,7 +80,7 @@ export default class FollowerListContainer extends React.Component {
                                     state.followers.map((follower, index) => 
                                         <FollowerList 
                                             key={index} 
-                                            follower={follower}
+                                            user={follower}
                                         //onClick={e => this.handelClickFavorite(post.id, post.favorited)}
                                         />
                                     )
