@@ -84,34 +84,6 @@ class ProfileContainer extends React.Component {
             .catch(e => this.setState({error: e}))
     }
 
-    handelClickFollowUser = () => {
-        let request = null;
-        let following = this.state.profile.following;
-        if(following){
-            request = api.Profile.unfollow(this.state.username);
-        }
-        else {
-            request = api.Profile.follow(this.state.username);
-        }
-
-        following = !following;
-
-        request
-            .then(
-                data => {
-                    if(data.error) return Promise.reject(data.error);
-
-                    this.setState({
-                        profile: {
-                            ...this.state.profile,
-                            following
-                        }
-                    });
-                }
-            )
-            .catch(e => this.setState({error: e}))
-    } 
-
     render() {
         let {state} = this;
         if(state.error)
