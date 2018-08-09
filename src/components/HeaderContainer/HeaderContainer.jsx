@@ -11,18 +11,35 @@ export default class HeaderContainer extends React.Component {
         super(props);
         const currentUser = this.props.currentUser;
 
-        this.state ={
+        this.state = {
             currentUser,
-            buttons: this.initButtons(currentUser)
+            buttons: this.initButtons(currentUser),
+            pinned: false
         }
     }
 
     componentDidUpdate(prevProps){
         if(this.props.currentUser !== prevProps.currentUser){
             const currentUser = this.props.currentUser;
+
             this.setState({
                 currentUser,
                 buttons: this.initButtons(currentUser)
+            });
+        }
+    }
+
+    pin = (e) => {
+        e.preventDefault();
+
+        if (this.state.pinned) {
+            this.setState({
+                pinned: false
+            });
+        }
+        else {
+            this.setState({
+                pinned: true
             });
         }
     }
@@ -50,7 +67,7 @@ export default class HeaderContainer extends React.Component {
         let {state} = this;
 
         return(
-            <Header buttons={state.buttons}/>
+            <Header buttons={state.buttons} pinned={state.pinned} pin={this.pin}/>
         );
     }
 }

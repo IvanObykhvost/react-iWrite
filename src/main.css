@@ -25,9 +25,19 @@ label {
 
 .header {
     background-color: rgba(60, 106, 179, 1);
-    height: 40px;
-    position: relative;
+    height: 40px;   
     width: 100%;
+}
+
+.header-unpinned {  
+    position: relative;  
+}
+
+.header-pinned {  
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 90;
 }
 
 /* .header-nav .button-nav {
@@ -60,6 +70,24 @@ label {
     padding-bottom: 8px;
     padding-top: 8px;
     position: relative;
+}
+
+.button-nav-pin {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 17px;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    margin-left: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    padding-top: 11px;
+    position: relative;
+    border-radius: 15px;
 }
 
 .header-nav .button-nav.icon{
@@ -414,7 +442,7 @@ form .Select-control {
     border-right: none;
 }
 
-}
+
 
 .scroll {    
     background-color: #007bff;
@@ -442,4 +470,12 @@ form .Select-control {
     -ms-transform: rotate(270deg);
     -o-transform: rotate(270deg);
     transform: rotate(270deg);
-}  
+}
+
+.pin {
+    max-width: 20px;
+}
+
+.pinned {
+    background-color: black;
+}
