@@ -10,12 +10,12 @@ export default function Header({buttons, pinned, pin}) {
             <div className='header-nav' >
             {
                 buttons.map((button, index) =>
-                    <ButtonNav
-                        key={index}
-                        link={button.link}
-                        name={button.name}
-                        icon={button.icon}
-                    />
+                        <ButtonNav
+                            key={index}
+                            link={button.link}
+                            name={button.name}
+                            icon={button.icon}
+                        />
                 )
                 }
                 <a className={`button-nav-pin ${pinned}`} onClick={pin} >
@@ -29,5 +29,5 @@ export default function Header({buttons, pinned, pin}) {
 Header.propTypes = {
     buttons: PropTypes.array.isRequired,
     pinned: PropTypes.string.isRequired,
-    pin: PropTypes
+    pin: PropTypes.func.isRequired
 }
