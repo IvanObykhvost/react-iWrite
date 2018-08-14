@@ -6,7 +6,7 @@ import pinIcon from '../../../../src/pinIcon.png'
 export default function Header({buttons, pinned, pin}) {
 
     return (
-        <aside className={`header ${pinned ? 'header-pinned' : 'header-unpinned'}`} >
+        <aside className={`${pinned ? 'header-pinned' : 'header'}`} >
             <div className='header-nav' >
             {
                 buttons.map((button, index) =>
@@ -18,7 +18,7 @@ export default function Header({buttons, pinned, pin}) {
                     />
                 )
                 }
-                <a className={`button-nav-pin ${pinned ? 'pinned' : ''}`} onClick = { e => pin(e)} >
+                <a className={`button-nav-pin ${pinned}`} onClick={pin} >
                     <img className="pin" src={pinIcon} alt={"pinIcon"}  /> 
                 </a> 
             </div>
@@ -27,5 +27,7 @@ export default function Header({buttons, pinned, pin}) {
 }
 
 Header.propTypes = {
-    buttons: PropTypes.array.isRequired
+    buttons: PropTypes.array.isRequired,
+    pinned: PropTypes.string.isRequired,
+    pin: PropTypes
 }

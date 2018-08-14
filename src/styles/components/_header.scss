@@ -1,11 +1,13 @@
-.header {
+.header,
+.header-pinned {
     background-color: $color-main;
     //background-color: rgba(60, 106, 179, 1);
     height: 40px;
-    //position: relative;
+    position: relative;
     width: 100%;
 
-    .button-nav{
+    .button-nav,
+    .button-nav-pin {
         display: inline-flex;
         align-items: center;
         font-size: 17px;
@@ -44,39 +46,17 @@
     .button-nav.icon{
         padding-left: 35px;
     }
+
+    .pin{
+        max-width: 20px;
+    }
 }
 
-.header-unpinned {  
-    position: relative;  
-}
  .header-pinned {  
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 90;
-}
-
-.button-nav-pin {
-    display: inline-flex;
-    align-items: center;
-    margin-bottom: 5px;
-    font-size: 17px;
-    position: relative;
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-    margin-left: 0;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 8px;
-    padding-top: 11px;
-    position: relative;
-    border-radius: 15px;
-}
-
-.pin {
-    max-width: 20px;
-}
- .pinned {
-    background-color: black;
-}
+    z-index: 1;
+    .pin{
+        @include transform-rotate(-45deg);
+    }
+} 
