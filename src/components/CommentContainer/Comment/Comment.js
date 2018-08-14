@@ -1,25 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Row, Col, Media } from 'reactstrap';
+import { Row, Col, Media, Card, CardBody, CardFooter } from 'reactstrap';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import ButtonIcon from "../../Form/Buttons/ButtonIcon";
-import { CheckImage } from "../../../utils/Operations";
+import { CheckImage, getDateFormat } from "../../../utils/Operations";
 
 function Comment({comment, showDeleteButton, onClickDelete}) {
     return (
-        <div className="card">
-            <div className="card-block">
+        <Card className="card-comment">
+            <CardBody>
                 <Row>
                     <Col md={12} className="text-left card-text">
-                        <div className="display-linebreak text-align-justify">
+                        <div className="comment-text display-linebreak text-align-justify">
                             {comment.text}
                         </div>
                     </Col>
                 </Row>
                 
-            </div>
-            <div className="card-footer">
+            </CardBody>
+            <CardFooter>
                 <Row>
                     <Col md={10} xs={10} className="text-left">
                         <Link
@@ -39,7 +39,7 @@ function Comment({comment, showDeleteButton, onClickDelete}) {
                             {comment.author.name}
                         </Link>
                         <span className="date-posted">
-                            {new Date(comment.createdAt).toDateString()}
+                            {getDateFormat(comment.createdAt)}
                         </span>
                     </Col>
                     <Col md={2} xs={2} className="text-right align-self-center">
@@ -53,8 +53,8 @@ function Comment({comment, showDeleteButton, onClickDelete}) {
                     } 
                     </Col>
                 </Row>
-            </div>
-        </div>
+            </CardFooter>
+        </Card>
     );
 };
 

@@ -1,0 +1,96 @@
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.App {
+    text-align: center;
+}
+
+label {
+    float: left;
+}
+
+.a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: inline;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.tag-list {
+    list-style: none;
+    display: block;
+    padding-left: 0px;
+    float: right;
+
+    li{
+        color: #aaa;
+        font-size: 0.8rem;
+        font-weight: 300;
+        border: 1px solid #aaa; //color
+        border-radius: 10px;
+        padding: 0px 10px;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: default;
+    }
+}
+
+.profile{
+    background-color: $color-grey-light;
+    padding: {
+        top: 20px;
+        bottom: 20px;
+    } 
+    img{
+        width: 150px;
+        height: 150px;
+        border-radius: 50px;
+    }
+}
+
+.editor-page{
+    form{
+        textarea{
+            height: 100px;
+        }
+    }
+}
+
+.load-more{
+    margin: 20px auto;
+}
+
+.div-center {
+    margin: 0 auto;
+    display: table;
+}
+
+.scroll-up {    
+    background-color: #007bff;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 5px;
+    border: none;
+
+    svg{
+        @include transform-rotate(270deg);
+    }
+}
+
+.arrow-up {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -9px;
+    margin-left: -5px;
+}

@@ -12,3 +12,8 @@ export const size = {
     lg: 'lg',
     sm: 'sm'
 }
+
+export const type = {
+    submit: 'submit',
+    button: 'button'
+}

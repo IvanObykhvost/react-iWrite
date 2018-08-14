@@ -31,7 +31,7 @@ export default class TabContainer extends React.Component {
             return tab;
         })
         
-        const selectTab = this.props.tabList.find(tab => tab.active);
+        const selectTab = tabList.find(tab => tab.active);
         this.setState({
             tabList,
             selectTab

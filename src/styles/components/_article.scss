@@ -1,0 +1,36 @@
+.article-header {
+    background-color: $color-black;
+    padding: 2rem 15px;
+
+    .row{
+        color: $color-white;
+    }
+}
+
+.article-content {
+    margin-top: 10px;
+    text-align: justify;
+    .tag-link{
+        float: left;
+    }
+}
+
+
+.article-meta {
+    text-align: left;
+    .author {
+        display: inline-block;
+        a{
+            display: block;
+        }
+    }
+
+    .buttons {
+        a,
+        .buttons {
+            margin: 0px 4px;
+        }
+    }
+
+}
+

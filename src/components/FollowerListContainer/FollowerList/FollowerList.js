@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
-import { Row, Col, Media, Card, CardHeader, CardFooter, CardBody,
-    CardTitle, CardText } from 'reactstrap';
+import { Row, Col, Media, Card,  CardFooter, CardBody, CardText } from 'reactstrap';
 import { CheckImage } from "../../../utils/Operations";
 import ButtonFollowContainer from '../../Form/Buttons/ButtonFollowContainer/ButtonFollowContainer';
 
@@ -10,14 +9,14 @@ import ButtonFollowContainer from '../../Form/Buttons/ButtonFollowContainer/Butt
 export default function FollowerList({user, onClick}) {
     const bio = user.bio ? user.bio : "- No Bio Provided -"
     return (
-            <Col md={4} className='follower-card'>
+            <Col md={4} className='card-user'>
                 <Card>
                     <CardBody>
-                        <Link to={`/@${user.name}`} className="user-card">
+                        <Link to={`/@${user.name}`}>
                             <Media src={CheckImage(user.image)} alt={user.name}/>
                         </Link>
                         <CardText>
-                            <Link to={`/@${user.name}`} className="user-card">
+                            <Link to={`/@${user.name}`}>
                                 {user.name}
                             </Link>
                         </CardText>

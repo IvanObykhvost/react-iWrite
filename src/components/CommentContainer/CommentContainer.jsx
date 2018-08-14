@@ -153,7 +153,7 @@ class CommentContainer extends React.Component {
         }
        
         return (
-            <Row>
+            <Row className="comment-container">
                 <Col md={6} xs={12} className="offset-md-3">
                     {state.error}
                     {

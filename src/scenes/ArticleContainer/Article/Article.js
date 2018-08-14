@@ -40,14 +40,14 @@ export default function Article({ article, onClickDelete }) {
                                         <span>      
                                             <ButtonLink
                                                 to={`/editor/${post.id}`}
-                                                type="button"
                                                 name="Edit Article"
                                                 className="btn btn-outline-secondary btn-sm"
                                             />
                                             <Button 
                                                 name="Delete Article"
-                                                type="button"
-                                                className="btn btn-outline-danger btn-sm"
+                                                size={Button.size.sm}
+                                                outline
+                                                color={Button.color.danger}
                                                 onClick={onClickDelete}
                                                 // disabled={article.inProgress}
                                             />

@@ -6,13 +6,20 @@ import TabContainer from '../../../components/TabContainer/TabContainer';
 import { CheckImage } from "../../../utils/Operations";
 import ButtonFollowContainer from '../../../components/Form/Buttons/ButtonFollowContainer/ButtonFollowContainer';
 
-export default function Profile({profile, isUser, currentUser, tabList, onClickFollow}) {
+export default function Profile({profile, isUser, currentUser, tabList}) {
     return (                 
         <div className="user-info">
             <div className="profile">
                 <Row>
                     <Col md={{size: 10, offset: 1}} xs={10}>
-                        <Media src={CheckImage(profile.image)} alt={profile.name} className="user-img"/>
+                        <Row>
+                            <Col md={{size: 2, offset: 5}} xs={10}>
+                                <Media 
+                                    src={CheckImage(profile.image)} 
+                                    alt={profile.name} 
+                                />
+                            </Col>
+                        </Row>
                         <h4>{profile.name}</h4>
                         <p>{profile.bio}</p>
                         {
@@ -47,6 +54,5 @@ Profile.propTypes = {
     currentUser: PropTypes.object,
     profile: PropTypes.object.isRequired,
     isUser: PropTypes.bool.isRequired,
-    onClickFollow: PropTypes.func.isRequired,
-    tabList: PropTypes.array.isRequired,
+    tabList: PropTypes.array.isRequired
 }

@@ -22,7 +22,7 @@ export default class ScrollToTopContainer extends React.Component {
     }
 
     handleScroll = () => {        
-        if (window.pageYOffset !== 0 && this.state.show == false) {
+        if (window.pageYOffset !== 0 && !this.state.show) {
             this.setState({ show: true })
         }
         else if (window.pageYOffset === 0) {
@@ -47,10 +47,10 @@ export default class ScrollToTopContainer extends React.Component {
     render() {
         return (
             this.state.show &&                
-                <div className='scroll'
-                onClick={() => { this.scrollToTop(); }}>
+                <div className='scroll-up'
+                    onClick={() => { this.scrollToTop(); }}>
                     <ButtonIcon
-                        icon={<ArrowIcon className="rotateimg270" />}
+                        icon={<ArrowIcon/>}
                     />
                 </div>            
         );        

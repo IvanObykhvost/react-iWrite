@@ -27,7 +27,5 @@ export default function Header({buttons, pinned, pin}) {
 }
 
 Header.propTypes = {
-    buttons: PropTypes.array.isRequired//,
-    // currentUser: PropTypes.object,
-    // onLogout: PropTypes.func.isRequired
+    buttons: PropTypes.array.isRequired
 }

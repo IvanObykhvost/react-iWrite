@@ -1,0 +1,15 @@
+//helpers
+@import "./helpers/variables";
+@import "./helpers/mixins";
+
+//components
+@import "./components/general";
+@import "./components/header";
+@import "./components/card-user";
+@import "./components/post-preview";
+@import "./components/sidebar";
+@import "./components/tabs";
+@import "./components/form";
+@import "./components/article";
+@import "./components/comment";
+@import "./components/modal";
