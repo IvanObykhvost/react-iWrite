@@ -245,9 +245,90 @@ form button {
     margin: 10px 0px;
 }
 
-.editor-page textarea {
-    min-height: 100px;
+.editor-page {
+    border:1px solid grey;
+    border-radius: 15px;
 }
+    .editor-page .row {
+        border-bottom: 1px solid grey;
+    }
+
+    .editor-page .left-col {
+        background-color: #eee;
+        border-right: 1px solid grey;
+        font-size: 16px;
+        font-weight: 600;
+        float: right;
+        padding-top: 15px;
+        text-align: right;
+    }
+
+    .editor-page .right-col .topic{
+        font-size: 14px;
+        font-weight: 600;
+        float: left;
+    }
+
+    .editor-page .right-col .list {
+        clear: both;
+        float: left;
+        padding-left: 17px;
+        text-align: left;
+    }
+
+    .editor-page .right-col .feedback {
+        clear: both;
+        float: left;
+        padding-left: 20px;
+        text-align: left;
+    }
+
+    .editor-page .right-col .feedback:first-child{
+        padding-top:10px;
+        padding-bottom:5px;
+    }
+
+    .editor-page .right-col .feedback:last-child {        
+        padding-bottom: 10px;
+    }
+
+    .category-button {
+        float: left;
+        margin-right: 12px;
+    }
+
+    .editor-page .title {
+        padding-right: 0px;
+        padding-left: 0px;
+        padding-top: 10px;
+        padding-bottom: 15px;
+        /*border-bottom: 1px solid grey;*/
+    }
+
+        .editor-page .title .icon {
+            float: left;
+            margin-left: 20px;
+        }
+
+        .editor-page .title .text-big {
+            float: left; 
+            padding-left:20px;
+        }
+
+        .editor-page .title .text-small {
+            float: left;
+            padding-left: 20px;
+            font-weight: 500;
+        }
+
+    .editor-page textarea {
+        min-height: 100px;
+    }
+
+    .editor-page h1 {
+       
+        
+    }
 
 /* .container-page .row,
 .article-content.row {

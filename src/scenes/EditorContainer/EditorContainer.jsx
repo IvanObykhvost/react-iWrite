@@ -4,6 +4,7 @@ import Editor from './Editor/Editor';
 import { STATUS } from './constant';
 import api from "../../api";
 import Label from '../../components/Form/Label/Label';
+//import RichTextEditor from 'react-rte';
 
 export default class EditorContainer extends React.Component {
     constructor(props) {
@@ -14,6 +15,115 @@ export default class EditorContainer extends React.Component {
             post: {
                 id: this.props.match.params.id,
                 title: "",
+
+                shortDescription: "",
+                longDescription: "",
+                disableComments: false,
+                disableRatings: false,
+                status: "incomplete",
+                categories: [
+                    {
+                        id: 0,
+                        name: "Adventure",
+                        selected: false
+                    },
+                    {
+                        id: 1,
+                        name: "Alternate Universe",
+                        selected: false
+                    },
+                    {
+                        id: 2,
+                        name: "Anthology",
+                        selected: false
+                    },
+                    {
+                        id: 3,
+                        name: "Anthro",
+                        selected: true
+                    },
+                    {
+                        id: 4,
+                        name: "Comedy",
+                        selected: false
+                    },
+                    {
+                        id: 5,
+                        name: "Crossover",
+                        selected: true
+                    },
+                    {
+                        id: 6,
+                        name: "Dark",
+                        selected: false
+                    },
+                    {
+                        id: 7,
+                        name: "Drama",
+                        selected: false
+                    },
+                    {
+                        id: 8,
+                        name: "Horror",
+                        selected: false
+                    },
+                    {
+                        id: 9,
+                        name: "Human",
+                        selected: false
+                    },
+                    {
+                        id: 10,
+                        name: "Mystery",
+                        selected: false
+                    },
+                    {
+                        id: 11,
+                        name: "Porn",
+                        selected: false
+                    },
+                    {
+                        id: 12,
+                        name: "Random",
+                        selected: false
+                    },
+                    {
+                        id: 13,
+                        name: "Romance",
+                        selected: false
+                    },
+                    {
+                        id: 14,
+                        name: "Sad",
+                        selected: false
+                    },
+                    {
+                        id: 15,
+                        name: "Science Fiction",
+                        selected: false
+                    },
+                    {
+                        id: 16,
+                        name: "Second Person",
+                        selected: false
+                    },
+                    {
+                        id: 17,
+                        name: "Slice of Life",
+                        selected: false
+                    },
+                    {
+                        id: 18,
+                        name: "Thriller",
+                        selected: false
+                    },
+                    {
+                        id: 19,
+                        name: "Tragedy",
+                        selected: false
+                    },
+                ],
+
                 topic: "",
                 message: "",
                 tags: []
@@ -62,17 +172,37 @@ export default class EditorContainer extends React.Component {
         }
     }
 
-    change = e => {   
+    change = e => {           
         const name = e.target.name;   
-        let post = {...this.state.post};
-        post[name] = e.target.value;
-        this.setState({post});
+        let post = { ...this.state.post };
+
+        if (e.target.type == "checkbox") 
+            post[name] = e.target.checked;
+        else
+            post[name] = e.target.value;
+
+        this.setState({ post });     
+        console.log(post);
+    }
+
+    changeLongDescription = longDescription => {
+        //const name = e.target.name;
+        let post = { ...this.state.post };
+        post["longDescription"] = longDescription;
+        this.setState({ post });
     }
 
     changeTag = e => {
         let post = {...this.state.post};
         post.tags = e.map(tag => tag.value);
         this.setState({post});
+    }
+
+    setCategories = id => {
+        let post = { ...this.state.post };
+        let category = post.categories.find(x => x.id === id);
+        category.selected = !category.selected;
+        this.setState({ post });        
     }
 
     submit = e => {
@@ -122,8 +252,10 @@ export default class EditorContainer extends React.Component {
         return (
             !state.inProgress ?
                 <Editor 
-                    onChange={e => this.change(e)} 
+                    onChange={e => this.change(e)}
+                    onChangeLongDescription={longDescription => this.changeLongDescription(longDescription)} 
                     onChangeTag={e => this.changeTag(e)}
+                    setCategories={ id => this.setCategories(id)}
                     onSubmit={e => this.submit(e)} 
                     error={state.error}
                     post={post}
