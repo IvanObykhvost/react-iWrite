@@ -1,7 +1,7 @@
 ﻿import axios from 'axios';
 
 let api = axios.create({
-    baseURL: 'http://10.10.1.220:4081/api'
+    baseURL: 'http://10.10.1.220:4082/api'
     //baseURL: 'http://10.10.1.220:4081/api'
 });
 
@@ -29,9 +29,9 @@ const Auth = {
     current: () =>
       requests.get('/user'),
     login: (email, password) => 
-        requests.post('/login', { email, password }),
+        requests.post('/user/login', { email, password }),
     register: (name, email, password) =>
-        requests.post('/register', { name, email, password }),
+        requests.post('/user/register', { name, email, password }),
     save: user =>
       requests.put('/user', { user })
 };
@@ -46,15 +46,15 @@ const Posts = {
     delete: id => 
         requests.del(`/post/${id}`),
     all: (page, limit) => 
-        requests.get(`/posts?${getLimit(limit, page)}`),
+        requests.get(`/post/all?${getLimit(limit, page)}`),
     byAuthor: (username, page, limit) =>
-        requests.get(`/posts?author=${encode(username)}&${getLimit(limit, page)}`),
+        requests.get(`/post/all?author=${encode(username)}&${getLimit(limit, page)}`),
     byFavorite: (username, page, limit) =>
-        requests.get(`/posts?favorited=${encode(username)}&${getLimit(limit, page)}`),
+        requests.get(`/post/all?favorited=${encode(username)}&${getLimit(limit, page)}`),
     byTag: (tag, page, limit) => 
-        requests.get(`/posts?tag=${encode(tag)}&${getLimit(limit, page)}`),
+        requests.get(`/post/all?tag=${encode(tag)}&${getLimit(limit, page)}`),
     feed: (page, limit) =>
-        requests.get(`/posts/feed?${getLimit(limit, page)}`),
+        requests.get(`/post/feed?${getLimit(limit, page)}`),
     favorite: id =>
         requests.post(`/post/${id}/favorite`),
     unfavorite: id =>

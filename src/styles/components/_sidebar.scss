@@ -1,0 +1,15 @@
+.sidebar {
+    padding: 5px 10px 10px 10px;
+    background: $color-grey-light;
+    border-radius: 10px;
+    .tag-list{
+        float: none;
+        li{
+            cursor: pointer;
+            &:hover{
+                color: $color-white;
+                background-color: $color-main;
+            }
+        }
+    }
+}

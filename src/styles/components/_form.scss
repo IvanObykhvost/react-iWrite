@@ -1,0 +1,18 @@
+form {
+    button,
+    input {
+        margin: 10px 0px;
+    }
+    .Select-control{
+        text-align: left;
+        margin-top: 10px;
+        &:focus{
+            color: #495057;
+            background-color: $color-white;
+            border-color: #80bdff;
+            outline: 0;
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0);
+        }
+    }
+}

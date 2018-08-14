@@ -11,3 +11,8 @@ export function CheckImage(image) {
     }
     return "http://getdrawings.com/img/user-silhouette-icon-3.png";
 }
+
+
+export function getDateFormat(date){
+    return new Date(date).toDateString();
+}

@@ -6,7 +6,6 @@ export default function Header({buttons}) {
 
     return (
         <aside className='header' >
-            <div className='header-nav' >
             {
                 buttons.map((button, index) =>
                     <ButtonNav
@@ -17,13 +16,10 @@ export default function Header({buttons}) {
                     />
                 )
             }
-            </div>
         </aside >
     )
 }
 
 Header.propTypes = {
-    buttons: PropTypes.array.isRequired//,
-    // currentUser: PropTypes.object,
-    // onLogout: PropTypes.func.isRequired
+    buttons: PropTypes.array.isRequired
 }

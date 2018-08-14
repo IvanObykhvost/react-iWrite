@@ -1,0 +1,31 @@
+.comment-form{
+    textarea {
+        margin: 0px;
+        min-height: 100px;
+    }
+}
+
+.card-comment {
+    margin: 1.25rem 0;
+
+    textarea{
+        margin: 0px;
+        min-height: 100px;
+    }
+
+    .comment-text{
+        white-space: pre-line;
+        // margin-bottom: 1.25rem;
+        text-align: justify;
+    }
+    .date-posted {
+        margin-left: 2px;
+    }
+    .button-delete{
+        cursor: pointer;
+    }
+}
+
+.card {
+    margin: 1.25rem 0;
+}

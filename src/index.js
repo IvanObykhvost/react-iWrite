@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 
 import './index.css';
-import './main.css';
+import './styles/main.scss';
 import 'bootstrap/dist/css/bootstrap.css'; 
 import "react-select/dist/react-select.css";
 import AppContainer from './scenes/AppContainer/AppContainer';

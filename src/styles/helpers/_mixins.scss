@@ -1,0 +1,31 @@
+@mixin solid-border-bottom($width: 1px, $color: #000) {
+    border-bottom: {
+        color: $color;
+        width: $width;
+        style: solid;
+    }
+}
+
+@mixin solid-border($width: 1px, $color: #000) {
+    border: {
+        color: $color;
+        width: $width;
+        style: solid;
+    }
+}
+
+@mixin transform($transformation) {
+    transform: $transformation;
+    -webkit-transform: $transformation;
+    -moz-transform: $transformation;
+    -ms-transform: $transformation;
+    -o-transform: $transformation;  
+  }
+
+@mixin transform-rotate($transformation) {
+    transform: rotate($transformation);
+    -webkit-transform: rotate($transformation);
+    -moz-transform: rotate($transformation);
+    -ms-transform: rotate($transformation);
+    -o-transform: rotate($transformation);  
+  }

@@ -121,7 +121,7 @@ class PostListContainer extends React.Component {
                     onLoad={this.handelLoadMore} 
                     title={state.title}
                     type={PaginationContainer.type.loader}
-                    limit={5}
+                    limit={10}
                 />
             </div>
         );
