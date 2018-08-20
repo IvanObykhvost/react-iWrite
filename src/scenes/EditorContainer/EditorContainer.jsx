@@ -186,7 +186,6 @@ export default class EditorContainer extends React.Component {
     }
 
     changeLongDescription = longDescription => {
-        //const name = e.target.name;
         let post = { ...this.state.post };
         post["longDescription"] = longDescription;
         this.setState({ post });

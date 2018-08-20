@@ -35,7 +35,10 @@ class HomeContainer extends React.Component {
                     title: "Global Feed", 
                     active: false, 
                     type: 'post',
-                    onLoad(page, limit){ return api.Posts.all(page, limit); }
+                    onLoad(page, limit){ 
+                        let result = api.Posts.all(page, limit);
+                        return api.Posts.all(page, limit); 
+                    }
             }];
         }
 

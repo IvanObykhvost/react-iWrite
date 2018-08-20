@@ -27,10 +27,8 @@ export default class Editor extends React.Component {
 
     onChange = (value) => {
         this.setState({ value });
-        //console.log("are saving long description: ");
-        //console.log(value);
         value.toString('html');
-        //console.log(value._cache.html);    
+        console.log(value._cache.html);    
         this.props.onChangeLongDescription(value);
     };   
 
@@ -63,7 +61,7 @@ export default class Editor extends React.Component {
                     <Row>
                         <Col xs="3" className="left-col">
                             Help
-                    </Col>
+                        </Col>
                         <Col xs="9" className="right-col">
                             <span className="topic">Tips</span>
                             <ol className="list">
@@ -163,6 +161,7 @@ export default class Editor extends React.Component {
                                     name="status"
                                     defaultValue={post.status}
                                     onChange={onChange}
+                                    className="status-select"
                                 >
                                     <option value="incomplete">Incomplete</option>
                                     <option value="complete">Complete</option>                                    
@@ -179,6 +178,43 @@ export default class Editor extends React.Component {
                                         return (<Button className="category-button" outline onClick={() => setCategories(category.id)} key={category.id} active={category.selected} color="primary" name={category.name} />)
                                     })
                                 }
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col className="title">
+                                <div className="text-small">
+                                    Finish
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs="3" className="left-col">
+                                Guidelines and Rules
+                            </Col>
+                            <Col xs="9" className="right-col">
+                                <span className="topic">Don't Post (Content)</span>
+                                <ol className="list">
+                                    <li>Stories that plagiarize other stories. This means intentionally copying another author's words and presenting them as your own.</li>
+                                    <li>Stories you did not write. If you are not the original author or a co-author, you cannot post it, even with permission. This includes "novelizing" a comic, movie, game, etc. that you did not create. For example: a Halo crossover with the same plot, scenes, dialogue, etc. but with the characters replaced by ponies.</li>
+                                    <li>The same story twice. This does not include variants of the same story where the two versions differ on a rating tag, such as a Teen version and a Mature version.</li>
+                                    <li>Stories you have deleted and are now resubmitting. Please contact a moderator to have your original deleted story recovered.</li>
+                                    <li>Stories that are not related to My Little Pony. Your story must be related to the MLP universe at the time of submission, or else it will be rejected.</li>
+                                    <li>Stories containing copyrighted song lyrics. Lyrics from MLP songs are allowed.</li>
+                                    <li>"Rewrites" of an old story posted as a new story, unless the changes are substantial. If you are not rewriting your story from the ground up, please just edit your changes into the original story.</li>
+                                </ol>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs="3" className="left-col">
+                            </Col>
+                            <Col xs="9" className="right-col">
+                                <Button
+                                    type="submit"
+                                    name="Create story"
+                                    color="primary"
+                                    disabled={inProgress}
+                                    className="create-story"
+                                />
                             </Col>
                         </Row>
                     </form>

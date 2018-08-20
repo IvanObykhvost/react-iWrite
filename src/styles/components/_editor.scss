@@ -15,6 +15,7 @@
     font-weight: 600;
     float: right;
     padding-top: 15px;
+    padding-bottom: 15px;
     text-align: right;
 }
 
@@ -45,6 +46,10 @@
 
 .editor-page .right-col .feedback:last-child {
     padding-bottom: 10px;
+}
+
+.editor-page .right-col .status-select {
+    margin: 10px 0px;
 }
 
 .category-button {
@@ -80,5 +85,16 @@
     min-height: 100px;
 }
 
-.editor-page h1 {
+.create-story{
+    float:left;
+}
+
+
+
+.DraftEditor-editorContainer {
+    height: 300px !important;
+}
+
+.RichTextEditor__root___2QXK- {
+    margin: 10px 0;
 }
