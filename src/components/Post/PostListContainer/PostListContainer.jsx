@@ -67,7 +67,6 @@ class PostListContainer extends React.Component {
                 }
             )
             .catch(e => this.setState({error: e}))
-            )
     }
 
     handelClickFavorite = (postId, favorited) => {
