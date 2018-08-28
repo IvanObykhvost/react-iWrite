@@ -75,8 +75,13 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    .pin{
-        max-width:20px
+    .pin{               
         @include transform-rotate(-45deg);
     }
-} 
+}
+
+.button-nav-pin {
+    .pin {
+        max-height: 20px;
+    }
+}
