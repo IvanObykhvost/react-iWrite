@@ -76,6 +76,7 @@
     top: 0;
     z-index: 1;
     .pin{
+        max-width:20px
         @include transform-rotate(-45deg);
     }
 } 
