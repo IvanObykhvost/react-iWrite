@@ -8,6 +8,7 @@ import RegisterContainer from './scenes/RegisterContainer/RegisterContainer';
 import SettingContainer from './scenes/SettingsContainer/SettingContainer';
 import ProfileContainer from './scenes/ProfileContainer/ProfileContainer';
 import LogoutContainer from './scenes/LogoutContainer/LogoutContainer';
+import StoryEditorContainer from './scenes/StoryEditorContainer/StoryEditorContainer';
 
 export default function Router() {
     return (<Switch>
@@ -20,6 +21,8 @@ export default function Router() {
                 <Route path="/settings/" component={SettingContainer} /> 
                 <Route path="/@:username/" component={ProfileContainer} />               
                 <Route path="/logout/" component={LogoutContainer} />
+                <Route path="/storyEditor/:id?" component={StoryEditorContainer} />
+                <Route path="/storyEditor/" component={StoryEditorContainer} />
             </Switch>
     )
     

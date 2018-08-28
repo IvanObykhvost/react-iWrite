@@ -47,11 +47,15 @@ export default class HeaderContainer extends React.Component {
     initButtons = currentUser => {
         if(currentUser){
             return [
-                { name: 'Home', link: '/', icon: <HomeIcon/>},
-                { name: 'New post', link: '/editor/',  icon: <QueueIcon/>},
-                { name: 'Settings', link: '/settings/', icon: <SettingIcon/>},
-                { name: `${currentUser.name}`, link: '/@' + currentUser.name, icon: <ProfileIcon/>},
-                { name: 'Logout', link: '/logout', icon: <ExitIcon/> }
+                { name: 'Home', link: '/', icon: <HomeIcon/>,  menuItems: []},
+                { name: 'New post', link: '/editor/',  icon: <QueueIcon/>,  menuItems: []},
+                { name: 'Settings', link: '/settings/', icon: <SettingIcon/>,  menuItems: []},
+                { name: `${currentUser.name}`, link: '/@' + currentUser.name, icon: <ProfileIcon/>,  menuItems: []},
+                { name: 'Stories', menuItems: [                    
+                    { link: '/storyEditor/', name: 'New Storie'},  
+                    { link: '/settings/', name: 'Manage Stories'},  
+                ]},
+                { name: 'Logout', link: '/logout', icon: <ExitIcon/>, menuItems: [] }
             ]
         }
 

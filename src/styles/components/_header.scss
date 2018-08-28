@@ -44,6 +44,29 @@
     .button-nav.icon{
         padding-left: 35px;
     }
+
+    .drop-down-button-nav{       
+        display: inline-flex;
+        align-items: center;
+        font-size: 17px;
+        position: relative;
+        cursor: pointer;
+        text-decoration: none;
+        color: $color-white;
+        margin: {          
+            bottom: 12px;
+        };
+        padding: {           
+        };
+
+        &:hover{
+            background-color: #447dd2;
+            transition: all 450ms cubic-bezier(0.23, 1, 0.32, 0.7) 0ms;
+            border-radius: 5px;
+        }
+       
+    }
+
 }
 
 .header-unpinned {  

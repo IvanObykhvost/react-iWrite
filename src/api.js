@@ -62,6 +62,20 @@ const Posts = {
     
 };
 
+const Stories = {
+    create: story => 
+        requests.post('/story', story),
+    get: id => 
+        requests.get(`/story/${id}`),
+    update: story => 
+        requests.put(`/story/${story.id}`, story),    
+};
+
+const Categories = {
+    getAll: () => 
+        requests.get('/categories')
+}
+
 const Tags = {
     getAll: () => 
         requests.get('/tags')
@@ -94,5 +108,7 @@ export default {
     Posts,
     Profile,
     Comments,
-    Tags 
+    Tags,
+    Stories,
+    Categories 
 };
