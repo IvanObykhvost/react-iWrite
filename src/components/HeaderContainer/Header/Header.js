@@ -13,8 +13,10 @@ export default function Header({buttons, pinned, pin}) {
                 buttons.map((button, index) => {
                     if(button.menuItems.length > 0){
                         return <ButtonDropDown
+                            key={index}
                             name={button.name}
                             menuItems={button.menuItems}
+                            icon={button.icon}
                         />
                     }
                     else{

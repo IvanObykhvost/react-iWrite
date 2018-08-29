@@ -45,14 +45,16 @@ class LoginContainer extends React.Component {
                     if(data.error)
                        return Promise.reject(data.error);
 
-                    this.setState({
-                        success: true,
-                        inProgress: false
-                    });
                     localStorage.setItem('jwt', data.user.token);
                     return this.props.CurrentUser();
                 }
-            )      
+            )   
+            .then( () => 
+                this.setState({
+                    success: true,
+                    inProgress: false
+                })
+            )
             .catch(e => {
                 this.setState({
                     error: e,

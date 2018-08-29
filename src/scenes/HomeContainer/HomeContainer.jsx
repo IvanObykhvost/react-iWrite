@@ -36,7 +36,7 @@ class HomeContainer extends React.Component {
                     active: false, 
                     type: 'post',
                     onLoad(page, limit){ 
-                        let result = api.Posts.all(page, limit);
+                        // let result = api.Posts.all(page, limit);
                         return api.Posts.all(page, limit); 
                     }
             }];

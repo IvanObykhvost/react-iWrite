@@ -2,12 +2,14 @@
 .header-pinned {
     background-color: $color-main;
     //background-color: rgba(60, 106, 179, 1);
-    height: 40px;
+    height: 50px;
     position: relative;
     width: 100%;
 
     .button-nav,
-    .button-nav-pin {
+    .button-nav-pin,
+    .drop-down-button-nav 
+    {
         display: inline-flex;
         align-items: center;
         font-size: 17px;
@@ -47,28 +49,14 @@
         padding-left: 35px;
     }
 
-    .drop-down-button-nav{       
-        display: inline-flex;
-        align-items: center;
-        font-size: 17px;
-        position: relative;
-        cursor: pointer;
-        text-decoration: none;
-        color: $color-white;
-        margin: {          
-            bottom: 12px;
-        };
-        padding: {           
-        };
-
-        &:hover{
-            background-color: #447dd2;
-            transition: all 450ms cubic-bezier(0.23, 1, 0.32, 0.7) 0ms;
-            border-radius: 5px;
+    .button-nav-pin {
+        &:hover {
+            background-color: $color-main;
         }
-       
+        .pin {
+            max-height: 20px;
+        }
     }
-
 }
 
  .header-pinned {  
@@ -80,8 +68,3 @@
     }
 }
 
-.button-nav-pin {
-    .pin {
-        max-height: 20px;
-    }
-}

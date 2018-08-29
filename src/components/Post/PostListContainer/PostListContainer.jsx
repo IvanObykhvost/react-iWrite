@@ -43,12 +43,9 @@ class PostListContainer extends React.Component {
         return this.state.onLoad(page, limit)
             .then(
                 data => {
-                    if(data.error || data.error=="") {         
-                        if(data.error =="")  
-                            return Promise.reject("Server error");            
-                        else                          
-                            return Promise.reject(data.error);
-                    }
+                    if(data.error || data.error=== "")
+                        throw data.error === "" ? "Server error" : data.error;      
+                        
                     let {posts} = {...this.state};
                     if(type === PaginationContainer.type.loader)
                         posts = [...posts, ...data.posts];

@@ -5,6 +5,7 @@ import QueueIcon from 'material-ui/svg-icons/av/queue';
 import SettingIcon from 'material-ui/svg-icons/action/settings';
 import ProfileIcon from 'material-ui/svg-icons/action/account-box';
 import ExitIcon from 'material-ui/svg-icons/action/exit-to-app';
+import BookIcon from 'material-ui/svg-icons/action/book';
 
 export default class HeaderContainer extends React.Component {
     constructor(props) {
@@ -42,11 +43,11 @@ export default class HeaderContainer extends React.Component {
     initButtons = currentUser => {
         if(currentUser){
             return [
-                { name: 'Home', link: '/', icon: <HomeIcon/>,  menuItems: []},
-                { name: 'New post', link: '/editor/',  icon: <QueueIcon/>,  menuItems: []},
-                { name: 'Settings', link: '/settings/', icon: <SettingIcon/>,  menuItems: []},
-                { name: `${currentUser.name}`, link: '/@' + currentUser.name, icon: <ProfileIcon/>,  menuItems: []},
-                { name: 'Stories', menuItems: [                    
+                { name: 'Home', link: '/', icon: <HomeIcon/>, menuItems: []},
+                { name: 'New post', link: '/editor/',  icon: <QueueIcon/>, menuItems: []},
+                { name: 'Settings', link: '/settings/', icon: <SettingIcon/>, menuItems: []},
+                { name: `${currentUser.name}`, link: '/@' + currentUser.name, icon: <ProfileIcon/>, menuItems: []},
+                { name: 'Stories', icon: <BookIcon/>, menuItems: [                    
                     { link: '/storyEditor/', name: 'New Storie'},  
                     { link: '/settings/', name: 'Manage Stories'},  
                 ]},
@@ -55,9 +56,9 @@ export default class HeaderContainer extends React.Component {
         }
 
         return [
-            { name: 'Home', link: '/', icon: <HomeIcon/>},
-            { name: 'Sign In', link: '/login/'},
-            { name: 'Sign Up', link: '/register/'}
+            { name: 'Home', link: '/', icon: <HomeIcon/>, menuItems: []},
+            { name: 'Sign In', link: '/login/', menuItems: []},
+            { name: 'Sign Up', link: '/register/', menuItems: []}
         ]
     }
 
