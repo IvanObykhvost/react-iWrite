@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 // import Button from '../Form/Buttons/Button';
 import Loader from '../Loader/Loader';
 import Button from '../Form/Buttons/Button';
+import Pagination from "react-js-pagination";
+
+const type = {
+    button: 'button', 
+    loader: 'loader'
+}
 
 export default class PaginationContainer extends React.Component {
     constructor(props) {
@@ -109,21 +115,23 @@ export default class PaginationContainer extends React.Component {
     }
 
     setPage = page => {
-        page === 0 ? page = 0 : --page;
+        if(page !== 0 && page === this.state.page) return;
+        let currentPage = page;
+        currentPage = currentPage === 0 ? currentPage : currentPage - 1;
         this.setState({
             inProgress: true,
             isLoadMore: true,
         });
 
-        return this.state.onLoad(page, this.state.limit, this.state.type)
+        return this.state.onLoad(currentPage, this.state.limit, this.state.type)
             .then(
                 data => {
-                    if(!data) return Promise.reject();
+                    if(!data) throw '';
                     let {state} = this;
                     
                     state.count = data.count;
                     state.inProgress = false;
-                    state.page = page;
+                    state.page = page === 0 ? 1 : page;
                     this.setState({state});
                 }
             )
@@ -132,32 +140,22 @@ export default class PaginationContainer extends React.Component {
     
     render() {        
         let {state} = this;
-        let range = []
-        if(state.type === type.button){
-            for(let i=1; i<= Math.ceil(state.count / state.limit); ++i){
-                range.push(i);
-            }
-        }
-        const currentpage = state.page + 1;
         return (
             <div className="load-more height-40">
             {
-                state.inProgress ?
-                    <Loader />
+                !state.inProgress ? 
+                    state.type === type.button &&
+                        <Pagination
+                            hideNavigation
+                            pageRangeDisplayed={5}
+                            activePage={state.page}
+                            itemsCountPerPage={state.limit}
+                            totalItemsCount={state.count}
+                            onChange={this.setPage}
+                        />
                     :
-                    <div className="buttons">
-                    {
-                        range.map((num, index)=> 
-                            <Button
-                                key={index}
-                                onClick={e => this.setPage(num)}
-                                name={`${num}`}
-                                disabled={num === currentpage}
-                                color="primary"
-                            />
-                        )
-                    }   
-                    </div>
+                    state.type === type.loader &&
+                    <Loader />
                    
             }
             </div>
@@ -168,10 +166,7 @@ export default class PaginationContainer extends React.Component {
     }
 }
 
-const type = {
-    button: 'button', 
-    loader: 'loader'
-}
+
 
 PaginationContainer.type = type;
 

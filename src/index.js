@@ -10,6 +10,7 @@ import './styles/main.scss';
 import 'bootstrap/dist/css/bootstrap.css'; 
 import "react-select/dist/react-select.css";
 import AppContainer from './scenes/AppContainer/AppContainer';
+import "./icon";
 
 
 ReactDOM.render(

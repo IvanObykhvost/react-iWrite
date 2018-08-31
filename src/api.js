@@ -68,7 +68,9 @@ const Stories = {
     get: id => 
         requests.get(`/story/${id}`),
     update: story => 
-        requests.put(`/story/${story.id}`, story),    
+        requests.put(`/story/${story.id}`, story), 
+    byAuthor: (username, page, limit) =>
+        requests.get(`/story/all?author=${encode(username)}&${getLimit(limit, page)}`)
 };
 
 const Categories = {

@@ -14,29 +14,38 @@ class ButtonFollowContainer extends React.Component {
     }
   }
 
-handelClickFollow = () => {
-    let request = null;
-    let {following, username} = this.state;
-
-    if(following){
-        request = api.Profile.unfollow(username);
-    }
-    else {
-        request = api.Profile.follow(username);
+    componentDidUpdate(prevProps){
+        if(this.props.username !== prevProps.username){
+            this.setState({
+                following: this.props.following,
+                username: this.props.username
+            })
+        }
     }
 
-    following = !following;
+    handelClickFollow = () => {
+        let request = null;
+        let {following, username} = this.state;
 
-    request
-        .then(
-            data => {
-                if(data.error) return Promise.reject(data.error);
+        if(following){
+            request = api.Profile.unfollow(username);
+        }
+        else {
+            request = api.Profile.follow(username);
+        }
 
-                this.setState({following});
-            }
-        )
-        .catch(e => this.setState({error: e}))
-} 
+        following = !following;
+
+        request
+            .then(
+                data => {
+                    if(data.error) return Promise.reject(data.error);
+
+                    this.setState({following});
+                }
+            )
+            .catch(e => this.setState({error: e}))
+    } 
 
     render() {
         let {state} = this;

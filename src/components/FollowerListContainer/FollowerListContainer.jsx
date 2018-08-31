@@ -34,8 +34,8 @@ export default class FollowerListContainer extends React.Component {
 
     handelLoadMore = (page, limit, type) => {
 
-        // if(type === PaginationContainer.type.button)
-        //     this.setState({posts: []});
+        if(type === PaginationContainer.type.button)
+            this.setState({followers: []});
 
         return this.state.onLoad(page, limit)
             .then(
@@ -81,7 +81,6 @@ export default class FollowerListContainer extends React.Component {
                                         <FollowerList 
                                             key={index} 
                                             user={follower}
-                                        //onClick={e => this.handelClickFavorite(post.id, post.favorited)}
                                         />
                                     )
                                 }
@@ -94,7 +93,7 @@ export default class FollowerListContainer extends React.Component {
                 <PaginationContainer 
                     onLoad={this.handelLoadMore} 
                     title={state.title}
-                    type={PaginationContainer.type.loader}
+                    type={PaginationContainer.type.button}
                     limit={12}
                 />
             </div>
@@ -102,12 +101,3 @@ export default class FollowerListContainer extends React.Component {
 
     }
 }
-
-// const mapStateToProps = (state) => ({
-//     currentUser: state.user.currentUser
-// })
-
-// export default connect(
-//     mapStateToProps,
-//     null
-// )(FollowerListContainer);

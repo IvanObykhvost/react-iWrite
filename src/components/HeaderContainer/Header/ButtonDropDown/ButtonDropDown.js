@@ -1,58 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 
-export default class ButtonDropDown extends React.Component {
-    constructor(props) {
-        super(props);        
+export default function ButtonDropDown({src, name, menuItems}) {
+    return (    
+        <UncontrolledDropdown nav inNavbar>
+            <DropdownToggle nav caret>
+                {src && <img src={src}/>}
+                {name}
+            </DropdownToggle>
+            <DropdownMenu>
+            {
+                menuItems.map((button, index)=>
+                <Link to={button.link} key={index}>
+                    <DropdownItem>
+                        <FontAwesomeIcon icon={button.icon} className='header-icon'/>
+                        {button.name}
+                    </DropdownItem>
+                </Link>
+                )
+            }
+            </DropdownMenu>
+        </UncontrolledDropdown>
+    )
+}
 
-        this.state = {
-            dropdownOpen: false,
-            link: null
-        }
-    }
-
-    toggle = () => {}      
-    handelMouseEnter = () =>  this.setState({dropdownOpen: true})
-    handelMouseLeave= () =>  this.setState({dropdownOpen: false})
-
-    render(){
-        const {name, menuItems, icon} = this.props;
-
-        return (
-            <ButtonDropdown 
-                isOpen={this.state.dropdownOpen} 
-                toggle={this.toggle} 
-                className="drop-down-button-nav"
-                onMouseEnter={() => this.handelMouseEnter()}
-                onMouseLeave={() => this.handelMouseLeave()}
-            >
-                <DropdownToggle color="primary">
-                {/* {  icon ?
-                    <MuiThemeProvider>
-                        {icon}
-                    </MuiThemeProvider>
-                    : 
-                    null
-                } */}
-                    {name}
-                </DropdownToggle>
-                <DropdownMenu >
-                {
-                    menuItems.map((item, index) =>
-                        <DropdownItem key={index} onClick={() => this.handelMouseLeave()}>
-                            <Link to={item.link}>
-                                {item.name}
-                            </Link>
-                        </DropdownItem>
-                    )
-                }
-                </DropdownMenu>
-          </ButtonDropdown>
-        )
-    }
+ButtonDropDown.propTypes = {
+    src: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    menuItems: PropTypes.array.isRequired
 }
         

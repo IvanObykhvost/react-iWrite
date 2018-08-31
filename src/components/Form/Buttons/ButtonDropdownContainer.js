@@ -21,17 +21,18 @@ export default class ButtonDropdownContainer extends React.Component {
     render() {
         let {children} = this.props;
         return (
-            <ButtonDropdown  isOpen={this.state.dropdownOpen} toggle={e => this.toggle()} >
-                <DropdownToggle color='secondary' outline caret />
+            null
+            // <ButtonDropdown  isOpen={this.state.dropdownOpen} toggle={e => this.toggle()} >
+            //     <DropdownToggle color='secondary' outline caret />
                     
-                <DropdownMenu right>
-                {
-                    children.map((item, index) =>
-                        <DropdownItem key={index}>{item}</DropdownItem>
-                    )
-                }
-                </DropdownMenu>
-            </ButtonDropdown>
+            //     <DropdownMenu right>
+            //     {
+            //         children.map((item, index) =>
+            //             <DropdownItem key={index}>{item}</DropdownItem>
+            //         )
+            //     }
+            //     </DropdownMenu>
+            // </ButtonDropdown>
         )
     }
 }

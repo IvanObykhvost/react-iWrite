@@ -10,35 +10,37 @@ export default function Profile({profile, isUser, currentUser, tabList}) {
     return (                 
         <div className="user-info">
             <div className="profile">
-                <Row>
-                    <Col md={{size: 10, offset: 1}} xs={10}>
-                        <Row>
-                            <Col md={{size: 2, offset: 5}} xs={10}>
-                                <Media 
-                                    src={CheckImage(profile.image)} 
-                                    alt={profile.name} 
-                                />
-                            </Col>
-                        </Row>
-                        <h4>{profile.name}</h4>
-                        <p>{profile.bio}</p>
-                        {
-                            currentUser && 
-                                isUser ? 
-                                    <ButtonLink 
-                                        to="/settings/"
-                                        className="btn btn-sm btn-outline-secondary action-btn"
-                                        name="Edit Profile Settings"
+                <Container>
+                    <Row>
+                        <Col md={{size: 9, offset: 1}} xs={10}>
+                            <Row>
+                                <Col>
+                                    <Media 
+                                        src={CheckImage(profile.image)} 
+                                        alt={profile.name} 
                                     />
-                                    :
-                                    <ButtonFollowContainer
-                                        username={profile.name}
-                                        following={profile.following}
-                                    />
-                        }
-                    </Col>
-                </Row>
-            </div>
+                                </Col>
+                            </Row>
+                            <h4>{profile.name}</h4>
+                            <p>{profile.bio}</p>
+                            {
+                                currentUser && 
+                                    isUser ? 
+                                        <ButtonLink 
+                                            to="/settings/"
+                                            className="btn btn-sm btn-outline-secondary action-btn"
+                                            name="Edit Profile Settings"
+                                        />
+                                        :
+                                        <ButtonFollowContainer
+                                            username={profile.name}
+                                            following={profile.following}
+                                        />
+                            }
+                        </Col>
+                    </Row>
+                </Container>
+            </div> 
             <Container>
                 <Row>
                     <Col md={{size: 10, offset: 1}} xs={12}>

@@ -17,3 +17,8 @@ export const type = {
     submit: 'submit',
     button: 'button'
 }
+
+export const typeProfile = {
+    button: 'button',
+    link: 'link'
+}
