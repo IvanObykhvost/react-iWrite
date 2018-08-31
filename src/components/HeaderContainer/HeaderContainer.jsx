@@ -9,7 +9,7 @@ export default class HeaderContainer extends React.Component {
         this.state = {
             currentUser,
             buttons: this.initButtons(currentUser),
-            classPinned: ''
+            classPinned: window.localStorage.getItem('pinned')
         }
     }
 
@@ -27,7 +27,10 @@ export default class HeaderContainer extends React.Component {
     pin = (e) => {
         e.preventDefault();
         let pinned = 'pinned';
+        localStorage.setItem('pinned', 'pinned');
+
         if (this.state.classPinned) {
+            localStorage.setItem('pinned', '');
             pinned = '';
         }
         this.setState({
@@ -40,7 +43,14 @@ export default class HeaderContainer extends React.Component {
             return {
                 main: [
                     { name: 'Home', link: '/', icon: 'home'},
-                    { name: 'Posts', link: '/editor/', icon: 'file-alt'},
+                    { 
+                        name: 'Posts', 
+                        icon: 'file-alt', 
+                        link: '/editor/'
+                        // menuItems: [
+                        //     {name: 'New post', link: '/editor', icon: 'pencil-alt'}
+                        // ]
+                    },
                     { name: 'Stories', link: '/settings/', icon: 'book' }
                 ],
                 tools: [
@@ -49,6 +59,7 @@ export default class HeaderContainer extends React.Component {
                 user: [{
                     src: currentUser.image,
                     name: `${currentUser.name}`,
+                    caret: true,
                     menuItems: [
                         {name: 'Profile', link: '/@' + currentUser.name, icon: 'user-alt'},
                         {name: 'Settings', link: '/settings', icon: 'cog'},

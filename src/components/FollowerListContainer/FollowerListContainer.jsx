@@ -1,5 +1,4 @@
 import React from 'react';
-import api from '../../api';
 import PaginationContainer from '../PaginationContainer/PaginationContainer';
 import FollowerList from './FollowerList/FollowerList';
 import { Row } from 'reactstrap';

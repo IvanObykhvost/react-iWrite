@@ -2,12 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonNav from './ButtonNav/ButtonNav';
 import ButtonDropDown from './ButtonDropDown/ButtonDropDown';
-import pinIcon from '../../../../src/pinIcon.png';
-import { Link } from 'react-router-dom'
-import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem,
-    Navbar, Nav, NavItem, 
-    Row, Coll, Container
-} from 'reactstrap';
+import { Navbar, Nav, NavItem, Container} from 'reactstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -20,6 +15,8 @@ export default function Header({buttons, pinned, pin}) {
                     name={button.name}
                     src={button.src}
                     menuItems={button.menuItems}
+                    icon={button.icon}
+                    caret={button.caret}
                 />
         }
         else {

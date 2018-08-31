@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { Row, Col, Media, Card,  CardFooter, CardBody, CardText } from 'reactstrap';
 import { CheckImage } from "../../../utils/Operations";
 import ButtonFollowContainer from '../../Form/Buttons/ButtonFollowContainer/ButtonFollowContainer';
-import ButtonProfileContainer from '../../Form/Buttons/ButtonProfileContainer/ButtonProfileContainer';
 
 
 export default function FollowerList({user, onClick}) {

@@ -6,14 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function ButtonNav({ link, name, icon}) {
     return (
-        <Link to={link}
-            // className={`button-nav${icon ? ' icon' : ''}`}
-        >
-            <NavItem className='header-link'>
+        <NavItem className='header-link'>
+            <Link to={link}>
                 { icon && <FontAwesomeIcon icon={icon}/> }
                 {name}
-            </NavItem>
-        </Link>
+            </Link>
+        </NavItem>
+        
  
     )
         }

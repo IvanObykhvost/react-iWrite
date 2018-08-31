@@ -176,7 +176,7 @@ export default class EditorContainer extends React.Component {
         const name = e.target.name;   
         let post = { ...this.state.post };
 
-        if (e.target.type == "checkbox") 
+        if (e.target.type === "checkbox") 
             post[name] = e.target.checked;
         else
             post[name] = e.target.value;

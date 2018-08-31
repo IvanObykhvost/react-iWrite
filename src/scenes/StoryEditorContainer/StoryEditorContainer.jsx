@@ -103,7 +103,7 @@ export default class StoryEditorContainer extends React.Component {
         const name = e.target.name;   
         let story = { ...this.state.story };
 
-        if (e.target.type == "checkbox") 
+        if (e.target.type === "checkbox") 
             story[name] = e.target.checked;
         else
             story[name] = e.target.value;

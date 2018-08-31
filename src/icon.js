@@ -10,3 +10,4 @@ library.add(fontawesomeIcon.faFileAlt);
 library.add(fontawesomeIcon.faBook);
 library.add(fontawesomeIcon.faBell);
 library.add(fontawesomeIcon.faSignInAlt);
+library.add(fontawesomeIcon.faPencilAlt);

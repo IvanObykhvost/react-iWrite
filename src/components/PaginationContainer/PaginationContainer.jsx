@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Button from '../Form/Buttons/Button';
 import Loader from '../Loader/Loader';
-import Button from '../Form/Buttons/Button';
 import Pagination from "react-js-pagination";
 
 const type = {
@@ -126,7 +124,7 @@ export default class PaginationContainer extends React.Component {
         return this.state.onLoad(currentPage, this.state.limit, this.state.type)
             .then(
                 data => {
-                    if(!data) throw '';
+                    if(!data) return Promise.reject('');
                     let {state} = this;
                     
                     state.count = data.count;
