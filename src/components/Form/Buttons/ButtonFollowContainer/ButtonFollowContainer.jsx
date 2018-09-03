@@ -49,7 +49,7 @@ class ButtonFollowContainer extends React.Component {
 
     render() {
         let {state} = this;
-        let name = `${state.following ? 'Unfollow': 'Follow'}`;
+        let name = `${state.following ? 'Unfollow': 'Follow'} ${state.username}`;
         const isUser = state.currentUser ? state.currentUser.name === state.username : false;
         return(
             state.currentUser &&

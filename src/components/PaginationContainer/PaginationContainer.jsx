@@ -154,7 +154,6 @@ export default class PaginationContainer extends React.Component {
                     :
                     state.type === type.loader &&
                     <Loader />
-                   
             }
             </div>
             

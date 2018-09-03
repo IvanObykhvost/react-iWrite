@@ -11,7 +11,7 @@ class StoriesContainer extends React.Component {
         };
     }
 
-    reducer(){
+    render(){
 
         return(
             <Stories />

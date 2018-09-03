@@ -41,21 +41,6 @@ label {
     }
 }
 
-.profile{
-    background-color: $color-grey-light;
-    padding: {
-        top: 20px;
-        bottom: 20px;
-    } 
-    img{
-        width: 150px;
-        height: 150px;
-        border-radius: 50px;
-        display: block;
-        margin: 0 auto;
-    }
-}
-
 .editor-page{
     form{
         textarea{
@@ -97,11 +82,11 @@ label {
     margin-left: -5px;
 }
 
-.profile-card{
+.card-profile{
     position: absolute;
-    margin-left: .5em;
-    top: 0;
-    
+    left: 180px;
+    top: 130px;
+    z-index: 1;
 }
 
 .pagination>li>a, 

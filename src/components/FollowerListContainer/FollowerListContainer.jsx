@@ -34,7 +34,10 @@ export default class FollowerListContainer extends React.Component {
     handelLoadMore = (page, limit, type) => {
 
         if(type === PaginationContainer.type.button)
-            this.setState({followers: []});
+            this.setState({
+                inProgress: true,
+                followers: []
+            });
 
         return this.state.onLoad(page, limit)
             .then(
@@ -70,7 +73,7 @@ export default class FollowerListContainer extends React.Component {
             
 
         return (
-            <div className="follower-container">     
+            <div className="follower-container">   
                 {
                     !state.inProgress ?
                         state.followers.length > 0 ?

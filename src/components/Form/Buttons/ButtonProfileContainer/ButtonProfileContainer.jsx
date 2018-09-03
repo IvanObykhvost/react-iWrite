@@ -34,7 +34,7 @@ class ButtonProfileContainer extends React.Component {
                }
                 {
                     state.hover && 
-                    <div className='profile-card'>
+                    <div className='card-profile'>
                         <Card>
                             <CardHeader>
                                 {state.currentUser.name}

@@ -51,10 +51,10 @@ export default class HeaderContainer extends React.Component {
                         //     {name: 'New post', link: '/editor', icon: 'pencil-alt'}
                         // ]
                     },
-                    { name: 'Stories', link: '/settings/', icon: 'book' }
+                    { name: 'Stories', link: '/manage/stories', icon: 'book' }
                 ],
                 tools: [
-                    {icon: 'thumbtack', className: 'button-nav-pin'}
+                    
                 ],
                 user: [{
                     src: currentUser.image,
@@ -74,11 +74,11 @@ export default class HeaderContainer extends React.Component {
                 { name: 'Home', link: '/', icon: 'home'}
             ],
             tools: [
-                {icon: 'thumbtack', className: 'button-nav-pin'}
+                
             ],
             user: [
                 { name: 'Sign In', link: '/login/', icon: 'sign-in-alt'},
-                { name: 'Sign Up', link: '/register/', icon: 'sign-in-alt'}
+                { name: 'Sign Up', link: '/register/', icon: 'user-alt'}
             ]
         }
     }

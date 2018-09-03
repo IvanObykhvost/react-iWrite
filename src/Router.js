@@ -9,6 +9,7 @@ import SettingContainer from './scenes/SettingsContainer/SettingContainer';
 import ProfileContainer from './scenes/ProfileContainer/ProfileContainer';
 import LogoutContainer from './scenes/LogoutContainer/LogoutContainer';
 import StoryEditorContainer from './scenes/StoryEditorContainer/StoryEditorContainer';
+import StoriesContainer from './scenes/Manage/StoriesContainer/StoriesContainer';
 
 export default function Router() {
     return (<Switch>
@@ -23,6 +24,8 @@ export default function Router() {
                 <Route path="/logout/" component={LogoutContainer} />
                 <Route path="/storyEditor/:id?" component={StoryEditorContainer} />
                 <Route path="/storyEditor/" component={StoryEditorContainer} />
+
+                <Route path="/manage/stories" component={StoriesContainer} />
             </Switch>
     )
     

@@ -5,7 +5,6 @@ import { Row, Col, Media, Card,  CardFooter, CardBody, CardText } from 'reactstr
 import { CheckImage } from "../../../utils/Operations";
 import ButtonFollowContainer from '../../Form/Buttons/ButtonFollowContainer/ButtonFollowContainer';
 
-
 export default function FollowerList({user, onClick}) {
     const bio = user.bio ? user.bio : "- No Bio Provided -"
     return (
