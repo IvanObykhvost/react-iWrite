@@ -28,7 +28,6 @@ function Comment({comment, showDeleteButton, onClickDelete}) {
                         >
                             <Media object 
                                 src={CheckImage(comment.author.image)} 
-                                className="post-userImage" 
                                 alt={comment.author.username}
                             />
                         </Link>

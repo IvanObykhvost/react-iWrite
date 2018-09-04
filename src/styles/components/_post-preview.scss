@@ -1,8 +1,23 @@
 .post-preview {
     width: 100%;
     text-align: left;
-    @include solid-border-bottom($color: #dee2e6);
-    padding: 5px 0px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+    margin-bottom: 15px;
+    
+    &:first-child{
+        margin-top: 3px;
+    }
+    &:hover {
+        background: #f4fbfd;
+        border-color: #ccd8e4;
+    }
+
+    hr{
+        margin-bottom: 5px;
+    }
     a{
         color: black;
         &:hover{
@@ -15,27 +30,52 @@
             color: #bbb; //color
         }
     }
-    .post-preview-header{
-        margin-bottom: 5px;
-        img{
+    .post-preview-user{
+        margin: 0 auto;
+        text-align: center;
+        .post-preview-avatar{
             width: 40px;
             height: 40px;
-            border-radius: 100px;
+            border-radius: 50%;
+            margin: auto;
+        }
+        .post-preview-name{
+            font-size: 0.8rem;
+            word-wrap: break-word;
         }
     }
 
     .post-preview-body{
-        span{
-            color: gray; //color
-            font-size: 14px;
+        text-align: justify;
+        .post-preview-title{
+            &:hover{
+                text-decoration: underline;
+            }
+            h5{
+                display: inline;
+            }
+        }
+        .post-preview-message{
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: default;
         }
     }
     
-    
-}
-
-.post-userImage {
-    width: 40px;
-    height: 40px;
-    border-radius: 100px;
+    .post-preview-footer{
+        cursor: default;
+        font-size: .8rem;
+        b{
+            padding: 0px 5px;
+        }
+        svg{
+            margin-right: 3px;
+        }
+        .post-preview-tags{
+            height: 1rem;
+        }
+    }
 }

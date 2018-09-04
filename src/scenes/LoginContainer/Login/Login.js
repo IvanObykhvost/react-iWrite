@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Container } from 'reactstrap';
+import { Row, Col, Container} from 'reactstrap';
 import Input from '../../../components/Form/Inputs/Input';
 import Button from '../../../components/Form/Buttons/Button';
 import Alert from '../../../components/Form/Alert/Alert';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Login({state, onChange, onSubmit}) {   
     return (

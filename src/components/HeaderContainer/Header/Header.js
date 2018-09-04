@@ -40,6 +40,13 @@ export default function Header({buttons, pinned, pin}) {
                     </Nav>
                     <Nav className='float-lg-right'>
                         <NavItem className='header-tools'>
+                            {
+                                buttons.tools.map((button, index) => 
+                                    <FontAwesomeIcon
+                                        key={index}
+                                        icon={button.icon}
+                                    />)
+                            }
                             <FontAwesomeIcon 
                                 icon='thumbtack' 
                                 className={`button-nav-pin ${pinned}`}

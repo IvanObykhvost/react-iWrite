@@ -69,18 +69,18 @@ export default function Profile({profile, isUser, currentUser, tabList}) {
                                     </div>
                                     <div className='profile-display-stat'>
                                         <span className='profile-display-stat-counter'>
-                                            {profile.followingsCount}
-                                        </span>
-                                        <span className='profile-display-stat-title'>
-                                            Following
-                                        </span>
-                                    </div>
-                                    <div className='profile-display-stat'>
-                                        <span className='profile-display-stat-counter'>
                                             {profile.followersCount}
                                         </span>
                                         <span className='profile-display-stat-title'>
                                             Follower
+                                        </span>
+                                    </div>
+                                    <div className='profile-display-stat'>
+                                        <span className='profile-display-stat-counter'>
+                                            {profile.followingsCount}
+                                        </span>
+                                        <span className='profile-display-stat-title'>
+                                            Following
                                         </span>
                                     </div>
                                 </div>
@@ -94,45 +94,6 @@ export default function Profile({profile, isUser, currentUser, tabList}) {
                     </Col>
                 </Row>
             </div>
-            {/* <div className="profile">
-                <Container>
-                    <Row>
-                        <Col md={{size: 9, offset: 1}} xs={10}>
-                            <Row>
-                                <Col>
-                                    <Media 
-                                        src={CheckImage(profile.image)} 
-                                        alt={profile.name} 
-                                    />
-                                </Col>
-                            </Row>
-                            <h4>{profile.name}</h4>
-                            <p>{profile.bio}</p>
-                            {
-                                currentUser && 
-                                    isUser ? 
-                                        <ButtonLink 
-                                            to="/settings/"
-                                            className="btn btn-sm btn-outline-secondary action-btn"
-                                            name="Edit Profile Settings"
-                                        />
-                                        :
-                                        <ButtonFollowContainer
-                                            username={profile.name}
-                                            following={profile.following}
-                                        />
-                            }
-                        </Col>
-                    </Row>
-                </Container>
-            </div> 
-            <Container>
-                <Row>
-                    <Col md={{size: 10, offset: 1}} xs={12}>
-                        <TabContainer tabList={tabList}/>
-                    </Col>
-                </Row>
-            </Container> */}
         </Container>   
         )
 }

@@ -8,6 +8,13 @@
 .card-comment {
     margin: 1.25rem 0;
 
+    img{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin: auto;
+    }
+
     textarea{
         margin: 0px;
         min-height: 100px;

@@ -54,7 +54,7 @@ export default class HeaderContainer extends React.Component {
                     { name: 'Stories', link: '/manage/stories', icon: 'book' }
                 ],
                 tools: [
-                    
+                    { name: 'bell', icon: ['far', 'bell'] }
                 ],
                 user: [{
                     src: currentUser.image,
