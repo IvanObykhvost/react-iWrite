@@ -89,8 +89,10 @@ export default function Profile({profile, isUser, currentUser, tabList}) {
                     </Col>
                 </Row>
                 <Row className='profile-tabs'>
-                    <Col md={{size: 10, offset: 1}} xs={12}>
+                    <Col md={9} xs={10}>
                         <TabContainer tabList={tabList}/>
+                    </Col>
+                    <Col md={3}>
                     </Col>
                 </Row>
             </div>

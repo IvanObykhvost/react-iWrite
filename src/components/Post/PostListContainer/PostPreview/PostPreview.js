@@ -2,12 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import { Row, Col, Media } from 'reactstrap';
-import { CheckImage, getDateFormat } from "../../../../utils/Operations";
+import { CheckImage, getDateFormat, createMarkup } from "../../../../utils/Operations";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function PostPreview({post, isUser, onClick}) {
     const {author} = post;
-    let icon = post.favorited ? ['fas', 'heart']: ['far', 'heart'];
+    const icon = post.favorited ? ['fas', 'heart']: ['far', 'heart'];
+    let message = post.message;
+    let readMore = false;
+    if(message.length > 300){
+        message = message.slice(0, 300) + ' ...';
+        readMore = true;
+    }
     return (
         <div className='post-preview'>
             <Row>
@@ -32,9 +38,18 @@ export default function PostPreview({post, isUser, onClick}) {
                             <h5>{post.title}</h5>
                         </Link>
                     </span>
-                    <span className='post-preview-message'>
-                        {post.message}    
-                    </span>
+                    <div className='post-preview-message'>
+                        {/* {post.message}     */}
+                        {message}
+                        {
+                            readMore && 
+                                <div>
+                                    <Link to={'/article/' + post.id}>
+                                        Read more...
+                                    </Link>
+                                </div>
+                        }
+                    </div>
                 </Col>
             </Row>
             <hr/>

@@ -62,6 +62,13 @@
             overflow: hidden;
             text-overflow: ellipsis;
             cursor: default;
+            a{
+                color: $color-main;
+                font-size: 14px;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
         }
     }
     

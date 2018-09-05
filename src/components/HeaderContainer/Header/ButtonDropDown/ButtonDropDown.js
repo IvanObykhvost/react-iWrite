@@ -16,12 +16,12 @@ export default function ButtonDropDown({src, name, icon, caret, menuItems}) {
             <DropdownMenu>
             {
                 menuItems.map((button, index)=>
-                <DropdownItem key={index}>
-                    <Link to={button.link} >
-                        <FontAwesomeIcon icon={button.icon} className='header-icon'/>
-                        {button.name}
+                    <Link to={button.link} key={index} >
+                        <DropdownItem >
+                            <FontAwesomeIcon icon={button.icon} className='header-icon'/>
+                            {button.name}
+                        </DropdownItem>
                     </Link>
-                </DropdownItem>
                 )
             }
             </DropdownMenu>

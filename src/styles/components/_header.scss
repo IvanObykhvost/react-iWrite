@@ -26,11 +26,17 @@
         }
         svg{
             margin-right: 10px;
+            cursor: pointer;
         }
+        
     }
 
     button.dropdown-item{
         cursor: pointer;
+        &:hover{
+            background-color: $color-main;
+            color: $color-white;
+        }
     }
     .navbar{
         padding: 0rem 1rem;

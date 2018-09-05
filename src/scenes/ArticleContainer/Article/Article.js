@@ -67,7 +67,7 @@ export default function Article({ article, onClickDelete }) {
             <Container>
                 <Row className="article-content">
                     <Col md={{size: 8, offset: 2}}>
-                        <div className="display-linebreak text-align-justify">
+                        <div className="display-linebreak text-align-justify" >
                             {post.message}
                         </div>
                         <div className="tag-list">

@@ -16,3 +16,7 @@ export function CheckImage(image) {
 export function getDateFormat(date){
     return new Date(date).toDateString();
 }
+
+export function createMarkup(message){
+    return { __html: message }
+}

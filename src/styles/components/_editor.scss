@@ -1,11 +1,35 @@
 ﻿
 .editor-page {
-    border: 1px solid grey;
-    border-radius: 15px;
+    
+    .editor-page-header{
+        border-bottom: 1px solid $color-grey-light;
+        padding: 5px 0px;
+        font-size: 1.385rem;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    .form-text{
+        text-align: left;
+    }
+
+    label{
+        margin: auto;
+    }
+    .EditorToolbar__root___3_Aqz{
+        text-align: left;
+    }
+    button{
+        float: right;
+    }
+
+    textarea {
+        min-height: 200px;
+    }
 }
 
 .editor-page .row {
-    border-bottom: 1px solid grey;
+    // border-bottom: 1px solid grey;
 }
 
 .editor-page .left-col {
@@ -79,10 +103,6 @@
     float: left;
     padding-left: 20px;
     font-weight: 500;
-}
-
-.editor-page textarea {
-    min-height: 100px;
 }
 
 .create-story{
