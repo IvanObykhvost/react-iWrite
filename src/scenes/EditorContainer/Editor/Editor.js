@@ -5,12 +5,9 @@ import Input from '../../../components/Form/Inputs/Input';
 import Button from '../../../components/Form/Buttons/Button';
 import InputComboBox from '../../../components/Form/Inputs/InputComboBox';
 import Alert from '../../../components/Form/Alert/Alert';
-import RichTextEditorContainer from '../../../components/Form/Inputs/RichTextEditorContaner/RichTextEditorContaner';
-
-
+// import RichTextEditorContainer from '../../../components/Form/Inputs/RichTextEditorContaner/RichTextEditorContaner';
 
 export default function Editor({post, onChange, onChangeTag, onSubmit, inProgress, error }) {
-   
     return (
         <div>
             <Container className="editor-page">

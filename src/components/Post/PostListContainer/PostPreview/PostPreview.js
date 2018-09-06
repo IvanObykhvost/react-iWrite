@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import { Row, Col, Media } from 'reactstrap';
-import { CheckImage, getDateFormat, createMarkup } from "../../../../utils/Operations";
+import { CheckImage, getDateFormat } from "../../../../utils/Operations";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function PostPreview({post, isUser, onClick}) {
     const {author} = post;
-    const icon = post.favorited ? ['fas', 'heart']: ['far', 'heart'];
     let message = post.message;
     let readMore = false;
     if(message.length > 300){

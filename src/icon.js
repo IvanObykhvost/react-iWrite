@@ -16,6 +16,7 @@ library.add(SolidIcons.faUserCircle);
 library.add(SolidIcons.faHeart);
 library.add(SolidIcons.faHeartbeat);
 library.add(SolidIcons.faComments);
+library.add(SolidIcons.faPencilAlt);
 
 library.add(RegularIcons.faHeart);
 library.add(RegularIcons.faChartBar);

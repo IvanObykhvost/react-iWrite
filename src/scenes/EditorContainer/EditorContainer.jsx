@@ -4,7 +4,6 @@ import Editor from './Editor/Editor';
 import { STATUS } from './constant';
 import api from "../../api";
 import Label from '../../components/Form/Label/Label';
-import RichTextEditor from 'react-rte';
 
 export default class EditorContainer extends React.Component {
     constructor(props) {

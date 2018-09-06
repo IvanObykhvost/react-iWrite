@@ -10,6 +10,7 @@ import ProfileContainer from './scenes/ProfileContainer/ProfileContainer';
 import LogoutContainer from './scenes/LogoutContainer/LogoutContainer';
 import StoryEditorContainer from './scenes/StoryEditorContainer/StoryEditorContainer';
 import StoriesContainer from './scenes/Manage/StoriesContainer/StoriesContainer';
+import ManagePosts from './scenes/Manage/ManagePosts/ManagePosts';
 
 export default function Router() {
     return (<Switch>
@@ -26,6 +27,7 @@ export default function Router() {
                 <Route path="/storyEditor/" component={StoryEditorContainer} />
 
                 <Route path="/manage/stories" component={StoriesContainer} />
+                <Route path="/manage/posts" component={ManagePosts} />
             </Switch>
     )
     

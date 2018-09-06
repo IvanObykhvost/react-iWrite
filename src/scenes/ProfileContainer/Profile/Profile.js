@@ -5,7 +5,7 @@ import ButtonLink from '../../../components/Form/Buttons/ButtonLink';
 import TabContainer from '../../../components/TabContainer/TabContainer';
 import { CheckImage } from "../../../utils/Operations";
 import ButtonFollowContainer from '../../../components/Form/Buttons/ButtonFollowContainer/ButtonFollowContainer';
-import ButtonIcon from '../../../components/Form/Buttons/ButtonIcon';
+// import ButtonIcon from '../../../components/Form/Buttons/ButtonIcon';
 
 export default function Profile({profile, isUser, currentUser, tabList}) {
     return (                 

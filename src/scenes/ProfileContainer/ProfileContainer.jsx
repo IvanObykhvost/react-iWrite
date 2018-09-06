@@ -87,7 +87,7 @@ class ProfileContainer extends React.Component {
     render() {
         let {state} = this;
         if(state.error)
-            return <Label className="erro" message={state.error}/>;
+            return <Label className="error" message={state.error}/>;
 
         return (
             !state.inProgress ? 

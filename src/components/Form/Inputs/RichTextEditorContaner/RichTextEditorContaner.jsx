@@ -18,7 +18,7 @@ export default class RichTextEditorContainer extends React.Component {
     }
 
     render(){
-        const {value, name} = this.state;
+        const {value} = this.state;
         
         return <RichTextEditor
                     onChange={this.handelChange}

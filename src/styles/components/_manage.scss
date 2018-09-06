@@ -1,0 +1,15 @@
+.manage-posts{
+    .card-header{
+        text-align: left;
+    }
+    .card-body{
+        .table{
+            th{
+                text-align: left;
+                &:first-child{
+                    width: 70%;
+                }
+            }
+        }
+    }
+}

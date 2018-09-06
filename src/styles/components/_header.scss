@@ -32,11 +32,7 @@
     }
 
     button.dropdown-item{
-        cursor: pointer;
-        &:hover{
-            background-color: $color-main;
-            color: $color-white;
-        }
+       
     }
     .navbar{
         padding: 0rem 1rem;
@@ -87,17 +83,17 @@
         margin-right: 15px;
     }
     .dropdown-item{
-        a{
-            color: $color-black;
-            &:active{
-                color: $color-white;
-            }
-            svg{
-                margin-right: 15px !important;
-            }
+        svg{
+            margin-right: 15px !important;
         }
         &:active{
             background-color: $color-main;
+        }
+        cursor: pointer;
+
+        &:hover{
+            background-color: $color-main;
+            color: $color-white;
         }
     }
 }
