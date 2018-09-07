@@ -1,15 +1,64 @@
 .manage-posts{
     .card-header{
         text-align: left;
+        .manage-posts-tools{
+            float: right;
+            svg{
+                cursor: pointer;
+                @include transform-rotate(90deg);
+            }
+            a{
+                color: $color-black;
+                margin-right: 10px;
+            }
+        }
     }
     .card-body{
         .table{
-            th{
-                text-align: left;
-                &:first-child{
-                    width: 70%;
+            thead{
+                th{
+                    &:first-child{
+                        width: 70%;
+                        text-align: left;
+                    }
+                    &:last-child{
+                        width: 7%;
+                    }
                 }
             }
+            tbody{
+                tr{
+                    &:hover{
+                        background-color: $color-blue-light;
+                    }
+                    th{
+                        &:first-child{
+                            text-align: left;
+                            padding: 5px 10px;
+                            font-size: 0.9rem;
+                            font-weight: normal;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+                td{
+                    cursor: default;
+                    font-size: 0.8rem;
+                    &:first-child{
+                        text-align: left;
+                    }
+                    &:last-child{
+                        a{
+                            color: $color-black;
+                            margin-right: 10px;
+                        }
+                        svg{
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            
         }
     }
 }

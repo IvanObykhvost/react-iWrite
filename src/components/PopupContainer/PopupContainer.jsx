@@ -2,7 +2,13 @@ import React from 'react';
 import Popup from './Popup/Popup';
 import Button from '../Form/Buttons/Button';
 import { CheckFalseOrTrue } from '../../utils/Operations';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+const type ={
+    button: 'button',
+    link: 'link',
+    icon: 'icon'
+}
 
 export default class PopupContainer extends React.Component{
     constructor(props) {
@@ -12,15 +18,22 @@ export default class PopupContainer extends React.Component{
             isOpen: false,
             element: this.getElement(this.props),
             name: this.props.name,
-            isButtonClose: CheckFalseOrTrue(this.props.isButtonClose)
+            isButtonClose: CheckFalseOrTrue(this.props.isButtonClose),
+            buttons: this.props.buttons
         };
     }
 
     getElement(props){
-        if(props.type === "button"){
+        if(props.type === type.button){
             return <Button 
                 name={props.name} 
                 color="primary"
+                onClick={e => this.handelOpen(e)}
+            />
+        }
+        if(props.type === type.icon){
+            return <FontAwesomeIcon
+                icon={props.icon}
                 onClick={e => this.handelOpen(e)}
             />
         }
@@ -45,6 +58,7 @@ export default class PopupContainer extends React.Component{
 
     render() {
         let {state} = this;
+        const isButtonClose = state.buttons ? true : state.isButtonClose;
         return(
             <div className="modal-link">
                 {state.element}
@@ -52,7 +66,8 @@ export default class PopupContainer extends React.Component{
                     isOpen={state.isOpen}
                     onClose={e => this.handelClose()}
                     title={state.name}
-                    isButtonClose={state.isButtonClose}
+                    isButtonClose={isButtonClose}
+                    buttons={state.buttons}
                 >
                     {this.props.children}
                 </Popup>
@@ -61,3 +76,5 @@ export default class PopupContainer extends React.Component{
         );
     }
 }
+
+PopupContainer.type = type;

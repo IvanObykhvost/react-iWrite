@@ -103,7 +103,7 @@ class PostListContainer extends React.Component {
         return (
             <div className="post-container">     
                 {
-                    !state.inProgress ?
+                    !state.inProgress &&
                         state.posts.length > 0 ?
                             state.posts.map(post => 
                                 <PostPreview 
@@ -115,8 +115,6 @@ class PostListContainer extends React.Component {
                             )
                             :
                             <div className="text-align-center"><p>Sorry, no posts found.</p></div>
-                        :
-                        null
                 } 
                 <PaginationContainer 
                     onLoad={this.handelLoadMore} 

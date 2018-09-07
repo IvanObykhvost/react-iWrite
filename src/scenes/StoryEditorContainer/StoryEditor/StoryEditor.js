@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Row, Col, Container } from 'reactstrap';
 import Input from '../../../components/Form/Inputs/Input';
 import Button from '../../../components/Form/Buttons/Button';
@@ -31,7 +31,7 @@ export default class StoryEditor extends React.Component {
     
 
     render() {
-        const { story, onChange, setCategories, onChangeTag, onSubmit, inProgress, error } = this.props;
+        const { story, onChange, setCategories, onSubmit, inProgress, error } = this.props;
 
         return (
             <div>

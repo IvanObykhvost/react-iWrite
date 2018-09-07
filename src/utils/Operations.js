@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export function CheckFalseOrTrue(object) {
     if(object){
         return true
@@ -14,7 +16,8 @@ export function CheckImage(image) {
 
 
 export function getDateFormat(date){
-    return new Date(date).toDateString();
+    // const date = new Date(date);
+    return moment(date).format('LL');
 }
 
 export function createMarkup(message){

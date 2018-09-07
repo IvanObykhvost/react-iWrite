@@ -4,7 +4,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter  } from 'reactstrap';
 import Button from '../../Form/Buttons/Button';
 
 
-export default function Popup({ isOpen, isButtonClose, title, children, onClose}){
+export default function Popup({ isOpen, isButtonClose, title, children, buttons, onClose}){
     
     return(
         <Modal isOpen={isOpen} centered toggle={onClose}>
@@ -17,6 +17,10 @@ export default function Popup({ isOpen, isButtonClose, title, children, onClose}
             {
                 isButtonClose && 
                     <ModalFooter>
+                        <span onClick={onClose}>
+                            {buttons}
+                        </span>
+                        
                         <Button
                             name="Close"
                             color="primary"
@@ -33,6 +37,7 @@ Popup.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     isButtonClose: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
-    children: PropTypes.object,
+    children: PropTypes.any,
+    buttons: PropTypes.object,
     onClose: PropTypes.func.isRequired
 }

@@ -17,7 +17,10 @@ library.add(SolidIcons.faHeart);
 library.add(SolidIcons.faHeartbeat);
 library.add(SolidIcons.faComments);
 library.add(SolidIcons.faPencilAlt);
+library.add(SolidIcons.faSlidersH);
+library.add(SolidIcons.faPlusSquare);
 
 library.add(RegularIcons.faHeart);
 library.add(RegularIcons.faChartBar);
 library.add(RegularIcons.faBell);
+library.add(RegularIcons.faTrashAlt);

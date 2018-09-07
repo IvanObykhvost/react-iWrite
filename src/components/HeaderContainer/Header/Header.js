@@ -65,6 +65,6 @@ export default function Header({buttons, pinned, pin}) {
 
 Header.propTypes = {
     buttons: PropTypes.object,
-    pinned: PropTypes.string.isRequired,
+    pinned: PropTypes.string,
     pin: PropTypes.func.isRequired
 }
