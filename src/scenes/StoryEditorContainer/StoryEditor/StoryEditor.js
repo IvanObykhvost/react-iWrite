@@ -56,10 +56,10 @@ export default class StoryEditor extends React.Component {
                         </Row>
                     }
                     <Row>
-                        <Col xs="3" className="left-col">
+                        <Col md={3} className="left-col">
                              Help
                         </Col>
-                        <Col xs="9" className="right-col">
+                        <Col md={9} className="right-col">
                             <span className="topic">Tips</span>
                             <ol className="list">
                                 <li>If you need any help with grammar, story construction, or just general advice on writing Fanfiction, please check out this excellent guide by Ezn</li>

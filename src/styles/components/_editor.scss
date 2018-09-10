@@ -22,6 +22,7 @@
 
     textarea {
         min-height: 200px;
+        margin: 5px 0px;
     }
 }
 
@@ -110,7 +111,8 @@
     margin: 10px 0;
 }
 
-.editor-story{
+.editor-story,
+.editor-page {
     .card-header{
         text-align: left;
         font-size: 1.6rem;

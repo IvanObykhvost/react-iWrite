@@ -23,16 +23,23 @@ export default function Editor({post, onChange, onChangeTag, onSubmit, inProgres
                                 }
                             </CardHeader>
                             <CardBody>
-                                <Alert
-                                    message={error}
-                                    color={Alert.color.danger}
-                                />
+                            {
+                                error &&
+                                <Row>
+                                    <Col>
+                                        <Alert
+                                            message={error}
+                                            color={Alert.color.danger}
+                                        />
+                                    </Col>
+                                </Row>
+                            }    
                                 <form onSubmit={onSubmit}>
-                                    <FormGroup row>
-                                        <Label md={2} for='title'>
+                                    <Row>
+                                        <Col md={3} className='left-col'>
                                             Title
-                                        </Label>
-                                        <Col md={10}>
+                                        </Col>
+                                        <Col md={9} className='right-col'>
                                             <Input
                                                 id='title'
                                                 type={"text"}
@@ -41,16 +48,12 @@ export default function Editor({post, onChange, onChangeTag, onSubmit, inProgres
                                                 onChange={onChange}
                                             />
                                         </Col>
-                                    </FormGroup>
-                                    {/* <RichTextEditorContainer   
-                                        value={post.message}
-                                        onChange={onChange}
-                                    /> */}
-                                    <FormGroup row>
-                                        <Label md={2} for='title'>
+                                    </Row>
+                                    <Row>
+                                        <Col md={3} className='left-col'>
                                             Message
-                                        </Label>
-                                        <Col md={10}>
+                                        </Col>
+                                        <Col md={9} className='right-col'>
                                             <Input 
                                                 type="textarea" 
                                                 name="message" 
@@ -59,13 +62,12 @@ export default function Editor({post, onChange, onChangeTag, onSubmit, inProgres
                                                 rows={4}
                                             />
                                         </Col>
-                                    </FormGroup>
-                                    
-                                    <FormGroup row>
-                                        <Label md={2} for='tags'>
+                                    </Row>
+                                    <Row>
+                                        <Col md={3} className='left-col'>
                                             Tags
-                                        </Label>
-                                        <Col md={10}>
+                                        </Col>
+                                        <Col md={9} className='right-col'>
                                             <InputComboBox
                                                 id='tags'
                                                 name="tags"
@@ -73,26 +75,26 @@ export default function Editor({post, onChange, onChangeTag, onSubmit, inProgres
                                                 value={post.tags.map(tag => ({ value: tag, label: tag }))}
                                                 noResultsText="Create new tags"
                                             />
-                                                <FormText>
+                                            <FormText>
                                                 You can specify up to 10 tags
                                             </FormText>
                                         </Col>
-                                    </FormGroup>
-                                    
-                                    <Button
-                                        type="submit"
-                                        name="Publish article"
-                                        color="primary"
-                                        disabled={inProgress}
-                                    />
+                                    </Row>
+                                    <Row>
+                                        <Col md={3} className='left-col'>
+                                        </Col>
+                                        <Col md={9} className='right-col'>
+                                            <Button
+                                                type="submit"
+                                                name="Publish article"
+                                                color="primary"
+                                                disabled={inProgress}
+                                            />
+                                        </Col>
+                                    </Row>
                                 </form>
                             </CardBody>
                         </Card>
-                        {/* <div className='editor-page-header'>
-                        
-                        </div> */}
-                        
-                        
                     </Col>
                 </Row>
             </Container>
