@@ -2,10 +2,7 @@
 .editor-page {
     
     .editor-page-header{
-        border-bottom: 1px solid $color-grey-light;
-        padding: 5px 0px;
-        font-size: 1.385rem;
-        margin-bottom: 10px;
+        font-size: 1.2rem;
         text-align: left;
     }
 
@@ -111,4 +108,56 @@
 
 .RichTextEditor__root___2QXK- {
     margin: 10px 0;
+}
+
+.editor-story{
+    .card-header{
+        text-align: left;
+        font-size: 1.6rem;
+        svg{
+            margin-right: 10px;
+        }
+        .editor-story-tools{
+            float: right;
+        }
+    }
+    .card-body{
+        padding: 0px 15px;
+        .row{
+            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+        }
+        .col{
+            &:first-child{
+                padding: 0px;
+                .alert{
+                    margin-bottom: 0px;
+                }
+            }
+        }
+        .left-col{
+            background-color: #eee;
+            border-right: 1px solid rgba(0, 0, 0, 0.125);
+            font-size: 16px;
+            font-weight: 600;
+            float: right;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            text-align: right;
+        }
+        .right-col{
+            clear: both;
+            float: left;
+            padding-left: 17px;
+            text-align: left;
+        }
+        .title{
+            margin: 10px;
+            text-align: left;
+            font-size: 1.2rem;
+        }
+        .editor-story-feedback{
+            padding: 10px 5px;
+            
+        }
+    }
 }

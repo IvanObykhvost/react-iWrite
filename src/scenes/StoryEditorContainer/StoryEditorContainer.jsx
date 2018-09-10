@@ -16,7 +16,7 @@ export default class StoryEditorContainer extends React.Component {
                 title: "",
                 shortDescription: "",
                 longDescription: "",
-                disableComments: false,
+                disableComments: true,
                 disableRatings: false,
                 status: "incomplete",
                 categories: [],

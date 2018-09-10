@@ -43,13 +43,18 @@ export default class HeaderContainer extends React.Component {
             return {
                 main: [
                     { name: 'Home', link: '/', icon: 'home'},
-                    { name: 'Posts', link: '/editor/', icon: 'file-alt', caret: true,
+                    { name: 'Posts', icon: 'file-alt', caret: true,
                         menuItems:[
                             {name: 'New Post', link: '/editor/', icon: 'pencil-alt'},
                             {name: 'Manage Posts', link: '/manage/posts', icon: 'file-alt'}
                         ]    
                     },
-                    { name: 'Stories', link: '/manage/stories', icon: 'book' }
+                    { name: 'Stories', icon: 'book', caret: true,
+                        menuItems:[
+                            {name: 'New Story', link: '/storyEditor/', icon: 'pencil-alt'},
+                            {name: 'Manage Posts', link: '/manage/posts', icon: 'book'}
+                        ]    
+                    }
                 ],
                 tools: [
                     { name: 'bell', icon: ['far', 'bell'] }

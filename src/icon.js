@@ -19,6 +19,7 @@ library.add(SolidIcons.faComments);
 library.add(SolidIcons.faPencilAlt);
 library.add(SolidIcons.faSlidersH);
 library.add(SolidIcons.faPlusSquare);
+library.add(SolidIcons.faUndoAlt);
 
 library.add(RegularIcons.faHeart);
 library.add(RegularIcons.faChartBar);
